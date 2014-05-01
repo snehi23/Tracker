@@ -1,0 +1,396 @@
+#drop-down{
+		background-color:#b0cce8;
+		border-top: 1px solid #71B1DA;
+		font-family: Arial, Helvetica, sans-serif;
+}
+
+#drop-down span b{
+			font-weight: bold;
+			color:#000000;
+			font-size: 12px;
+}
+
+#drop-down
+{
+			font-size: 11px;
+}
+#drop-down select
+{
+			font-size: 11px;
+			color:	#000000;
+
+}
+
+
+#drop-down input{
+		background-color:#fc0;
+		font-size: 11px;
+		cursor: pointer;
+		border-top: 1px solid #fc0;
+border-left: 1px solid #fc0;
+border-bottom: 2px solid #c60;
+border-right: 2px solid #c60;
+text-align: center;
+}
+
+#list-mgt {
+    margin-right:50px;
+
+}
+
+#content-table{
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:13px;!important;font-color:black;
+		margin:0px;
+		padding:25px;
+		border:1px solid #b0cce8;
+		
+
+}
+	
+#header-line
+{
+font-family: Arial, Helvetica, sans-serif;
+	    color: #000;
+		font-size: 100%;
+		font-weight: bold;
+		background-color:#CAE3F6;
+		margin-top: 0px;
+		margin-bottom:0px;
+		padding: 8px;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 7px;
+		
+	}
+		
+#page-titlemain {
+color: #465766;
+font: 18pt arial,sans-serif;
+line-height: 16pt;
+margin-top:16px;
+}
+
+#cec-footer {
+color: #666666;
+border-top: 1px solid #999;
+font-size: 14px;
+font-family: Arial, Helvetica, sans-serif;
+font-style: normal;
+line-height: 1.2;
+
+clear: both;
+margin-top: 40px;
+padding: 15px;
+}
+
+#footer-text {
+font-size: 85%;
+margin: 10px;
+padding: 10px;
+height: 50px;
+}
+
+#cec-contact-info {
+padding: .3em 0;
+}
+
+#footer-links A {
+text-decoration: none;
+}
+
+#footer-links A {
+text-decoration: none;
+}
+
+
+#footer-text {
+font-size: 85%;
+margin: 10px;
+padding: 10px;
+height: 50px;
+}
+
+#cec-contact-info {
+padding: .3em 0;
+}
+
+#footer-links A {
+text-decoration: none;
+}
+
+#footer-links A {
+text-decoration: none;
+}
+
+#cec-tableheading
+{
+font-weight: 700;
+color: #0E58A0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+}
+
+
+
+
+
+#cec-geninfo
+{
+	font-family: Arial, Helvetica, sans-serif;
+	padding:0px 10px 0px 10px;
+
+	
+
+}
+#cec-geninfo span
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color:#000000;
+	font-size: 12px;
+	padding-left:5px;
+
+
+}
+
+#cec-geninfo h2
+{
+	font-family: Arial, Helvetica, sans-serif;
+		font-weight: bold;
+			color:#000000;
+			font-size: 12px;
+
+
+}
+
+
+#cec-filtersubmit
+{
+background-color: #fc0;
+font-size: 11px;
+cursor: pointer;
+border-top: 1px solid #fc0;
+border-left: 1px solid #fc0;
+border-bottom: 2px solid #c60;
+border-right: 2px solid #c60;
+text-align: center;
+}
+
+#cec-even {
+    background: #eee;
+}
+
+#cec-odd {
+}
+
+#cec-searchresult
+{
+	background-color:#AFBECE;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color:#fff;
+	font-size: 12px;
+	padding:5px;
+	border-top-left-radius:7px;
+	border-top-right-radius:7px;
+	margin: 0px 10px 0px 10px;
+}
+
+#cec-tablebody
+{
+
+border-width: 0px 0px 1px 0px;
+font-family: Arial, Helvetica, sans-serif;
+color: #2B4EB7;
+font-size: 11px;
+border-color: #2B4EB7;
+
+}
+#cec-tablebody a
+{
+
+text-decoration:underline;
+
+}
+
+#cec-help
+{
+	float: right;
+	padding-right: 19px;
+
+}
+#cec-filterpadding
+{
+padding:0px 10px 0px 10px;
+}
+
+#list-mgt {
+
+position: absolute;
+right: 790px;
+top: 87px;
+}
+
+#GenInfoBeanList
+{
+	
+padding:0px 10px 0px 10px;
+
+}
+
+#cec-filterdrop select
+{
+			font-size: 11px;
+			color:#000000;
+}
+
+#cec-homepageform
+{
+	padding: 0px 10px 0px 10px;
+}
+#cec-prjsum
+{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2B4EB7;
+	font-size: 11px;
+	text-decoration: underline;
+
+}
+#cec-bordered
+ {
+    border: solid #ccc 1px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+#cec-bordered th
+{
+	    background: #EFEFEF url(http://wwwin.cisco.com/cec/framework/3.2.0/i/table/table_header_sortable.gif) repeat-x scroll left bottom;
+color: #0E58A0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+text-align:left;
+padding: 5px;
+}
+
+#cec-bordered td
+{
+border:solid 1px #ccc;
+font-family: Arial, Helvetica, sans-serif;
+color: #2B4EB7;
+font-size: 11px;
+text-decoration: underline;
+border-color: #ccc;
+padding: 5px;
+
+}
+#listmgmtbutton
+{
+	background-color: #fc0;
+	font-size: 11px;
+	cursor: pointer;
+	border-top: 1px solid #fc0;
+border-left: 1px solid #fc0;
+border-bottom: 2px solid #c60;
+border-right: 2px solid #c60;
+}
+#cec-lstmgmtform
+{
+font-family: Arial, Helvetica, sans-serif;
+color: #000;
+font-weight: bold;
+text-decoration: none;
+font-size:12px;
+}
+#cec-lstmgmtformtitle
+{
+font-family: Arial, Helvetica, sans-serif;
+color: #000;
+text-decoration: none;
+font-size:12px;
+}
+#cec-lstmgmtformhint
+{
+	color: #666;
+ font-size: 10px;
+ font-family: Arial, Helvetica, sans-serif;
+ text-decoration: none;
+ }
+ 
+ #cec-lstmgmtformselect
+ {
+font-size: 11px;
+color: #000000;
+ font-family: Arial, Helvetica, sans-serif;
+ text-decoration: none;
+ }
+ #cec-exesummarytable
+ { 
+ width:90%;
+ height: 125px;
+ border:solid 1px #ccc;
+ background-color:#FFFFFF;
+ }
+ #cec-prgmeditbutton
+ {
+ background-color: #fc0;
+font-size: 11px;
+cursor: pointer;
+border-top: 1px solid #fc0;
+border-left: 1px solid #fc0;
+border-bottom: 2px solid #c60;
+border-right: 2px solid #c60;
+text-align: center;
+ }
+ #cec-PrgEditsumry
+ {
+ font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+color: #000000;
+font-size: 12px;
+Margin-left:22px;
+}
+
+
+#cec-exetablename
+{
+font-family: Arial, Helvetica, sans-serif;
+font-weight: normal;
+color: #000000;
+font-size: 12px;
+}
+
+#progress
+{
+font-family: Arial, Helvetica, sans-serif;
+font-weight: normal;
+color: #000000;
+font-size: 11px;
+}
+
+
+#cec-tableheading {
+color: #0E58A0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+}
+#cec-exetitle 
+{
+font-family: Arial, Helvetica, sans-serif;
+color: #000000;
+font-size: 12px;"
+font-weight:normal !important;
+}
+
+
+#cec-tableheading th span {
+background: url("/nostg/img/bg.gif") !important;
+background-repeat: no-repeat !important;
+background-position: center right !important;
+padding-right: 15px !important;
+cursor: pointer !important;
+
+}
+
+

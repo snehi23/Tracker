@@ -1,0 +1,94 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Success</title>
+<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+
+<script>
+$(function() {
+	
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+    
+  });
+  
+</script>
+
+</head>
+<body>
+ <marquee><font color="Green">Welcome ${requestScope['user'].username}</font></marquee>
+ 
+<H3>User Input</H3>
+
+<form action="UserInputController" METHOD="post">
+<P> Date Of Journey <BR>
+<INPUT TYPE="TEXT" id='datepicker' NAME="DOJ" SIZE="20">
+</P>
+<P> Train <BR>
+<INPUT TYPE="TEXT" NAME="Train" SIZE="20">
+</P>
+<P> From <BR>
+<INPUT TYPE="TEXT" NAME="From" SIZE="20">
+</P>
+<P> To <BR>
+<INPUT TYPE="TEXT" NAME="To" SIZE="20">
+</P>
+<P> Class <BR>
+<INPUT TYPE="RADIO" NAME="classes" VALUE="1-AC">1-AC
+<INPUT TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC <BR>
+<INPUT TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC
+<INPUT TYPE="RADIO" NAME="classes" VALUE="SL">SL
+<INPUT TYPE="RADIO" NAME="classes" VALUE="Gen">Gen
+</P>
+
+<P> Comments <BR>
+<textarea NAME="comments" style="resize:none"></textarea>
+</P>
+<P>
+<INPUT TYPE="SUBMIT" VALUE="Submit">
+<INPUT TYPE="RESET" VALUE="Reset">
+</P>
+</form>
+
+<table> 
+<tr>
+<td>
+<form action='DisplayAllController' method='post'>
+
+<input type="submit" value="Show My data">
+
+</form>
+</td>
+<td>
+<form action='RefreshLocationController' method='post'>
+
+<input type="submit" value="Force Refresh">
+
+</form>
+</td>
+<td>
+<form action='DisplayLocationController' method='post'>
+
+<input type="submit" value="Show Location">
+
+</form>
+</td>
+<td>
+<form action='DisplayStatisticsController' method='post'>
+
+<input type="submit" value="Show Stats">
+
+</form>
+</td>
+</tr>
+</table>
+</body>
+
+
+</html>
