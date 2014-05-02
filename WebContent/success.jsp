@@ -26,37 +26,69 @@ $(function() {
  
 <H3>User Input</H3>
 
-<form action="UserInputController" METHOD="post">
-<P> Date Of Journey <BR>
-<INPUT TYPE="TEXT" id='datepicker' NAME="DOJ" SIZE="20">
-</P>
-<P> Train <BR>
-<INPUT TYPE="TEXT" NAME="Train" SIZE="20">
-</P>
-<P> From <BR>
-<INPUT TYPE="TEXT" NAME="From" SIZE="20">
-</P>
-<P> To <BR>
-<INPUT TYPE="TEXT" NAME="To" SIZE="20">
-</P>
-<P> Class <BR>
-<INPUT TYPE="RADIO" NAME="classes" VALUE="1-AC">1-AC
-<INPUT TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC <BR>
-<INPUT TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC
-<INPUT TYPE="RADIO" NAME="classes" VALUE="SL">SL
-<INPUT TYPE="RADIO" NAME="classes" VALUE="Gen">Gen
-</P>
 
-<P> Comments <BR>
-<textarea NAME="comments" style="resize:none"></textarea>
-</P>
-<P>
-<INPUT TYPE="SUBMIT" VALUE="Submit">
-<INPUT TYPE="RESET" VALUE="Reset">
-</P>
+
+<form action="UserInputController" METHOD="post">
+
+<table>
+<tr>
+	<td>Date Of Journey :</td>
+	<td><INPUT TYPE="TEXT" id='datepicker' NAME="DOJ" SIZE="20"></td>
+</tr>
+
+<tr>
+	<td>Train  :</td>
+	<td><INPUT TYPE="TEXT" NAME="Train" SIZE="20"></td>
+	
+</tr>
+
+<tr>
+	<td>From  :</td>
+	<td><INPUT TYPE="TEXT" NAME="From" SIZE="20"></td>
+	
+</tr>
+
+<tr>
+	<td>To  :</td>
+	<td><INPUT TYPE="TEXT" NAME="To" SIZE="20"></td>
+	
+</tr>
+
+
+<tr> 
+<td>Class :</td> 
+<tr>
+
+	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="1-AC">1-AC </td>
+	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC </td>
+	
+</tr>
+
+<tr>
+	
+	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC </td>
+	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="SL">SL </td>
+	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="Gen">Gen </td>
+
+
+<tr>
+
+<td>Comments :</td>
+<td><textarea NAME="comments" style="resize:none"></textarea> </td>
+
+</tr>
+<tr>
+
+<td><INPUT TYPE="SUBMIT" VALUE="Submit"></td>
+<td><INPUT TYPE="RESET" VALUE="Reset"></td>
+
+</tr>
+
+</table> 
 </form>
 
-<table> 
+
+<table>
 <tr>
 <td>
 <form action='DisplayAllController' method='post'>
