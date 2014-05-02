@@ -10,42 +10,48 @@
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Tg3D8gm1S4YoqAH65i_HENA75UePGUk&sensor=false"> </script>
 <script>
+
+	var myCenter = new google.maps.LatLng(12.971730,77.590427);
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(-33.897, 150.099),
-          zoom: 8
+          center: myCenter,
+          zoom: 8,
+          mapTypeId:google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+        var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
         
-        var rendererOptions = { map: map };
-    	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-    	
-    	var point1 = new google.maps.LatLng(-33.8975098545041,151.09962701797485);
-    	var point2 = new google.maps.LatLng(-33.8584421519279,151.0693073272705);
-    	var point3 = new google.maps.LatLng(-33.87312358690301,151.99952697753906);
-    	var point4 = new google.maps.LatLng(-33.84525521656404,151.0421848297119);
+        var locations = [];
+        <c:forEach items="${station_loc_list}" var="d1"> 
+    
+        	locations.push(new google.maps.LatLng(<c:out value="${d1.latitude}"></c:out>,<c:out value="${d1.longitude}"></c:out>));
+        	
+      	</c:forEach>
+      	
+      	var image = {
+      		  url: 'snehal.png',
+      		  size: new google.maps.Size(71, 71),
+      		  origin: new google.maps.Point(0, 0),
+      		  anchor: new google.maps.Point(17, 34),
+      		  scaledSize: new google.maps.Size(50, 50)
+      		};
+      	
+      	var marker=new google.maps.Marker({
+      	  position: myCenter,
+      	  icon:image,
+      	  animation:google.maps.Animation.BOUNCE
+      	  });
+      	
+      	var JourneyPath=new google.maps.Polyline({
+      	  path:locations,
+      	  strokeColor:"#0000FF",
+      	  strokeOpacity:0.8,
+      	  strokeWeight:2
+      	  });
 
-    	var wps = [{ location: point1 }, {location: point4}];
-    	
-    	var org = new google.maps.LatLng ( -33.89192157947345,151.13604068756104);
-    	var dest = new google.maps.LatLng ( -33.69727974097957,150.29047966003418);
-    	
-    	var request = {
-    			origin: org,
-    			destination: dest,
-    			waypoints: wps,
-    			travelMode: google.maps.DirectionsTravelMode.DRIVING
-    			};
-
-    	directionsService = new google.maps.DirectionsService();
-    	directionsService.route(request, function(response, status) {
-    				if (status == google.maps.DirectionsStatus.OK) {
-    					directionsDisplay.setDirections(response);
-    				}
-    				else
-    					alert ('failed to get directions');
-    			});
+      	
+      	marker.setMap(map);
+      	JourneyPath.setMap(map);
+        
         
       }
       

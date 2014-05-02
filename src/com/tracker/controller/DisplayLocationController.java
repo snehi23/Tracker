@@ -48,7 +48,7 @@ public class DisplayLocationController extends HttpServlet {
         try {
         	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
-        	ps = conn.prepareStatement("select * from station_lat_long where station_lat_long_id<30");
+        	ps = conn.prepareStatement("select * from station_lat_long");
         	rs = ps.executeQuery();       	
         	while(rs.next()) {
 
