@@ -9,57 +9,9 @@
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Tg3D8gm1S4YoqAH65i_HENA75UePGUk&sensor=false"> </script>
-<script>
 
-	var myCenter = new google.maps.LatLng(12.971730,77.590427);
-      function initialize() {
-        var mapOptions = {
-          center: myCenter,
-          zoom: 8,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
-        
-        var locations = [];
-        <c:forEach items="${station_loc_list}" var="d1"> 
-    
-        	locations.push(new google.maps.LatLng(<c:out value="${d1.latitude}"></c:out>,<c:out value="${d1.longitude}"></c:out>));
-        	
-      	</c:forEach>
-      	
-      	var image = {
-      		  url: 'snehal.png',
-      		  size: new google.maps.Size(71, 71),
-      		  origin: new google.maps.Point(0, 0),
-      		  anchor: new google.maps.Point(17, 34),
-      		  scaledSize: new google.maps.Size(50, 50)
-      		};
-      	
-      	var marker=new google.maps.Marker({
-      	  position: myCenter,
-      	  icon:image,
-      	  animation:google.maps.Animation.BOUNCE
-      	  });
-      	
-      	var JourneyPath=new google.maps.Polyline({
-      	  path:locations,
-      	  strokeColor:"#0000FF",
-      	  strokeOpacity:0.8,
-      	  strokeWeight:2
-      	  });
 
-      	
-      	marker.setMap(map);
-      	JourneyPath.setMap(map);
-        
-        
-      }
-      
-      
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-
-<title>Pi And Map View</title>
+<title>Map View</title>
 <style>
 table, td, th
 {
@@ -73,10 +25,9 @@ color:white;
 </style>
 </head>
 <body>
-
 <table>
 <tr>
-<td><div>
+<td>
 Displaying <c:out value="${fn:length(station_loc_list)}"/> results
 <table id="myTable">
 <thead>
@@ -100,10 +51,79 @@ Displaying <c:out value="${fn:length(station_loc_list)}"/> results
   </tr>
 </c:forEach>
 </tbody>
-</table></div> </td>
+</table>
+</td>
 <td>
-<div  id="map-canvas" style="width: 900px; height: 500px;float: right"> </div> </td>
+<div  id="map-canvas" style="width: 900px; height: 500px;float: right"> </div>
+</td>
 </tr>
 </table>
+
+
+<script>
+
+
+	var locations=[
+	<c:forEach items="${station_loc_list}" var="d1" varStatus="theCount">
+		['<c:out value="${d1.station_name}"></c:out>',<c:out value="${d1.latitude}"></c:out>,<c:out value="${d1.longitude}"></c:out>,<c:out value="${d1.station_lat_long_id}"></c:out>],
+	</c:forEach>	
+	];
+
+	var map = new google.maps.Map(document.getElementById("map-canvas"), {
+  	zoom: 10,
+  	center: new google.maps.LatLng(12.971730,77.590427),
+  	mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+
+	var infowindow = new google.maps.InfoWindow();
+	var marker;
+	for (var i = 0; i < locations.length; i++) {  
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i)); 
+        
+	}
+	
+	/* var locations = [
+	                 ['Hospital A', 28.650825,77.2276, 4],
+	                 ['Hospital B', 28.62009,77.119796, 5],
+	                 ['Hospital C', 28.573668,77.228286, 3],
+	                 ['Hospital D',28.618282,77.349823, 2],
+	                 ['Hospital F', 28.646909,77.235893, 1]
+	               ];
+
+	               var map = new google.maps.Map(document.getElementById('map-canvas'), {
+	                 zoom: 10,
+	                 center: new google.maps.LatLng(28.650825,77.2276),
+	                 mapTypeId: google.maps.MapTypeId.ROADMAP
+	               });
+
+	               var infowindow = new google.maps.InfoWindow();
+
+	               var marker;
+
+	               for (var i = 0; i < locations.length; i++) {  
+	                 marker = new google.maps.Marker({
+	                   position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+	                   map: map
+	                 });
+
+	                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	                   return function() {
+	                     infowindow.setContent(locations[i][0]);
+	                     infowindow.open(map, marker);
+	                   }
+	                 })(marker, i));
+	               } */
+
+</script>
 </body>
 </html>
