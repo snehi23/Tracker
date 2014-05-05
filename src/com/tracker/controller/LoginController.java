@@ -10,9 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
+
+
+import javax.servlet.http.HttpSession;
+
 import com.tracker.model.Authenticator;
 import com.tracker.model.User;
  
+
+
 import sun.text.normalizer.ICUBinary.Authenticate;
  
 public class LoginController extends HttpServlet {
@@ -25,6 +31,8 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
  
+    	HttpSession session = request.getSession(true);
+    	
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
         System.out.println(" "+username+" "+password);
@@ -35,7 +43,10 @@ public class LoginController extends HttpServlet {
         if (result.equals("success")) {
             rd = request.getRequestDispatcher("/success.jsp");
             User user = new User(username, password);
-            request.setAttribute("user", user);
+            
+            session.setAttribute("user", user);
+            
+            
         } else {
             rd = request.getRequestDispatcher("/error.jsp");
         }

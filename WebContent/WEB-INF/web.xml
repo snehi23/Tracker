@@ -77,6 +77,12 @@
     <param-value>jdbc:mysql://localhost:3306/train_journey</param-value>
   </context-param>
   
+  <session-config>
+  
+  <session-timeout>1</session-timeout>
+  
+  </session-config>
+  
   <!-- 
   <filter>
     <filter-name>ShiroFilter</filter-name>

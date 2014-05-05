@@ -15,18 +15,9 @@
 
 
 <title>User Details</title>
-<style>
-table, td, th
-{
-border:1px solid blue;
-}
-th
-{
-background-color:blue;
-color:white;
-}
-</style>
-<script type="text/javascript">
+
+
+<script>
 
 	$(document).ready(function() 
 	    { 
@@ -36,11 +27,42 @@ color:white;
 
 </script>
 
+<style>
+
+.bordered thead {
+color: #0E58A0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+
+}
+
+.bordered tbody
+{
+
+border-width: 0px 0px 1px 0px;
+font-family: Arial, Helvetica, sans-serif;
+color: #2B4EB7;
+font-size: 11px;
+border-color: #2B4EB7;
+
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    background-color:#FFF; 
+    box-shadow: 0 1px 1px #ccc;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;          
+}
+
+</style>
 
 </head>
 <body>
-Displaying <c:out value="${fn:length(details_list)}"/> results
-<table id="myTable">
+<font color="Green"> Displaying <c:out value="${fn:length(details_list)}"/> results </font>
+<table id="myTable" class="bordered">
 <thead>
 <tr>
         <th>Train Journey ID</th>        

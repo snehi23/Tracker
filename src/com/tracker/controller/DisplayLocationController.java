@@ -48,13 +48,13 @@ public class DisplayLocationController extends HttpServlet {
         try {
         	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
-        	ps = conn.prepareStatement("select * from station_lat_long where station_lat_long_id<30");
+        	ps = conn.prepareStatement("select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code");
         	rs = ps.executeQuery();       	
         	while(rs.next()) {
 
         		StationLocation d = new StationLocation();
         		d.setStation_lat_long_id(rs.getInt("station_lat_long_id"));
-        		d.setStation_code(rs.getString("station_code"));
+        		d.setStation_code(rs.getString("From_Station"));
         		d.setStation_name(rs.getString("station_name"));
         		d.setLatitude(rs.getDouble("latitude"));
         		d.setLongitude(rs.getDouble("longitude"));

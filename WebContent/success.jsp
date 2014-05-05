@@ -22,7 +22,7 @@ $(function() {
 
 </head>
 <body>
- <marquee><font color="Green">Welcome ${requestScope['user'].username}</font></marquee>
+ <marquee><font color="Green">Welcome ${sessionScope['user'].username}</font></marquee>
  
 <H3>User Input</H3>
 
@@ -30,7 +30,7 @@ $(function() {
 
 <form action="UserInputController" METHOD="post">
 
-<table>
+<table class=".bordered">
 <tr>
 	<td>Date Of Journey :</td>
 	<td><INPUT TYPE="TEXT" id='datepicker' NAME="DOJ" SIZE="20"></td>

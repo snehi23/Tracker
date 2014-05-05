@@ -13,26 +13,45 @@
 
 <title>Map View</title>
 <style>
-table, td, th
-{
-border:1px solid orange;
+
+#Thead {
+color: #0E58A0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+
 }
-th
+
+#Tbody
 {
-background-color:orange;
-color:white;
+
+border-width: 0px 0px 1px 0px;
+font-family: Arial, Helvetica, sans-serif;
+color: #2B4EB7;
+font-size: 11px;
+border-color: #2B4EB7;
+
 }
+
+.bordered {
+    border: solid #ccc 1px;
+    background-color:#FFF; 
+    box-shadow: 0 1px 1px #ccc;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;          
+}
+
 </style>
 </head>
 <body>
 <table>
 <tr>
-<td>
-Displaying <c:out value="${fn:length(station_loc_list)}"/> results
-<table id="myTable">
-<thead>
-	<tr>
-        <th>Station Location ID</th>        
+<td rowspan="2" style="text-align:left;vertical-align:top;padding:0">
+<font color="Green"> Displaying <c:out value="${fn:length(station_loc_list)}"/> results </font>
+<table id="myTable" class="bordered">
+<thead id="Thead">
+	<tr>               
         <th>Station Code</th>
         <th>Station Name</th>
 		<th>Latitude</th>
@@ -40,10 +59,9 @@ Displaying <c:out value="${fn:length(station_loc_list)}"/> results
 				
     </tr>
 </thead>
-<tbody>
+<tbody id="Tbody">
 <c:forEach items="${station_loc_list}" var="d1" > 
-  <tr>
-    <td><c:out value="${d1.station_lat_long_id}"></c:out></td>
+  <tr> 
     <td><c:out value="${d1.station_code}"></c:out></td>
      <td><c:out value="${d1.station_name}"></c:out></td> 
     <td><c:out value="${d1.latitude}"></c:out></td>
@@ -53,8 +71,8 @@ Displaying <c:out value="${fn:length(station_loc_list)}"/> results
 </tbody>
 </table>
 </td>
-<td>
-<div  id="map-canvas" style="width: 900px; height: 500px;float: right"> </div>
+<td rowspan="2" style="text-align:left;vertical-align:top;padding:0">
+<div  id="map-canvas" style="width: 900px; height: 900px;float: right"> </div>
 </td>
 </tr>
 </table>
@@ -92,37 +110,12 @@ Displaying <c:out value="${fn:length(station_loc_list)}"/> results
         
 	}
 	
-	/* var locations = [
-	                 ['Hospital A', 28.650825,77.2276, 4],
-	                 ['Hospital B', 28.62009,77.119796, 5],
-	                 ['Hospital C', 28.573668,77.228286, 3],
-	                 ['Hospital D',28.618282,77.349823, 2],
-	                 ['Hospital F', 28.646909,77.235893, 1]
-	               ];
-
-	               var map = new google.maps.Map(document.getElementById('map-canvas'), {
-	                 zoom: 10,
-	                 center: new google.maps.LatLng(28.650825,77.2276),
-	                 mapTypeId: google.maps.MapTypeId.ROADMAP
-	               });
-
-	               var infowindow = new google.maps.InfoWindow();
-
-	               var marker;
-
-	               for (var i = 0; i < locations.length; i++) {  
-	                 marker = new google.maps.Marker({
-	                   position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-	                   map: map
-	                 });
-
-	                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
-	                   return function() {
-	                     infowindow.setContent(locations[i][0]);
-	                     infowindow.open(map, marker);
-	                   }
-	                 })(marker, i));
-	               } */
+	$(document).ready(function() 
+		    { 
+		        $("#myTable").tablesorter();
+		        
+		    } 
+		);
 
 </script>
 </body>

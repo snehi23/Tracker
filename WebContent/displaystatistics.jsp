@@ -9,20 +9,10 @@
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <title>USER LOCATION</title>
-<style>
-table, td, th
-{
-border:1px solid green;
-}
-th
-{
-background-color:green;
-color:white;
-}
-</style>
+
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+    <script>
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart1);
       google.setOnLoadCallback(drawChart2);
@@ -179,6 +169,39 @@ color:white;
     		);
     </script>
     
+    
+    <style>
+
+.bordered thead {
+color: #0E58A0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+
+}
+
+.bordered tbody
+{
+
+border-width: 0px 0px 1px 0px;
+font-family: Arial, Helvetica, sans-serif;
+color: #2B4EB7;
+font-size: 11px;
+border-color: #2B4EB7;
+
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    background-color:#FFF; 
+    box-shadow: 0 1px 1px #ccc;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;          
+}
+
+</style>
+    
 </head>
 <body>
 
@@ -186,15 +209,15 @@ color:white;
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_train_list)}"/> results
-<table id="myTable1">
-<thead>
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_train_list)}"/> results </font>
+<table id="myTable1" class="bordered">
+<thead id="Thead">
 	<tr>
         <th>Train</th>        
         <th>Journey Count</th>
     </tr>
 </thead>
-<tbody>
+<tbody id="Tbody">
 <c:forEach items="${group_by_train_list}" var="d1" > 
   <tr>
     <td><c:out value="${d1.key}"></c:out></td>
@@ -211,8 +234,8 @@ Displaying <c:out value="${fn:length(group_by_train_list)}"/> results
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_from_station_list)}"/> results
-<table id="myTable2">
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_from_station_list)}"/> results </font>
+<table id="myTable2" class="bordered">
 <thead>
 	<tr>
         <th>From Station</th>        
@@ -237,8 +260,8 @@ Displaying <c:out value="${fn:length(group_by_from_station_list)}"/> results
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_to_station_list)}"/> results
-<table id="myTable3">
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_to_station_list)}"/> results </font>
+<table id="myTable3" class="bordered">
 <thead>
 	<tr>
         <th>To Station</th>        
@@ -264,8 +287,8 @@ Displaying <c:out value="${fn:length(group_by_to_station_list)}"/> results
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_class_list)}"/> results
-<table id="myTable4">
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_class_list)}"/> results </font>
+<table id="myTable4" class="bordered">
 <thead>
 	<tr>
         <th>Class</th>        
@@ -291,8 +314,8 @@ Displaying <c:out value="${fn:length(group_by_class_list)}"/> results
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_year_list)}"/> results
-<table id="myTable5">
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_year_list)}"/> results </font>
+<table id="myTable5" class="bordered">
 <thead>
 	<tr>
         <th>Year</th>        
@@ -318,8 +341,8 @@ Displaying <c:out value="${fn:length(group_by_year_list)}"/> results
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_month_list)}"/> results
-<table id="myTable6">
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_month_list)}"/> results </font>
+<table id="myTable6" class="bordered">
 <thead>
 	<tr>
         <th>Month</th>        
@@ -345,8 +368,8 @@ Displaying <c:out value="${fn:length(group_by_month_list)}"/> results
 <tr>
 <td>
 <div>
-Displaying <c:out value="${fn:length(group_by_day_list)}"/> results
-<table id="myTable7">
+<font color="Green"> Displaying <c:out value="${fn:length(group_by_day_list)}"/> results </font>
+<table id="myTable7" class="bordered">
 <thead>
 	<tr>
         <th>Day Of Week</th>        
