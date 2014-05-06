@@ -80,11 +80,17 @@ border-color: #2B4EB7;
 
 <script>
 
-
 	var locations=[
 	<c:forEach items="${station_loc_list}" var="d1" varStatus="theCount">
 		['<c:out value="${d1.station_name}"></c:out>',<c:out value="${d1.latitude}"></c:out>,<c:out value="${d1.longitude}"></c:out>,<c:out value="${d1.station_lat_long_id}"></c:out>],
 	</c:forEach>	
+	];
+	
+	var locations_plot=[
+	
+	<c:forEach items="${station_loc_plot}" var="d1"> 	
+	[new google.maps.LatLng(<c:out value="${d1.from_latitude}"></c:out>,<c:out value="${d1.from_longitude}"></c:out>),new google.maps.LatLng(<c:out value="${d1.to_latitude}"></c:out>,<c:out value="${d1.to_longitude}"></c:out>)],
+	</c:forEach>	                    	                    
 	];
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), {
@@ -92,6 +98,17 @@ border-color: #2B4EB7;
   	center: new google.maps.LatLng(12.971730,77.590427),
   	mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
+	
+	for (var i = 0; i < locations_plot.length; i++) {
+    	var flightPath = new google.maps.Polyline({
+        path: locations_plot[i],
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+    	  flightPath.setMap(map);
+    	}
 
 	var infowindow = new google.maps.InfoWindow();
 	var marker;
@@ -106,8 +123,9 @@ border-color: #2B4EB7;
             infowindow.setContent(locations[i][0]);
             infowindow.open(map, marker);
           }
-        })(marker, i)); 
+        })(marker, i));
         
+                             
 	}
 	
 	$(document).ready(function() 

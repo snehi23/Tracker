@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tracker.model.Details;
 import com.tracker.model.StationLocation;
+import com.tracker.model.StationLocationPlot;
 import com.tracker.util.DBConnectionManager;
 
 public class DisplayLocationController extends HttpServlet {
@@ -25,10 +27,12 @@ public class DisplayLocationController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
  
 		List<StationLocation> station_loc_list = new ArrayList<StationLocation>();
+		
+		List<StationLocationPlot> station_loc_plot = new ArrayList<StationLocationPlot>();
+		
+		
         
         ServletContext ctx=getServletContext();
-        PreparedStatement ps = null;
-        ResultSet rs= null;
         
         String connectionURL= ctx.getInitParameter("dbURL");
         String uname= ctx.getInitParameter("dbUser");
@@ -48,25 +52,50 @@ public class DisplayLocationController extends HttpServlet {
         try {
         	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
-        	ps = conn.prepareStatement("select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code");
-        	rs = ps.executeQuery();       	
-        	while(rs.next()) {
+        	
+        	conn.setAutoCommit(false);
+        	
+        	Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        	
+        	
+        	ResultSet rs1 = stmt.executeQuery("select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code");
+        	     	
+        	while(rs1.next()) {
 
         		StationLocation d = new StationLocation();
-        		d.setStation_lat_long_id(rs.getInt("station_lat_long_id"));
-        		d.setStation_code(rs.getString("From_Station"));
-        		d.setStation_name(rs.getString("station_name"));
-        		d.setLatitude(rs.getDouble("latitude"));
-        		d.setLongitude(rs.getDouble("longitude"));
+        		d.setStation_lat_long_id(rs1.getInt("station_lat_long_id"));
+        		d.setStation_code(rs1.getString("From_Station"));
+        		d.setStation_name(rs1.getString("station_name"));
+        		d.setLatitude(rs1.getDouble("latitude"));
+        		d.setLongitude(rs1.getDouble("longitude"));
         		station_loc_list.add(d);        		
         	}
         	
         	   
             request.setAttribute("station_loc_list", station_loc_list);
             
-        	rs.close();
-        	ps.close();
+        	rs1.close();
+        	conn.commit();
+        	
+        	ResultSet rs2 = stmt.executeQuery("select distinct s1.latitude,s1.longitude,s2.latitude,s2.longitude from tracker t inner join station_lat_long s1 on t.From_Station=s1.station_code inner join station_lat_long s2 on t.To_Station=s2.station_code");
+        	
+        	while(rs2.next()) {
+        		
+        		StationLocationPlot d = new StationLocationPlot();
+        		d.setFrom_latitude(rs2.getDouble(1));
+        		d.setFrom_longitude(rs2.getDouble(2));
+        		d.setTo_latitude(rs2.getDouble(3));
+        		d.setTo_longitude(rs2.getDouble(4));
+        		station_loc_plot.add(d);		
+        	}
+        	
+        	request.setAttribute("station_loc_plot",station_loc_plot);
+        	
+        	      	
+        	rs2.close();
+        	conn.commit();
         	conn.close();
+        	        	
         	
         } 
         catch(Exception E1)
