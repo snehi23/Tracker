@@ -134,7 +134,6 @@ border-color: #2B4EB7;
 		        
 		    } 
 		);
-
 </script>
 </body>
 </html>

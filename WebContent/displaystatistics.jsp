@@ -8,8 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
-<title>USER LOCATION</title>
-
+<title>USER LOCATION STATISTICS</title>
+<style>
+table, td, th
+{
+border:1px solid green;
+}
+th
+{
+background-color:green;
+color:white;
+}
+</style>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script>
@@ -23,7 +33,8 @@
       google.setOnLoadCallback(drawChart7);
       
       function drawChart1() {
-        var data = new google.visualization.DataTable();
+        
+    	var data = new google.visualization.DataTable();
         data.addColumn('string','Train');
         data.addColumn('number','Count');
         <c:forEach items="${group_by_train_list}" var="d1" > 
