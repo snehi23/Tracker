@@ -94,7 +94,7 @@ border-color: #2B4EB7;
 	];
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), {
-  	zoom: 10,
+  	zoom: 5,
   	center: new google.maps.LatLng(12.971730,77.590427),
   	mapTypeId: google.maps.MapTypeId.ROADMAP
 	});

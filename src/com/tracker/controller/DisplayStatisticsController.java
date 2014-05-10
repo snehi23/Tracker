@@ -33,7 +33,7 @@ public class DisplayStatisticsController extends HttpServlet {
 		Map<String,Integer> group_by_from_station = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_to_station = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_class = new HashMap<String,Integer>();
-		Map<String,Integer> group_by_year = new HashMap<String,Integer>();
+		Map<String,Integer> group_by_year = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_month = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_day = new LinkedHashMap<String,Integer>();
         
@@ -99,7 +99,7 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs3.close();
         	conn.commit();
         	
-        	ResultSet rs4 = stmt.executeQuery("select To_Station, count(*) as all_to from tracker group by To_Station order by all_to desc");
+        	ResultSet rs4 = stmt.executeQuery("select Classes, count(*) as all_to from tracker group by Classes order by all_to desc");
          	while(rs4.next()) {
 
          		group_by_class.put(rs4.getString(1),rs4.getInt(2));

@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Tracker</display-name>
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>    
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -76,26 +76,17 @@
     <param-name>dbURL</param-name>
     <param-value>jdbc:mysql://localhost:3306/train_journey</param-value>
   </context-param>
-  
   <session-config>
-  
-  <session-timeout>15</session-timeout>
-  
+    <session-timeout>15</session-timeout>
   </session-config>
-  
-  <!-- 
-  <filter>
-    <filter-name>ShiroFilter</filter-name>
-    <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
-    <init-param>
-        <param-name>configPath</param-name>
-        <param-value>/Shiro.ini</param-value>
-    </init-param>
-  </filter>
-
-<filter-mapping>
-    <filter-name>ShiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping> -->
-  	
+  <servlet>
+    <description></description>
+    <display-name>RegistrationController</display-name>
+    <servlet-name>RegistrationController</servlet-name>
+    <servlet-class>com.tracker.controller.RegistrationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrationController</servlet-name>
+    <url-pattern>/RegistrationController</url-pattern>
+  </servlet-mapping>
 </web-app>

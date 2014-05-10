@@ -24,7 +24,7 @@ function validateLogin()
 		return false;
   	}
 	
-	if (!/[a-zA-Z]/.test(x) || !/[0-9]/.test(x))
+	/* if (!/[a-zA-Z]/.test(x) || !/[0-9]/.test(x))
 	{
 		document.getElementById("error").innerHTML="Username requires one of the letters or digits";
   		return false;		
@@ -34,7 +34,7 @@ function validateLogin()
 	{
 		document.getElementById("error").innerHTML="Password requires one of the letters or digits";
   		return false;		
-	}
+	} */
 	
 	return true;
  
@@ -42,7 +42,9 @@ function validateLogin()
 </script>
 </head>
 <body>
-    <form name="loginform" action="LoginController" method="post" onsubmit="return validateLogin()">
+
+<a id="sign-up" href="register.jsp">Sign up,it's free</a>
+ <form name="loginform" action="LoginController" method="post" onsubmit="return validateLogin()">
 <table align="left" border="0" cellspacing="0" cellpadding="3">
     <tr>
     	<td></td>

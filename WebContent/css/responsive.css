@@ -1,0 +1,1457 @@
+/* Responsive CSS
+-------------------------------------------*/
+
+/* large desktop */
+@media only screen and (min-width: 996px) {
+	.mobile-collapse{ display:none; }
+	.add-flight .content-container:first-of-type .left{
+		float: none;
+	}
+	.airport-reviews{ width:74%; }
+}
+
+/* tablets and desktop */
+@media only screen and (min-width: 768px) and (max-width: 996px) {
+	.mobile-collapse{ display:none; }
+	.start-container{ width:80%; }
+	#container{ width: 95%; }
+	#start-top-right{ width: 40%; }
+	#start-browser{
+		width: 100%;
+		height: 520px;
+		position: absolute;
+		left: 20px;
+	}
+	.vertical-separator{ display:none; }
+	#start-browser-content{}
+	#start-browser-content img{}
+
+	#container #header{ margin: 20px 0 0 0;}
+		#container #header-account{ width: 60%; }
+			#container #header-account .signed-in-text{ margin: -20px 10px 0 0; }
+			#container #header-account a{ display:inline-block; }
+		#container .header-middle{ 
+			padding:0;
+			width:100%; 
+		}
+			#container .header-middle h1{ margin: 5px 10px; }
+	#container #content{ }
+		#container #content-left,
+		#container #content-right{ display: none;}
+		#container #content-middle{ width:100%; }
+			
+	#page{}
+		#page #content-container{}
+		#page .button-container{text-align: center;}
+			#page .content-container .vertical-separator{ display:block; }
+			#page .content-container fieldset{ width: 43% !important; }
+				#page .content-container fieldset .facebook-signin-button{
+					float: none;
+					margin: 30px auto 0 auto;
+				}
+				#page .content-container fieldset div{ 
+					padding:0 !important;
+				}
+				#page .content-container fieldset input{ width:94%; }
+
+			#page ul#profile-main-data li,
+			#page ul#profile-chart-data li{
+				width: 23%;
+			}
+				#page ul#profile-chart-data li .left{
+					width:100%;
+				}
+		#page div.bottom-chart-data,
+		#page div.bottom-chart-data .content-box,
+		#page div.bottom-chart-data object{
+			width:100%;
+		}
+
+		#page .content-container fieldset div.tos{ 
+			width: 93%;
+			padding: 10px !important;
+		}
+
+		#page .content-box-wide,
+		#page .content-box-wide #map_canvas,
+		#page .content-box-wide-bottom{ width:100% !important; }
+		#page .content-box-left-bottom,
+		#page .content-box-right-bottom{ 
+			background:none; 
+			width:100%; 
+			border-bottom:1px solid #eee; 
+		}
+
+	#arrow-content{
+		width: inherit;
+		margin-left: 210px;
+		float: none;
+	}
+		#arrow-content div{ width:100% !important;}
+		#arrow-content img{ width:100%; }
+
+	#start-bottom-left{ 
+		width:100%;
+		margin-top: 50px;
+	}
+		#start-bottom-left div{ }
+		#start-bottom-left .comment-avatar{
+			width: 50px !important;
+		}
+		#start-bottom-left .comment-details{
+			width: 100% !important;
+			margin-right: -70px !important;
+		}
+	#start-bottom-right{
+		margin-top:50px;
+		margin-left: 0;
+		width: 100%;
+	}
+
+	#start-bottom-right .marketing-block{
+		width:45% ;
+		margin:0 ;
+		padding:10px;
+	}
+	.footer-links{
+		width:50%;
+	}
+	.social-footer-links{
+		width:45%;
+	}
+
+	#FlightsPerWeekday,
+	#FlightsPerMonth,
+	#FlightsPerYear{width:100%;}
+
+	/* Review Containers */
+	.review-container {width: 96%;}
+	.review-container .left,
+	.review-container .right{ width: 50%; }
+	.review-container .right{
+		border-left:none;
+		padding:20px 0 0 0;
+	}
+	.ratings-group .grade{
+		float: right;
+		text-align: right;
+		padding-right: 85px;
+		width: 100%;
+	}
+
+	/* Airport Redesign */
+	.review-stats #airport-map{
+		width: 38%;
+	}
+	.review-stats .map-small span{
+		right:40px;
+	}
+	.airport-reviews{ width:60%; }
+		.airport-reviews .review-comments .comment-details{
+			width:75%;
+		}
+		.airport-reviews #sub-ratings-container .ratings-group .sub-rating-block{
+			width:100%;
+		}
+	.airport.right{	width:37%; }
+}
+
+/* larger smartphones and smaller tabs */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+	.start-container,
+	#container{ 
+		width:95%; 
+	}
+	#start-top-left{ width:100%;}
+	#start-top-left p{width:100% !important;}
+	
+	#start-top-right{
+		width:100%;
+		float: left;
+		margin: 0;
+	}
+		#start-top-right h1,
+		#start-top-right h2, 
+		#start-top-right p{text-align: center;}
+		#start-top-right .mobile-collapse,
+		#container .mobile-collapse{
+			float: right;
+			position: relative;
+			margin-top: 10px;
+		}
+		#start-top-right .content-intro-text{width:100%;}
+
+		
+	#start-browser{ 
+		width: auto;
+		height: 520px;
+		display: block;
+		margin-bottom:0;
+		left: 50%;
+		margin-left: -242px;
+	}
+		#start-browser-content{ 
+			width:100%;
+			max-height:330px; 
+		}
+		#start-browser-content img{
+			height: auto;
+			display: block;
+		}
+	#header-account{ 
+		display:none;
+		float: none; 
+	}
+		#header-account .header-profile-menu a{
+			padding-bottom:5px;
+			display:inline-block;
+		}
+
+	a#start-sign-up {
+		margin: 0 auto;
+	}
+
+	#container #header{ margin: 20px 0 0 0;}
+		#container .header-middle{ 
+			padding:0;
+			width:100%; 
+		}
+			#container .header-middle h1{ 
+				margin: 5px 10px; 
+				height: 48px;
+				overflow: hidden;
+			}
+	#container #content{ }
+		#container #content-left,
+		#container #content-right{ display: none;}
+		#container #content-middle{ width:100%; }
+			
+	#page{}
+		#page #content-container{}
+		#page .button-container{text-align: center;}
+			#page .content-container .vertical-separator{ display:none; }
+			#page .content-container fieldset{ 
+				width:100% !important; 
+				margin-left: 0 !important;
+			}
+				#page .content-container fieldset .facebook-signin-button{
+					float: none;
+					margin: 30px auto 0 auto;
+				}
+				#page .content-container fieldset div{ 
+					padding:0 !important;
+					width:100%; 
+				}
+				#page .content-container fieldset input{ width:94%; }
+
+			#page ul#profile-main-data li{
+				width:100%;
+				text-align:center;
+			}
+			#page ul#profile-chart-data li{
+				width: 100%;
+				margin:0 0 20px 0;
+			}
+		#page div.bottom-chart-data,
+		#page div.bottom-chart-data .content-box,
+		#page div.bottom-chart-data object{
+			width:100%;
+		}
+
+		#page .content-container fieldset div.tos{ 
+			width: 93%;
+			padding: 10px !important;
+		}
+
+		#page .content-box-wide,
+		#page .content-box-wide #map_canvas,
+		#page .content-box-wide-bottom{ width:100% !important; }
+		#page .content-box-left-bottom,
+		#page .content-box-right-bottom{ 
+			background:none; 
+			width:100%; 
+			border-bottom:1px solid #eee; 
+		}
+		#page .content-box .inside { height:inherit !important;}
+			#page .content-box .inside .right{ width: 100%; }
+
+	#arrow-menu,
+	#arrow-content{
+		width: 100%;
+		float: none;
+	}
+		#arrow-menu a{ 
+			width:100%;
+			background:#efefef;
+		}
+			#arrow-menu a.active,
+			#arrow-menu a:hover{ 
+				color:white;
+				background:#cd4431;
+			}
+		#arrow-content div{ width:97% !important;}
+		#arrow-content img{ width:100%; }
+
+	.aircraft,
+	.airline,
+	.airport{ width: 100%;}
+	.aircraft #arrow-menu,
+	.airline #arrow-menu,
+	.airport #arrow-menu{
+		width:93%;
+		padding:0 10px;
+	}
+	.aircraft .arrow-content,
+	.airline .arrow-content,
+	.airport .arrow-content{
+		width:100%;
+	}
+		.aircraft .arrow-content h2,
+		.airline .arrow-content h2,
+		.airport .arrow-content h2{
+			float: none !important;
+			text-align: center;
+			margin-top: 20px;
+		}
+		.aircraft .arrow-content .right,
+		.airline .arrow-content .right,
+		.airport .arrow-content .right{
+			float: left;
+			width: 100%;
+			text-align: center !important;
+			margin: 10px auto;
+		}
+		.aircraft .arrow-content .content-container img,
+		.airline .arrow-content .content-container img,
+		.airport .arrow-content .content-container img{
+			width: 100%;
+		}
+		.aircraft .arrow-content input.black-submit,
+		.airline .arrow-content input.black-submit,
+		.airport .arrow-content input.black-submit{
+			float: none;
+			margin: 10px !important;
+			text-align: center;
+			width: 93%;
+			height: 50px;
+			padding:5px 0;
+		}
+		.aircraft .arrow-content input.more-button,
+		.airline .arrow-content input.more-button,
+		.airport .arrow-content input.more-button{
+			text-align: center;
+			width: 93%;
+		}
+
+	.comment-details{width:75% !important;}
+
+	#start-shadow{ height: 100px; }
+	#start-bottom-left{
+		width: 100%;
+	}
+	#start-bottom-left .comment-avatar{
+		width: 50px !important;
+	}
+	#start-bottom-left .comment-details{
+		width: 100% !important;
+		margin-right: -70px !important;
+	}
+	.vertical-separator{ display:none; }
+
+	#start-bottom-right{
+		margin-top:50px;
+		margin-left: 0;
+		width: 100%;
+	}
+
+		#start-bottom-right .marketing-block{
+			width:100%;
+			margin-right:0;
+			height:inherit;
+		}
+
+	.footer-links,
+	.social-footer-links{
+		width:100%;
+	}
+	.footer-links li,
+	.social-footer-links li{
+		width:100%;
+		text-align:center;
+		display:inline-block;
+		padding:5px 0;
+	}
+		.footer-links a{
+			display:block;
+			padding:5px 0;
+		}
+		.footer-links a:hover{background:#efefef;}
+
+	.content-box-left-bottom{display:none;margin:20px 0;}
+
+	.comment-rate{
+			border-left: none;
+			padding-left: 0;
+			float: none;
+			width: 100%;
+			clear: both;
+			padding: 20px 0;
+		}
+			.comment-rate textarea{width: 95%;}
+		#flight-comment{
+			height: 80px;
+			resize: none;
+			width: 100%;
+			float: left;
+		}
+		.rating-container{
+		  padding-left: 0; 
+		  border-left: none;
+		}
+		.db-search{
+			width: 100%;
+		}
+		.rating-field{
+		  width: 100%; 
+		}
+		input.airport-search,
+		input.airline-search,
+		input.aircraft-search{
+		  width:94%;
+		}
+	#airport-map{ width: 100%;}
+
+	/* hidden table columns */
+
+ 	.flight-list .flight-distance{display:none;}
+ 	.flight-list .flight-dep-time{display:none;}
+ 	.flight-list .flight-arr-time{display:none;}
+ 	.flight-list .flight-airline{display:none;}
+ 	.flight-list .flight-aircraft{display:none;}
+
+ 	#FlightsPerWeekday,
+	#FlightsPerMonth,
+	#FlightsPerYear{width:100%;}
+
+	/* Review Containers */
+	.review .nav-review{
+		width: 100%;
+		float: right;
+		padding: 10px 0;
+	}
+	.review-container .left,
+	.review-container .right{
+		width:90%;
+	}
+
+	.review-container .right{
+		border-left:none;
+		padding:20px 0 0 0;
+	}
+		.review-container .left textarea {
+			width:100%;
+		}
+		.ratings-group .title {
+			width: 120px;
+		}
+	.review .nav-review .step-left,
+	.review .nav-review .step-right {
+		width: 50%;
+	}
+	.review .nav-review .step-right{
+		text-align: right
+	}
+
+	/* Airport Redesign */
+	.airport #page{margin: 0px 15px 15px 15px;}
+	.review-stats .stats-review-container{ 
+		width:100%;
+		margin-bottom: 20px; 
+	}
+		.review-stats .stats-review-container .scroll-indicators{ 
+			width: 10%;
+			margin-left:90%; 
+		}
+	.review-stats .review-meter .meter-list{ width:90%; }
+		.review-stats .stats-review-container .review-meter span.meter-label{ width:38%; }
+		.review-stats .review-meter .meter-container{
+			display:inline-block;
+			width:38%;
+		}
+
+	.review-stats .review-button-blue{ margin: 0 auto 5px auto; }
+	.review-stats .map-small span{
+		position:relative;
+		margin-left:0;
+	}
+	.airport-reviews{
+		width:100%;
+	}
+	.airport.right{
+		width:100%;
+		margin:20px 0;
+	}
+
+	.review-stats .airport-post{
+		height:inherit;
+	}
+		.review-stats .post-scroll{
+			display:none;
+		}
+}
+
+/* Large Smartphones / fablets*/
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+	.start-container,
+	#container{ 
+		width:95%; 
+	}
+	#start-top-left{ width:100%;}
+	#start-top-left p{width:100% !important;}
+	
+	#start-top-right{
+		width:100%;
+		float: left;
+		margin: 0;
+	}
+		#start-top-right h1,
+		#start-top-right h2, 
+		#start-top-right p{text-align: center;}
+		#start-top-right .mobile-collapse,
+		#container .mobile-collapse{
+			float: right;
+			position: relative;
+			margin-top: 10px;
+		}
+		#start-top-right .content-intro-text{width:100%;}
+
+	#start-browser{ 
+		width: auto;
+		height: 520px;
+		display: block;
+		margin-bottom:0;
+		left: 50%;
+		margin-left: -242px;
+	}
+		#start-browser-content{ 
+			width:100%;
+			max-height:330px; 
+		}
+		#start-browser-content img{
+			height: auto;
+			display: block;
+		}
+
+		#header-account .header-profile-menu a{
+			padding-bottom:5px;
+			display:inline-block;
+		}
+
+	a#start-sign-up {
+		margin: 0 auto;
+	}
+
+	#container #header{ margin: 20px 0 0 0;}
+		#container .header-middle{ 
+			padding:0;
+			width:100%; 
+		}
+			#container .header-middle h1{ 
+				margin: 5px 10px; 
+				height: 48px;
+				overflow: hidden;
+			}
+	#container #content{ }
+		#container #content-left,
+		#container #content-right{ display: none;}
+		#container #content-middle{ width:100%; }
+
+	#page{}
+		#page #content-container{}
+		#page .button-container{text-align: center;}
+			#page .content-container .vertical-separator{ display:none; }
+			#page .content-container fieldset{ 
+				width:100% !important; 
+				margin-left: 0 !important;
+			}
+				#page .content-container fieldset .facebook-signin-button{
+					float: none;
+					margin: 30px auto 0 auto;
+				}
+				#page .content-container fieldset div{ 
+					padding:0 !important;
+					width:100%; 
+				}
+				#page .content-container fieldset input{ width:94%; }
+
+			#page ul#profile-main-data li{
+				width:100%;
+				text-align:center;
+			}
+			#page ul#profile-chart-data li{
+				width: 100%;
+				margin:0 0 20px 0;
+			}
+		#page div.bottom-chart-data,
+		#page div.bottom-chart-data .content-box,
+		#page div.bottom-chart-data object{
+			width:100%;
+		}
+
+		#page .content-container fieldset div.tos{ 
+			width: 93%;
+			padding: 10px !important;
+		}
+
+		#page .content-box-wide,
+		#page .content-box-wide #map_canvas,
+		#page .content-box-wide-bottom{ width:100% !important; }
+		#page .content-box-left-bottom,
+		#page .content-box-right-bottom{ 
+			background:none; 
+			width:100%; 
+			border-bottom:1px solid #eee; 
+		}
+		#page .content-box .inside { height:inherit !important;}
+			#page .content-box .inside .right{ width: 100%; }
+
+
+	#arrow-menu,
+	#arrow-content{
+		width: 100%;
+		float: none;
+	}
+		#arrow-menu a{ 
+			width:100%;
+			background:#efefef;
+		}
+			#arrow-menu a.active,
+			#arrow-menu a:hover{ 
+				color:white;
+				background:#cd4431;
+			}
+		#arrow-content div{ width:97% !important;}
+		#arrow-content img{ width:100%; }
+
+	.aircraft,
+	.airline,
+	.airport{ width: 100%;}
+	.aircraft #arrow-menu,
+	.airline #arrow-menu,
+	.airport #arrow-menu{
+		width:93%;
+		padding:0 10px;
+	}
+	.aircraft .arrow-content,
+	.airline .arrow-content,
+	.airport .arrow-content{
+		width:100%;
+	}
+		.aircraft .arrow-content h2,
+		.airline .arrow-content h2,
+		.airport .arrow-content h2{
+			float: none !important;
+			text-align: center;
+			margin-top: 20px;
+		}
+		.aircraft .arrow-content .right,
+		.airline .arrow-content .right,
+		.airport .arrow-content .right{
+			float: left;
+			width: 100%;
+			text-align: center !important;
+			margin: 10px auto;
+		}
+		.aircraft .arrow-content .content-container img,
+		.airline .arrow-content .content-container img,
+		.airport .arrow-content .content-container img{
+			width: 100%;
+		}
+		.aircraft .arrow-content input.black-submit,
+		.airline .arrow-content input.black-submit,
+		.airport .arrow-content input.black-submit{
+			float: none;
+			margin: 10px !important;
+			text-align: center;
+			width: 93%;
+			height: 50px;
+			padding:5px 0;
+		}
+		.aircraft .arrow-content input.more-button,
+		.airline .arrow-content input.more-button,
+		.airport .arrow-content input.more-button{
+			text-align: center;
+			width: 93%;
+		}
+
+	.comment-details{width:75% !important;}
+
+	#start-shadow{ height: 100px; }
+	#start-bottom-left{
+		width: 100%;
+	}
+	#start-bottom-left .comment-avatar{
+		width: 50px !important;
+	}
+	#start-bottom-left .comment-details{
+		width: 100% !important;
+		margin-right: -70px !important;
+	}
+	.vertical-separator{ display:none; }
+
+	#start-bottom-right{
+		margin-top:50px;
+		margin-left: 0;
+		width: 100%;
+	}
+
+		#start-bottom-right .marketing-block{
+			width:100%;
+			margin-right:0;
+			height:inherit;
+		}
+
+	.footer-links,
+	.social-footer-links{
+		width:100%;
+	}
+	.footer-links li,
+	.social-footer-links li{
+		width:100%;
+		text-align:center;
+		display:inline-block;
+		padding:5px 0;
+	}
+		.footer-links a{
+			display:block;
+			padding:5px 0;
+		}
+		.footer-links a:hover{background:#efefef;}
+
+	.content-box-left-bottom{display:none;margin:20px 0;}
+
+	.comment-rate{
+			border-left: none;
+			padding-left: 0;
+			float: none;
+			width: 100%;
+			clear: both;
+			padding: 20px 0;
+		}
+			.comment-rate textarea{width: 95%;}
+		#flight-comment{
+			height: 80px;
+			resize: none;
+			width: 100%;
+			float: left;
+		}
+		.rating-container{
+		  padding-left: 0; 
+		  border-left: none;
+		}
+		.db-search{
+			width: 100%;
+		}
+		.rating-field{
+		  width: 100%; 
+		}
+		input.airport-search,
+		input.airline-search,
+		input.aircraft-search{
+		  width:94%;
+		}
+	#airport-map{ width: 100%;}
+
+	/* hidden table columns */
+
+ 	.flight-list .flight-distance{display:none;}
+ 	.flight-list .flight-dep-time{display:none;}
+ 	.flight-list .flight-arr-time{display:none;}
+ 	.flight-list .flight-airline{display:none;}
+ 	.flight-list .flight-aircraft{display:none;}
+
+ 	#FlightsPerWeekday,
+	#FlightsPerMonth,
+	#FlightsPerYear{width:100%;}
+
+	/* Review Containers */
+	.review .nav-review{
+		width: 100%;
+		float: right;
+		padding: 10px 0;
+	}
+	.review-container .left,
+	.review-container .right{
+		width:90%;
+	}
+
+	.review-container .right{
+		border-left:none;
+		padding:20px 0 0 0;
+	}
+		.review-container .left textarea {
+			width:100%;
+		}
+		.ratings-group .title {
+			width: 120px;
+		}
+	.review .nav-review .step-left,
+	.review .nav-review .step-right {
+		width: 50%;
+	}
+	.review .nav-review .step-right{
+		text-align: right
+	}
+
+	/* Airport Redesign */
+
+	.airport #page{margin: 0px 15px 15px 15px;}
+
+	.review-stats .stats-review-container{ width:295px;}
+		.review-stats .review-meter .meter-container{
+			display:none;
+		}
+	.airport-reviews{
+		width:100%;
+	}
+	.airport.right{
+		width:100%;
+		margin:20px 0;
+	}
+
+	#header-account{ 
+		display:none;
+		float: none; 
+	}
+
+		#container #header #header-account{
+			margin: 10px !important;
+		}
+		#header-account .header-profile-menu a{
+			float:left;
+			width:100%;
+			text-align:left;
+		}
+		#header-account .header-profile-menu a.signed-in-list {
+			margin-left: 0;
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+
+	a#start-sign-up {
+		margin: 0 auto;
+	}
+	#FlightsPerWeekday,
+	#FlightsPerMonth,
+	#FlightsPerYear{width:100%;}
+
+	/* Ratings */
+
+	.review-container .left,
+	.review-container .right{
+		width:90%;
+	}
+
+	.ratings-group .title {
+		width: 100px;
+	}
+	.ratings-group .grade {
+		display:none;
+	}
+
+	/* Aiport Redesign */
+	.review-stats .review-data{
+		width: 100%;
+		text-align: center;
+	}
+		.review-stats .review-data .round-meter{
+			margin:5px auto;
+		}
+		.review-stats .airport-info{
+			margin-left:5px;
+		}
+		.review-stats .stats-review-container{
+			width: 100%;
+			height: inherit;
+			margin-right: 20px;
+			background: none;
+			border-radius: 0;
+			box-shadow: 0px 0px 0px;
+			float: none;
+			margin: 10px 0;
+		}
+			.review-stats .stats-review-container .review-meter{
+				margin-left: 0; 
+				margin-bottom:20px;
+				border: 1px solid #e1e1e1;
+				border-radius: 5px;
+				background: white;
+				padding: 0; 
+			}
+		.review-stats .stats-data{
+			width: 100%;
+			text-align: center;
+			float:none;
+			padding: 15px 0;
+		}
+			.review-stats .map-small span{
+				position:relative;
+				margin-left:0;
+			}
+		.review-stats #airport-map{
+			width:100%;
+		}
+
+	.airport-reviews{
+		text-align:center;
+	}
+		#total-review-text{
+			text-align:center;
+		}
+	.airport-reviews .comment-details{
+		width:65% !important;
+	}
+
+		.airport.right{
+			width: inherit;
+			border-left: none;
+			padding: 15px;
+			margin: 20px 0;
+		}
+
+		.airport-reviews .ratings-group{
+			text-align: left;
+			position: relative;
+			left: -75px;
+		}
+			.airport-reviews #sub-ratings-container{
+				padding: 20px 0;
+			}
+			.airport-reviews #sub-ratings-container .ratings-group{
+				width:150%;
+			}
+		.airport-reviews #sub-ratings-container .ratings-group .sub-rating-block{
+			width:100%;
+		}
+	/* Airport Redesign */
+	.airport #page{margin: 0px 15px 15px 15px;}
+	.review-stats .stats-review-container .review-meter{ height: inherit; }
+	.review-stats .stats-review-container .scroll-indicators{ display: none; }
+	.review-stats .review-meter .meter-list{ width:100%; }
+	.review-stats .review-meter .meter-container{
+		display:inline-block;
+		width:35%;
+	}
+
+	.review-stats .review-button-blue{ margin: 0 auto 5px auto; }
+
+	.review-stats .airport-post{
+		height:inherit;
+	}
+		.review-stats .post-scroll{
+			display:none;
+		}
+}
+
+/* iphones and smaller */
+@media only screen and (max-width: 320px) {
+	.start-container,
+	#container{ 
+		width:100%; 
+		padding: 0;
+	}
+	#start-top-left{ width:100%; }
+		#start-top-left p{width:100% !important;}
+	
+	#start-top-right{
+		width:100%;
+		float: left;
+		margin: 0;
+	}
+		#start-top-right h1,
+		#start-top-right h2, 
+		#start-top-right p,
+		#container #header h1,
+		#container #header h2,
+		#container #header p{text-align: center;}
+		#start-top-right .mobile-collapse,
+		#container .mobile-collapse{
+			float: right;
+			position: relative;
+			margin-top: 10px;
+		}
+		#start-top-right img:first-child,
+		#container #logo{ width:80%; }
+		#start-top-right .content-intro-text{ width:100%; }
+	#start-browser{ 
+		width:100%;
+		height: auto;
+		display: block;
+		margin-bottom:0;
+	}
+		#start-browser-content{ 
+			width:100%;
+			max-height:330px; 
+		}
+		#start-browser-content img{
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+	#container #header{ margin: 20px 0 0 0;}
+		#container .header-left,
+		#container .header-right{ display: none; }
+		#container .header-middle{ 
+			padding:0;
+			width:100%; 
+		}
+			#container .header-middle h1{ 
+				margin: 5px 10px; 
+				height: 48px;
+				overflow: hidden;
+			}
+	#container #content{ }
+		#container #content-left,
+		#container #content-right{ display: none;}
+		#container #content-middle{ width:100%; }
+			
+	#page{ margin:0; }
+		#page #content-container{ }
+			#page .content-container .vertical-separator{ display:none; }
+			#page .content-container fieldset{ 
+				width:100% !important; 
+				margin-left: 0 !important;
+			}
+				#page .content-container fieldset div{ 
+					padding:0 !important;
+					width:100%; 
+				}
+				#page .content-container fieldset input{ width:94%; }
+
+			#page ul#profile-main-data li{
+				width:100%;
+				text-align:center;
+			}
+			#page ul#profile-chart-data li{
+				width: 100%;
+				margin:0 0 20px 0;
+			}
+		#page div.bottom-chart-data,
+		#page div.bottom-chart-data .content-box,
+		#page div.bottom-chart-data object{
+			width:100%;
+		}
+
+		#page .content-container fieldset div.tos{ 
+			width: 93%;
+			padding: 10px !important;
+		}
+
+		#page .content-box-wide,
+		#page .content-box-wide #map_canvas,
+		#page .content-box-wide-bottom{ width:98% !important; }
+		#page .content-box-right-bottom{ 
+			background:none; 
+			width:100%; 
+			border-bottom:1px solid #eee; 
+		}
+		#page .content-box .inside { height:inherit !important;}
+			#page .content-box .inside .right{ width: 100%; }
+
+	#arrow-menu{
+		width: inherit;
+		float: none;
+	}
+	#arrow-content{ 
+		width: inherit;
+		float:none;
+		padding:0; 
+	}
+		#arrow-menu a{ 
+			width: inherit;
+			padding: 5px 10px;
+			background:#efefef;
+		}
+			#arrow-menu a.active,
+			#arrow-menu a:hover{ 
+				color:white;
+				background:#cd4431;
+			}
+		#arrow-content div{ inherit}
+		#arrow-content img{ width:100%; }
+	
+	.aircraft #arrow-menu,
+	.airline #arrow-menu,
+	.airport #arrow-menu{
+		width:93%;
+		padding:0 10px;
+	}
+	.aircraft .arrow-content,
+	.airline .arrow-content,
+	.airport .arrow-content{
+		width:100%;
+	}
+		.aircraft .arrow-content h2,
+		.airline .arrow-content h2,
+		.airport .arrow-content h2{
+			float: none !important;
+			text-align: center;
+			margin-top: 20px;
+		}
+		.aircraft .arrow-content .right,
+		.airline .arrow-content .right,
+		.airport .arrow-content .right{
+			float: left;
+			width: 100%;
+			text-align: center !important;
+			margin: 10px auto;
+		}
+		.aircraft .arrow-content .content-container img,
+		.airline .arrow-content .content-container img,
+		.airport .arrow-content .content-container img{
+			width: 100%;
+		}
+		.aircraft .arrow-content input.black-submit,
+		.airline .arrow-content input.black-submit,
+		.airport .arrow-content input.black-submit{
+			float: none;
+			margin: 10px !important;
+			text-align: center;
+			width: 93%;
+			height: 50px;
+			padding:5px 0;
+		}
+		.aircraft .arrow-content input.more-button,
+		.airline .arrow-content input.more-button,
+		.airport .arrow-content input.more-button{
+			text-align: center;
+			width: 93%;
+		}
+
+
+	#header-account{ 
+		display:none;
+		float: none; 
+	}
+
+		#container #header #header-account{
+			margin: 10px !important;
+		}
+		#header-account .header-profile-menu a{
+			float:left;
+			width:100%;
+			text-align:left;
+		}
+		#header-account .header-profile-menu a.signed-in-list {
+			margin-left: 0;
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+
+	a#start-sign-up {
+		margin: 0 auto;
+	}
+
+
+	#start-shadow{ height: 100px; }
+	#start-bottom-left{
+		width: 100%;
+	}
+	#start-bottom-left .comment-avatar{
+		width: 50px !important;
+	}
+	#start-bottom-left .comment-details{
+		width: 80% !important;
+		margin-right: -70px !important;
+	}
+
+	#start-shadow{ width: 100%; }
+	.vertical-separator{ display:none; }
+
+	#start-bottom-right{
+		margin-top:50px;
+		margin-left: 0;
+		width: 100%;
+	}
+
+		#start-bottom-right .marketing-block{
+			width:95%;
+			margin-right:0;
+			height:inherit;
+		}
+
+	#footer .right{
+		float:none;
+		display:inline-block;
+		margin-top:20px;
+		text-align:center;
+	}
+	#footer a{
+		text-align:center;
+		display:block;
+		padding: 10px 0;
+		margin:0;
+	}
+
+	.footer-links,
+	.social-footer-links{
+		width:100%;
+	}
+		.footer-links li,
+		.social-footer-links li{
+			width:100%;
+			text-align:center;
+			display:inline-block;
+			padding:5px 0;
+			margin-left: 0;
+		}
+			.footer-links a:hover{background:#efefef;}
+
+	.notification-box .notification-content{ width:80%; }
+
+	ul.add-flight li{
+		float:none;
+		margin:0 0 0 0;
+	}
+		.add-flight li input{
+			width:100%;
+		}
+			.add-flight li input[type="checkbox"]{
+				width:inherit !important;
+			}
+			.facebook-post-container{width:100%;}
+				.facebook-post-container textarea{width:145px}
+				.post-facebook-info{
+					padding-left: 43px !important;
+					width: 95% !important;
+					padding-top:20px;
+				}
+
+		ul.styled-radios{
+			padding: 5px 25px;auto !important;
+			margin: 20px 0;
+		}
+		ul.styled-radios li{
+			margin:0 0 0 0;
+			float:left !important;
+		}
+			ul.styled-radios li input{width:inherit;}
+
+		.add-flight .add-flight-info-top li,
+		.add-flight .add-flight-info-bottom li{
+			width: 90%;
+		}
+			.add-flight .add-flight-info-top .left,
+			.add-flight .add-flight-info-bottom .left{float:none;}
+			.add-flight .add-flight-tooltip{width: 100%}
+			.add-flight .add-flight-tooltip .left{float:left;}
+		.add-flight .add-flight-ticket{
+		  width: inherit; 
+		  height: 380px; 
+		  border-right: none;
+		}
+		.add-flight .add-flight-ticket.left{
+		  float:none;
+		}
+
+		.comment-rate{
+			border-left: none;
+			padding-left: 0;
+			float: none;
+			width: 100%;
+			clear: both;
+			padding: 20px 0;
+		}
+			.comment-rate textarea{width: 95%;}
+			.comment-block{}
+				.comment-details{width:75% !important;}
+		#flight-comment{
+			height: 80px;
+			resize: none;
+			width: 100%;
+			float: left;
+		}
+		.rating-container{
+		  padding-left: 0; 
+		  border-left: none;
+		}
+		.db-search{
+			width: 100%;
+		}
+		.rating-field{
+		  width: 100%; 
+		}
+		input.airport-search,
+		input.airline-search,
+		input.aircraft-search{
+		  width:94%;
+		}
+	.content-box-left-bottom{display:none;margin:20px 0;}
+
+	/* hidden table columns */
+
+ 	.flight-list .flight-distance{display:none;}
+ 	.flight-list .flight-dep-time{display:none;}
+ 	.flight-list .flight-arr-time{display:none;}
+ 	.flight-list .flight-airline{display:none;}
+ 	.flight-list .flight-aircraft{display:none;}
+ 	.flight-list .flight-reg{display:none;}
+ 	.flight-list .flight-seat{display:none;}
+ 	.flight-list .flight-note{display:none;}
+
+ 	.manage-flights .manage-flights-rating-no{display:none;}
+
+ 	#page .content-container fieldset div.sign-up-tooltip{
+ 		width: 93%;
+ 		padding: 10px !important
+ 	}
+
+		#page .content-container fieldset div.sign-up-tooltip .left{float:left;width:20px;}
+		#page .content-container fieldset div.sign-up-tooltip .sign-up-tooltip-text{width:80%;}
+	.content-container .left.separator{display: none;}
+
+	#airport-map{ width: 100%;}
+
+	#FlightsPerYear,
+	#FlightsPerMonth,
+	#FlightsPerWeekday{ width:100%; height:230px;}
+		#FlightsPerYear svg g text{ font-size:8px; }
+
+	/* input zooming bug fix on iphone */
+	select, 
+	textarea, 
+	input{ font-size: 16px; }
+
+	/* Review Containers */
+	.review .nav-review{
+		width: 100%;
+		padding: 10px 0;
+	}
+	.review-container .right{
+		width:100%;
+		border-left:none;
+		padding:20px 0 0 0;
+	}
+	.review-container-bottom{
+		text-align: center;
+	}
+
+	.review-container .left{
+		width:85%;
+	}
+	.ratings-group .title {
+		width: 100px;
+	}
+	.ratings-group .grade {
+		display:none;
+	}
+	.review-container .left textarea {
+			width:100%;
+		}
+		.ratings-group .title {
+			width: 120px;
+		}
+	.review .nav-review .step-left,
+	.review .nav-review .step-right {
+		width: 50%;
+	}
+	.review .nav-review .step-right{
+		text-align: right
+	}
+
+	#reviewCarousel > input[type="button"] {
+		margin: 0 auto 20px auto;
+	}
+
+
+	/* Aiport Redesign */
+	.review-stats .review-data{
+		width: 100%;
+		text-align: center;
+	}
+		.review-stats .review-data .round-meter{
+			margin:5px auto;
+		}
+		.review-stats .airport-info{
+			margin-left:5px;
+		}
+		.review-stats .stats-review-container{
+			width: 100%;
+			height: inherit;
+			margin-right: 20px;
+			background: none;
+			border-radius: 0;
+			box-shadow: 0px 0px 0px;
+			float: none;
+			margin: 10px 0;
+		}
+		.review-stats .review-button-blue{
+			margin: 0 auto 5px auto;
+		}
+			.review-stats .stats-review-container .review-meter{
+				margin-left: 0; 
+				margin-bottom:20px;
+				border: 1px solid #e1e1e1;
+				border-radius: 5px;
+				background: white;
+				padding: 0; 
+				height: inherit;
+			}
+
+			.review-stats .stats-review-container .scroll-indicators{
+				display: none;
+			}
+		.review-stats .stats-data{
+			width: 100%;
+			text-align: center;
+			float:none;
+			padding: 15px 0;
+		}
+			.review-stats #airport-map{
+				width:100%;
+			}
+
+			.review-stats .map-small span{
+				position:relative;
+				margin-left:0;
+			}
+
+	.airport-reviews{
+		text-align:center;
+	}
+		#total-review-text{
+			text-align:center;
+		}
+	.airport-reviews .comment-details{
+		width:65% !important;
+	}
+
+		.airport.right{
+			width: inherit;
+			border-left: none;
+			padding: 15px;
+			margin: 20px 0;
+		}
+
+		.airport-reviews .ratings-group{
+			text-align: left;
+			position: relative;
+			left: -75px;
+		}
+			.airport-reviews #sub-ratings-container{
+				padding: 20px 0;
+			}
+			.airport-reviews #sub-ratings-container .ratings-group{
+				width:150%;
+			}
+		.airport-reviews #sub-ratings-container .ratings-group .sub-rating-block{
+			width:100%;
+		}
+	.review-stats .airport-post{
+		height:inherit;
+	}
+		.review-stats .post-scroll{
+			display:none;
+		}
+
+}

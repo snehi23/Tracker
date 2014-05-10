@@ -151,7 +151,7 @@ function validateForm() {
 		
 	}
 	
-	if(pattern.test(q) || !letters_num.test(q)) {
+	if(pattern.test(q)) {
 		
 		document.getElementById("Comments_error").innerHTML="Please only use standard alphanumerics";
 		formValid = false;
