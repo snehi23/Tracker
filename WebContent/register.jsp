@@ -13,14 +13,14 @@
 <title>Registration Form</title>
 </head>
 <body>
-	 <form class="form-signin" role="form" name="loginform" action="LoginController" method="post" onsubmit="return validateLogin()">
+	 <form class="form-signin" role="form" name="loginform" action="RegistrationController" method="post" >
 		<h2>Create account</h2>
-		<div id="error" style="color:red"></div></td>
+		<div id="error" style="color:red"></div>
 		<input id="name" type="text" name="user" maxlength="30" class="form-control" placeholder="Name" required autofocus>
-		<input id="username" type="text" name="pass" maxlength="30" class="form-control" placeholder="Username" required>
-		<input id="email" type="text" name="pass" maxlength="30" class="form-control" placeholder="Email" required>
-		<input id="password" type="text" name="pass" maxlength="30" class="form-control" placeholder="Password" required>
-		<input id="password2" type="text" name="pass" maxlength="30" class="form-control" placeholder="Repeat password" required>
+		<input id="username" type="text" name="username" maxlength="30" class="form-control" placeholder="Username" required>
+		<input id="email" type="text" name="email" maxlength="30" class="form-control" placeholder="Email" required>
+		<input id="password" type="password" name="password" maxlength="30" class="form-control" placeholder="Password" required>
+		<input id="password2" type="password" name="password2" maxlength="30" class="form-control" placeholder="Repeat password" required>
 		<label class="checkbox">
 			<input type="checkbox" value="remember-me"> By clicking "Create account" below, you agree to the Terms of Service.
 		</label>
