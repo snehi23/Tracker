@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+import javax.servlet.http.HttpSession;
+
 import com.tracker.util.DBConnectionManager;
 
 
@@ -36,6 +39,9 @@ public class DisplayStatisticsController extends HttpServlet {
 		Map<String,Integer> group_by_year = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_month = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_day = new LinkedHashMap<String,Integer>();
+		
+		HttpSession session = request.getSession(true);
+		RequestDispatcher rd = null;
         
         ServletContext ctx=getServletContext();
         
@@ -56,12 +62,18 @@ public class DisplayStatisticsController extends HttpServlet {
         
         try {
         	
+        	if(session.getAttribute("userid")!=null) {
+        		
+            String userid = (String) session.getAttribute("userid");
+        	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
         	conn.setAutoCommit(false);
         	
         	 Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        	 ResultSet rs1 = stmt.executeQuery("select Train, count(*) as all_train from tracker group by Train order by all_train desc");
+        	 
+        	 String sql1 = "select Train, count(*) as all_train from tracker where user_id ="+"'"+userid+"'"+"group by Train order by all_train desc";
+        	 ResultSet rs1 = stmt.executeQuery(sql1);
         	 while(rs1.next()) {
 
          		group_by_train.put(rs1.getString(1),rs1.getInt(2));
@@ -73,9 +85,10 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs1.close(); 
         	conn.commit(); 
          	
-         	
-         	ResultSet rs2 = stmt.executeQuery("select From_Station, count(*) as all_from from tracker group by From_Station order by all_from desc");
-         	while(rs2.next()) {
+        	String sql2 = "select From_Station, count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by From_Station order by all_from desc";
+       	 	ResultSet rs2 = stmt.executeQuery(sql2);
+        	
+       	 	while(rs2.next()) {
 
        		group_by_from_station.put(rs2.getString(1),rs2.getInt(2));
         		       		
@@ -86,8 +99,10 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs2.close();
         	conn.commit();
         	
-        	ResultSet rs3 = stmt.executeQuery("select To_Station, count(*) as all_to from tracker group by To_Station order by all_to desc");
-         	while(rs3.next()) {
+        	String sql3 = "select To_Station, count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by To_Station order by all_from desc";
+       	 	ResultSet rs3 = stmt.executeQuery(sql3);
+        	
+       	 	while(rs3.next()) {
 
          	group_by_to_station.put(rs3.getString(1),rs3.getInt(2));
         		       		
@@ -99,8 +114,10 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs3.close();
         	conn.commit();
         	
-        	ResultSet rs4 = stmt.executeQuery("select Classes, count(*) as all_to from tracker group by Classes order by all_to desc");
-         	while(rs4.next()) {
+        	String sql4 = "select Classes, count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by Classes order by all_from desc";
+       	 	ResultSet rs4 = stmt.executeQuery(sql4);
+        	
+       	 	while(rs4.next()) {
 
          		group_by_class.put(rs4.getString(1),rs4.getInt(2));
         		       		
@@ -112,8 +129,10 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs4.close();
         	conn.commit();
         	
-        	ResultSet rs5 = stmt.executeQuery("select (select year(DOJ)), count(*) from tracker group by (select year(DOJ))");
-         	while(rs5.next()) {
+        	String sql5 = "select (select year(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select year(DOJ)) order by all_from desc";
+       	 	ResultSet rs5 = stmt.executeQuery(sql5);
+        	
+       	 	while(rs5.next()) {
 
          		group_by_year.put(rs5.getString(1),rs5.getInt(2));
         		       		
@@ -125,27 +144,25 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs5.close();
         	conn.commit();
         	
-        	ResultSet rs6 = stmt.executeQuery("select (select monthname(DOJ)), count(*) from tracker group by (select monthname(DOJ)) order by month(DOJ)");
-         	while(rs6.next()) {
+        	String sql6 = "select (select monthname(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select monthname(DOJ)) order by all_from desc";
+       	 	ResultSet rs6 = stmt.executeQuery(sql6);
+        	
+       	 	while(rs6.next()) {
 
          		group_by_month.put(rs6.getString(1),rs6.getInt(2));		
         		       		
         	}
          	
-         	/*for(Map.Entry<String,Integer> a : group_by_month.entrySet()) {
-         		System.out.println(a.getKey());
-         		System.out.println(a.getValue());   	      		
-         	}*/
-        	
+       	 	
         	request.setAttribute("group_by_month_list", group_by_month);
-        	
         	
         	rs6.close();
         	conn.commit();
         	
+        	String sql7 = "select (select dayname(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select dayname(DOJ)) order by all_from desc";
+       	 	ResultSet rs7= stmt.executeQuery(sql7);
         	
-        	ResultSet rs7 = stmt.executeQuery("select (select dayname(DOJ)), count(*) from tracker group by (select dayname(DOJ)) order by dayofweek(DOJ)");
-         	while(rs7.next()) {
+       	 	while(rs7.next()) {
 
          		group_by_day.put(rs7.getString(1),rs7.getInt(2));		
         		       		
@@ -164,15 +181,21 @@ public class DisplayStatisticsController extends HttpServlet {
         	
         	conn.close();
         	
+        	rd = request.getRequestDispatcher("/displaystatistics.jsp");
+        	
+        		} else {
+        			
+        			rd = request.getRequestDispatcher("/error.jsp");
+        			
+        		}
+        	
         } 
         catch(Exception E1)
         {
         	System.out.println(E1.getMessage());
         } 
                 
-        RequestDispatcher rd = null;
- 
-            rd = request.getRequestDispatcher("/displaystatistics.jsp");
+           
             
         rd.forward(request, response);
     }

@@ -18,6 +18,47 @@ $(function() {
     
   });
   
+$(document).ready(function() {
+    $("input#autocomplete1").autocomplete({
+        source: function(request, response){
+            var options = ["Rajdhani Express","Nagpur Pune Express","Pune Nagpur Express","Sangamitra Express","Sampraka-kranti Express","Garibrath Express","Hawda-Pune","Pune Bilaspur","Coimbatore Express","Lokmanya TT Express","Navjivan Express","Vidarbha Express","Maharashtra Express","Goa Express","Jaipur Mysoor Express","Pataliputra Express"];
+            var results = [request.term];
+            var regex = new RegExp(request.term, "i");
+            for(var i = 0; i< options.length; i++){
+                if (options[i].match(regex))
+                    results.push(options[i]);
+            }
+            response(results);
+        }       
+    });
+    
+    $("input#autocomplete2").autocomplete({
+        source: function(request, response){
+            var options = ["SBC","YPR","NGP","PUNE","MAO","HGT","ADI","NDLS","KYN","SC","DBRT","BPL","VJPJ"];
+            var results = [request.term];
+            var regex = new RegExp(request.term, "i");
+            for(var i = 0; i< options.length; i++){
+                if (options[i].match(regex))
+                    results.push(options[i]);
+            }
+            response(results);
+        }       
+    });
+    
+    $("input#autocomplete3").autocomplete({
+        source: function(request, response){
+            var options = ["SBC","YPR","NGP","PUNE","MAO","HGT","ADI","NDLS","KYN","SC","DBRT","BPL","VJPJ"];
+            var results = [request.term];
+            var regex = new RegExp(request.term, "i");
+            for(var i = 0; i< options.length; i++){
+                if (options[i].match(regex))
+                    results.push(options[i]);
+            }
+            response(results);
+        }       
+    });
+});
+  
 function validateForm() {
 	
 	
@@ -174,7 +215,34 @@ function validateForm() {
 
 </head>
 <body>
- <marquee><font color="Green">Welcome ${sessionScope['user'].username}</font></marquee>
+ <marquee><font color="Green">Welcome ${sessionScope['userid']}</font></marquee>
+ 
+ <table>
+ <tr>
+ <td>
+ <form action='RefreshLocationController' method='post'>
+
+<input  style="background-image: url(img/refresh.png); background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    border: none;
+    cursor: pointer;
+    height: 35px;
+    width: 30px;
+    padding-left: 16px;
+    vertical-align: middle;" title="Force Refresh" type="submit" value="">
+
+</form>
+</td>
+<td>
+<form action='LogoutController' method='post'>
+
+<input type="submit" value="Logout">
+
+</form>
+</td>
+</tr>
+</table>
  
 <H3>User Input</H3>
 
@@ -198,21 +266,21 @@ function validateForm() {
 
 <tr>
 	<td>Train  :</td>
-	<td><INPUT TYPE="TEXT" NAME="Train" SIZE="20"></td>
+	<td><INPUT TYPE="TEXT" id="autocomplete1" NAME="Train" SIZE="20"></td>
 	<td><div id="Train_error" style="color:red"></div></td>
 	
 </tr>
 
 <tr>
 	<td>From  :</td>
-	<td><INPUT TYPE="TEXT" NAME="From" SIZE="20"></td>
+	<td><INPUT TYPE="TEXT" id="autocomplete2" NAME="From" SIZE="20"></td>
 	<td><div id="From_error" style="color:red"></div></td>
 	
 </tr>
 
 <tr>
 	<td>To  :</td>
-	<td><INPUT TYPE="TEXT" NAME="To" SIZE="20"></td>
+	<td><INPUT TYPE="TEXT" id="autocomplete3" NAME="To" SIZE="20"></td>
 	<td><div id="To_error" style="color:red"></div></td>
 	
 </tr>
@@ -257,13 +325,6 @@ function validateForm() {
 <form action='DisplayAllController' method='post'>
 
 <input type="submit" value="Show My data">
-
-</form>
-</td>
-<td>
-<form action='RefreshLocationController' method='post'>
-
-<input type="submit" value="Force Refresh">
 
 </form>
 </td>

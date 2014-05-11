@@ -215,7 +215,7 @@ border-color: #2B4EB7;
     
 </head>
 <body>
-
+<a href="success.jsp" title="Home"><img src="img/home.png" width="20" height="20" border="0"/></a><BR>
 <table>
 <tr>
 <td>

@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tracker.model.Details;
 import com.tracker.model.StationLocation;
@@ -30,7 +31,8 @@ public class DisplayLocationController extends HttpServlet {
 		
 		List<StationLocationPlot> station_loc_plot = new ArrayList<StationLocationPlot>();
 		
-		
+		HttpSession session = request.getSession(true);
+		RequestDispatcher rd = null;
         
         ServletContext ctx=getServletContext();
         
@@ -51,14 +53,20 @@ public class DisplayLocationController extends HttpServlet {
         
         try {
         	
+        	if(session.getAttribute("userid")!=null) {
+        		
+            String userid = (String) session.getAttribute("userid");
+            	
+        	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
         	conn.setAutoCommit(false);
         	
         	Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         	
+        	String sql1 = "select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'"+"union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'";
         	
-        	ResultSet rs1 = stmt.executeQuery("select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code");
+        	ResultSet rs1 = stmt.executeQuery(sql1);
         	     	
         	while(rs1.next()) {
 
@@ -77,7 +85,9 @@ public class DisplayLocationController extends HttpServlet {
         	rs1.close();
         	conn.commit();
         	
-        	ResultSet rs2 = stmt.executeQuery("select distinct s1.latitude,s1.longitude,s2.latitude,s2.longitude from tracker t inner join station_lat_long s1 on t.From_Station=s1.station_code inner join station_lat_long s2 on t.To_Station=s2.station_code");
+        	String sql2 = "select distinct s1.latitude,s1.longitude,s2.latitude,s2.longitude from tracker t inner join station_lat_long s1 on t.From_Station=s1.station_code and t.user_id= "+"'"+userid+"'"+" inner join station_lat_long s2 on t.To_Station=s2.station_code and t.user_id= "+"'"+userid+"'";
+        	
+        	ResultSet rs2 = stmt.executeQuery(sql2);
         	
         	while(rs2.next()) {
         		
@@ -95,18 +105,19 @@ public class DisplayLocationController extends HttpServlet {
         	rs2.close();
         	conn.commit();
         	conn.close();
+        	
+        	rd = request.getRequestDispatcher("/displaylocation.jsp");
         	        	
+        	} else {
+        		
+        		rd = request.getRequestDispatcher("/error.jsp");
+        	}
         	
         } 
         catch(Exception E1)
         {
         	System.out.println(E1.getMessage());
         } 
-                
-        RequestDispatcher rd = null;
- 
-            rd = request.getRequestDispatcher("/displaylocation.jsp");
-            
-        rd.forward(request, response);
+              rd.forward(request, response);
     }
 }

@@ -111,7 +111,7 @@ import com.tracker.util.DBConnectionManager;
         	if(flag) {
         	if(userdetails.getUsername().equals(username) && userdetails.getPassword().equals(password)) {
         	
-        		session.setAttribute("user", userdetails);
+        		session.setAttribute("userid", userdetails.getUsername());
         		rd = request.getRequestDispatcher("/success.jsp");
         		rd.forward(request, response);
         		

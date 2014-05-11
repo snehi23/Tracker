@@ -45,6 +45,7 @@ border-color: #2B4EB7;
 </style>
 </head>
 <body>
+<a href="success.jsp" title="Home"><img src="img/home.png" width="20" height="20" border="0"/></a><BR>
 <table>
 <tr>
 <td rowspan="2" style="text-align:left;vertical-align:top;padding:0">

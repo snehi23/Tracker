@@ -53,10 +53,10 @@ public class RefreshLocationController extends HttpServlet {
 		
 	}
 	
-   
-	
+
 	try {
     	
+		
 		conn = (Connection) ctx.getAttribute("DBConnection");
     	
     	conn.setAutoCommit(false);
@@ -180,6 +180,8 @@ public class RefreshLocationController extends HttpServlet {
 		}
 	
     	try {
+    		
+    		System.out.println(flag1+" "+flag2);
 
     	if(flag1 || flag2 ) {
     	
@@ -194,8 +196,9 @@ public class RefreshLocationController extends HttpServlet {
     	prep.executeUpdate();
     	}
     	
-    		conn.commit();
-    		prep.close();
+    	prep.close();	
+    	conn.commit();
+    		
     	}
     	
     	conn.close();
@@ -208,7 +211,7 @@ public class RefreshLocationController extends HttpServlet {
 
 	RequestDispatcher rd = null;
 	 
-    rd = request.getRequestDispatcher("/displayinfo.jsp");
+    rd = request.getRequestDispatcher("/success.jsp");
     
     rd.forward(request, response);
 	

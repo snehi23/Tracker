@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tracker.model.Details;
 import com.tracker.util.DBConnectionManager;
@@ -30,6 +31,9 @@ public class DisplayAllController extends HttpServlet {
  
         
         List<Details> details_list = new ArrayList<Details>();
+        
+        HttpSession session = request.getSession(true);
+        RequestDispatcher rd = null;
         
         ServletContext ctx=getServletContext();
         PreparedStatement ps = null;
@@ -52,8 +56,16 @@ public class DisplayAllController extends HttpServlet {
         
         try {
         	
+        	
+        	if(session.getAttribute("userid")!=null) {
+        		
+            	String userid = (String) session.getAttribute("userid");	
+            	
+        	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
-        	ps = conn.prepareStatement("select * from tracker");
+        	
+        	String sql = "select * from tracker where user_id ="+"'"+userid+"'";
+        	ps = conn.prepareStatement(sql);
         	rs = ps.executeQuery();       	
         	while(rs.next()) {
 
@@ -75,16 +87,22 @@ public class DisplayAllController extends HttpServlet {
         	ps.close();
         	conn.close();
         	
+        	rd = request.getRequestDispatcher("/displayinfo.jsp");
+        	
+        	
+        	} else {
+        		
+        		rd = request.getRequestDispatcher("/error.jsp");
+        		
+        	}
+        	
         } 
         catch(Exception E1)
         {
         	System.out.println(E1.getMessage());
         } 
                 
-        RequestDispatcher rd = null;
- 
-            rd = request.getRequestDispatcher("/displayinfo.jsp");
-            
+        
         rd.forward(request, response);
     }
 
