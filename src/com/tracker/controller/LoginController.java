@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  
 import javax.servlet.http.HttpSession;
 
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
+
 import com.tracker.model.Authenticator;
 import com.tracker.model.StationLocation;
 import com.tracker.model.User;
@@ -40,11 +42,11 @@ import com.tracker.util.DBConnectionManager;
     	PreparedStatement prep = null;
     	RequestDispatcher rd = null;
     	Boolean flag=true;
+    	ConfigurablePasswordEncryptor encryptor = new ConfigurablePasswordEncryptor();
     	User userdetails = new User();
     	
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
-        System.out.println(" "+username+" "+password);
         
         ServletContext ctx=getServletContext();
         
@@ -75,9 +77,6 @@ import com.tracker.util.DBConnectionManager;
   
         	ResultSet rs = stmt.executeQuery(sql);
         	
-        	System.out.println(rs.equals(null));
-        	
-        		
         	if(rs!=null && rs.next())	{
         		rs.beforeFirst();
         	     	
@@ -85,8 +84,6 @@ import com.tracker.util.DBConnectionManager;
         		userdetails.setUsername(rs.getString(1));
         		userdetails.setPassword(rs.getString(2));
         	}
-        	
-        	System.out.println(userdetails.getUsername()+" "+userdetails.getPassword());
         	
         	rs.close();
         	conn.commit();
@@ -109,7 +106,9 @@ import com.tracker.util.DBConnectionManager;
         }
         	
         	if(flag) {
-        	if(userdetails.getUsername().equals(username) && userdetails.getPassword().equals(password)) {
+        				encryptor.setAlgorithm("SHA-512");
+        				encryptor.setPlainDigest(true);
+        	if(userdetails.getUsername().equals(username) && encryptor.checkPassword(password, userdetails.getPassword())) {
         	
         		session.setAttribute("userid", userdetails.getUsername());
         		rd = request.getRequestDispatcher("/success.jsp");

@@ -8,16 +8,20 @@
 	<link href="css/signin.css" rel="stylesheet">
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
-	<!-- <script src="js/sign-up.js"></script> -->
+	
 	
 <title>Registration Form</title>
+
 </head>
 <body>
+
+<%-- <marquee><font color="Red">${sessionScope['userid uniqeness']}</font></marquee> --%>
+
 	 <form class="form-signin" role="form" name="loginform" action="RegistrationController" method="post" >
 		<h2>Create account</h2>
 		<div id="error" style="color:red"></div>
-		<input id="name" type="text" name="user" maxlength="30" class="form-control" placeholder="Name" required autofocus>
-		<input id="username" type="text" name="username" maxlength="30" class="form-control" placeholder="Username" required>
+		<input id="name" type="text" name="name" maxlength="30" class="form-control" placeholder="Name" required autofocus>
+		<input id="username" type="text" name="username" maxlength="30" class="form-control" placeholder="Username" required> <font color="Red">${sessionScope['userid uniqueness']}</font>
 		<input id="email" type="text" name="email" maxlength="30" class="form-control" placeholder="Email" required>
 		<input id="password" type="password" name="password" maxlength="30" class="form-control" placeholder="Password" required>
 		<input id="password2" type="password" name="password2" maxlength="30" class="form-control" placeholder="Repeat password" required>
