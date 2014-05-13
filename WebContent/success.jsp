@@ -11,8 +11,14 @@
 <link href="css/traveldataentry.css" rel="stylesheet">
 <link href="css/dataentry_form.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.autocomplete.css" />
+	<script src="http://www.google.com/jsapi"></script>  
+	<script>  
+		google.load("jquery", "1");
+	</script>
+	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="js/jquery.autocomplete.js"></script>
+
 
 <script>
 $(function() {
@@ -21,47 +27,12 @@ $(function() {
     
   });
   
-$(document).ready(function() {
-    $("input#autocomplete1").autocomplete({
-        source: function(request, response){
-            var options = ["Rajdhani Express","Nagpur Pune Express","Pune Nagpur Express","Sangamitra Express","Sampraka-kranti Express","Garibrath Express","Hawda-Pune","Pune Bilaspur","Coimbatore Express","Lokmanya TT Express","Navjivan Express","Vidarbha Express","Maharashtra Express","Goa Express","Jaipur Mysoor Express","Pataliputra Express"];
-            var results = [request.term];
-            var regex = new RegExp(request.term, "i");
-            for(var i = 0; i< options.length; i++){
-                if (options[i].match(regex))
-                    results.push(options[i]);
-            }
-            response(results);
-        }       
-    });
-    
-    $("input#autocomplete2").autocomplete({
-        source: function(request, response){
-            var options = ["SBC","YPR","NGP","PUNE","MAO","HGT","ADI","NDLS","KYN","SC","DBRT","BPL","VJPJ"];
-            var results = [request.term];
-            var regex = new RegExp(request.term, "i");
-            for(var i = 0; i< options.length; i++){
-                if (options[i].match(regex))
-                    results.push(options[i]);
-            }
-            response(results);
-        }       
-    });
-    
-    $("input#autocomplete3").autocomplete({
-        source: function(request, response){
-            var options = ["SBC","YPR","NGP","PUNE","MAO","HGT","ADI","NDLS","KYN","SC","DBRT","BPL","VJPJ"];
-            var results = [request.term];
-            var regex = new RegExp(request.term, "i");
-            for(var i = 0; i< options.length; i++){
-                if (options[i].match(regex))
-                    results.push(options[i]);
-            }
-            response(results);
-        }       
-    });
+  $(document).ready(function() {
+    $("#autocomplete1").autocomplete("getTrain.jsp");
+    $("#autocomplete2").autocomplete("getStation.jsp");
+    $("#autocomplete3").autocomplete("getStation.jsp");
 });
-  
+    
 function validateForm() {
 	
 	
@@ -230,10 +201,10 @@ function validateForm() {
               <ul class="nav masthead-nav">
                 <li><a href="#">Home</a></li>
                 <li class="active"><a href="#">Add a Journey</a></li>
-                <li><a href="#">Records</a></li>
-                <li><a href="#">Statistics</a></li>
-                <li><a href="#">Locations</a></li>
-                <li><a href="#">LogOut</a></li>
+                <li><a href="DisplayAllController">Records</a></li>
+                <li><a href="DisplayStatisticsController">Statistics</a></li>
+                <li><a href="DisplayLocationController">Locations</a></li>
+                <li><a href="LogoutController">LogOut</a></li>
                 <li><a href="#"><form action='RefreshLocationController' method='post'>
 					<input  style="background-image: url(img/refresh.png); background-color: transparent;
 						background-repeat: no-repeat;
@@ -252,6 +223,7 @@ function validateForm() {
 
           <div class="inner cover">
             <h1 class="cover-heading">Enter Your Journey Details</h1>
+            <div id="add-another-entry">${sessionScope['Record Confirmation']} </div>
 			<div class="row">
 			<form class="form-signin" name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
 				<div id="inner-left" class="col-lg-6">

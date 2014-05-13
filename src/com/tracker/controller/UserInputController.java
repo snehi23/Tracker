@@ -79,11 +79,15 @@ public class UserInputController extends HttpServlet {
         	prep.close();
         	conn.close();
         	
-        	rd = request.getRequestDispatcher("/displayinfo.jsp");
+        	rd = request.getRequestDispatcher("/success.jsp");
+        	
+        	session.setAttribute("Record Confirmation", " Record Added successfully !!!");
         	
         	} else {
 	 
              rd = request.getRequestDispatcher("/error.jsp");
+             
+             session.removeAttribute("Record Confirmation");
 
         	}
         	

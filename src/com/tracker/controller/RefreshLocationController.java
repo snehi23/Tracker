@@ -181,7 +181,7 @@ public class RefreshLocationController extends HttpServlet {
 	
     	try {
     		
-    		System.out.println(flag1+" "+flag2);
+    		
 
     	if(flag1 || flag2 ) {
     	
