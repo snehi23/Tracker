@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Success</title>
 <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
+<link rel="stylesheet" href="css/chosen.css">
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="js/chosen.jquery.js"></script>
 
 <script>
 $(function() {
@@ -19,7 +21,11 @@ $(function() {
   });
   
 $(document).ready(function() {
-    $("input#autocomplete1").autocomplete({
+    $("input#autocomplete1").autocomplete("getTrain.jsp");
+});
+  
+$(document).ready(function() {
+    /* $("input#autocomplete1").autocomplete({
         source: function(request, response){
             var options = ["Rajdhani Express","Nagpur Pune Express","Pune Nagpur Express","Sangamitra Express","Sampraka-kranti Express","Garibrath Express","Hawda-Pune","Pune Bilaspur","Coimbatore Express","Lokmanya TT Express","Navjivan Express","Vidarbha Express","Maharashtra Express","Goa Express","Jaipur Mysoor Express","Pataliputra Express"];
             var results = [request.term];
@@ -30,7 +36,7 @@ $(document).ready(function() {
             }
             response(results);
         }       
-    });
+    }); */
     
     $("input#autocomplete2").autocomplete({
         source: function(request, response){
@@ -210,6 +216,7 @@ function validateForm() {
 	
 }
 
+$(document).ready(function(){$("#Train").chosen();});
   
 </script>
 
@@ -266,7 +273,16 @@ function validateForm() {
 
 <tr>
 	<td>Train  :</td>
-	<td><INPUT TYPE="TEXT" id="autocomplete1" NAME="Train" SIZE="20"></td>
+	<%-- <td>
+	<select name="Train" id="Train" style="width:200px !important;" tabindex="1">
+	
+	<option value=""></option>
+		<c:forEach items="${trainlist}" var="d1" >
+       			<option value="<c:out value="${d1}"></c:out>"><c:out value="${d1}"></c:out></option>
+		</c:forEach>
+    </select>
+    </td> --%>
+	<td><div><INPUT TYPE="TEXT" id="autocomplete1" NAME="Train" SIZE="20"></div></td>
 	<td><div id="Train_error" style="color:red"></div></td>
 	
 </tr>

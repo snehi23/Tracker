@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -44,6 +46,9 @@ import com.tracker.util.DBConnectionManager;
     	Boolean flag=true;
     	ConfigurablePasswordEncryptor encryptor = new ConfigurablePasswordEncryptor();
     	User userdetails = new User();
+    	List<String> trainlist = new ArrayList<String>();
+    	
+    	
     	
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
@@ -71,39 +76,61 @@ import com.tracker.util.DBConnectionManager;
         	
         	conn.setAutoCommit(false);
         	
-        	String sql = "select user_id,user_password from user_registration_data where user_id ="+"'"+username+"'";
+        	String sql1 = "select user_id,user_password from user_registration_data where user_id ="+"'"+username+"'";
         	
         	Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
   
-        	ResultSet rs = stmt.executeQuery(sql);
+        	ResultSet rs1 = stmt.executeQuery(sql1);
         	
-        	if(rs!=null && rs.next())	{
-        		rs.beforeFirst();
+        	if(rs1!=null && rs1.next())	{
+        		rs1.beforeFirst();
         	     	
-        	while(rs.next()) {
-        		userdetails.setUsername(rs.getString(1));
-        		userdetails.setPassword(rs.getString(2));
+        	while(rs1.next()) {
+        		userdetails.setUsername(rs1.getString(1));
+        		userdetails.setPassword(rs1.getString(2));
         	}
         	
-        	rs.close();
+        	rs1.close();
         	conn.commit();
         	
         	
         	} else {
         		
         		flag=false;
-        		rs.close();
+        		rs1.close();
             	conn.commit();
         		
         	}
         	
+        	//conn.close();
+        	
+        	String sql2 = "select Train from tracker where user_id ="+"'"+username+"'";
+        	
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+
+        	ResultSet rs2 = stmt.executeQuery(sql2);
+        	
+        	while(rs2.next()) {
+        	
+        	trainlist.add(rs2.getString(1));
+        		
+        		}
+        	
+        	request.setAttribute("trainlist", trainlist);
+        	
+        	session.setAttribute("trainlist", trainlist);
+        	
+        	rs2.close();
+        	conn.commit();
         	conn.close();
+	
         	
         } catch (Exception E) {
         	
         	E.printStackTrace();
         	
         }
+
         	
         	if(flag) {
         				encryptor.setAlgorithm("SHA-512");
