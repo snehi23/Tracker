@@ -26,7 +26,7 @@ import com.tracker.util.DBConnectionManager;
 
 public class DisplayAllController extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request,
+	protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
  
         

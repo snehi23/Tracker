@@ -30,7 +30,7 @@ import com.tracker.util.DBConnectionManager;
 
 public class DisplayStatisticsController extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map<String,Integer> group_by_train = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_from_station = new HashMap<String,Integer>();

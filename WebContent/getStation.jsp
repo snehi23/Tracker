@@ -9,13 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Train List</title>
+<title>Station List</title>
 </head>
 <body>
 <%
 
-String trainName = request.getParameter("q");
-List<String> trains = new TrainDao().getTrain(trainName);
+String stationCode = request.getParameter("q");
+List<String> stations = new StationDao().getStation(stationCode);
 /* Iterator<String> iterator = trains.iterator();
 			
             while(iterator.hasNext()) {
@@ -27,11 +27,11 @@ List<String> trains = new TrainDao().getTrain(trainName);
             } */
           
             
-            pageContext.setAttribute("trains", trains);            
+            pageContext.setAttribute("stations", stations);            
 %>
 
 
-<c:forEach items="${trains}" var="d1" > 
+<c:forEach items="${stations}" var="d1" > 
 
     <c:out value="${d1}"></c:out>
   
