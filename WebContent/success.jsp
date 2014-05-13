@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Success</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/traveldataentry.css" rel="stylesheet">
+<link href="css/dataentry_form.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
-<link rel="stylesheet" href="css/chosen.css">
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
-<script src="js/chosen.jquery.js"></script>
 
 <script>
 $(function() {
@@ -21,11 +22,7 @@ $(function() {
   });
   
 $(document).ready(function() {
-    $("input#autocomplete1").autocomplete("getTrain.jsp");
-});
-  
-$(document).ready(function() {
-    /* $("input#autocomplete1").autocomplete({
+    $("input#autocomplete1").autocomplete({
         source: function(request, response){
             var options = ["Rajdhani Express","Nagpur Pune Express","Pune Nagpur Express","Sangamitra Express","Sampraka-kranti Express","Garibrath Express","Hawda-Pune","Pune Bilaspur","Coimbatore Express","Lokmanya TT Express","Navjivan Express","Vidarbha Express","Maharashtra Express","Goa Express","Jaipur Mysoor Express","Pataliputra Express"];
             var results = [request.term];
@@ -36,7 +33,7 @@ $(document).ready(function() {
             }
             response(results);
         }       
-    }); */
+    });
     
     $("input#autocomplete2").autocomplete({
         source: function(request, response){
@@ -216,150 +213,98 @@ function validateForm() {
 	
 }
 
-$(document).ready(function(){$("#Train").chosen();});
   
 </script>
 
 </head>
 <body>
- <marquee><font color="Green">Welcome ${sessionScope['userid']}</font></marquee>
- 
- <table>
- <tr>
- <td>
- <form action='RefreshLocationController' method='post'>
+    <div class="site-wrapper">
 
-<input  style="background-image: url(img/refresh.png); background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: 0px 0px;
-    border: none;
-    cursor: pointer;
-    height: 35px;
-    width: 30px;
-    padding-left: 16px;
-    vertical-align: middle;" title="Force Refresh" type="submit" value="">
+      <div class="site-wrapper-inner">
 
-</form>
-</td>
-<td>
-<form action='LogoutController' method='post'>
+        <div class="cover-container">
 
-<input type="submit" value="Logout">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
+              <ul class="nav masthead-nav">
+                <li><a href="#">Home</a></li>
+                <li class="active"><a href="#">Add a Journey</a></li>
+                <li><a href="#">Records</a></li>
+                <li><a href="#">Statistics</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">LogOut</a></li>
+                <li><a href="#"><form action='RefreshLocationController' method='post'>
+					<input  style="background-image: url(img/refresh.png); background-color: transparent;
+						background-repeat: no-repeat;
+						background-position: 0px 0px;
+						border: none;
+						cursor: pointer;
+						height: 35px;
+						width: 30px;
+						padding-left: 16px;
+						vertical-align: middle;" title="Force Refresh" type="submit" value="">
+					</form></a>
+				</li>
+              </ul>
+            </div>
+          </div>
 
-</form>
-</td>
-</tr>
-</table>
- 
-<H3>User Input</H3>
+          <div class="inner cover">
+            <h1 class="cover-heading">Enter Your Journey Details</h1>
+			<div class="row">
+			<form class="form-signin" name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
+				<div id="inner-left" class="col-lg-6">
+				<p class="lead">
+					<input type="text" name="Train" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus>
+					<div id="pnr_error" style="color:red"></div>
+					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required>
+					<div id="Date_error" style="color:red"></div>
+					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
+					<div id="Date_error" style="color:red"></div>
+					<input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required>
+					<div id="From_error" style="color:red"></div>
+					<input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required>
+					<div id="To_error" style="color:red"></div>
+					</ul>
+					<ul id="class-input-list">
+						<li>Class :</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC">1-AC</li> 
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL">SL</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen">Gen</li>
+					</ul>
+					<div id="Class_error" style="color:red"></div>
+				</p>
+				</div>
+				<div id="inner-right" class="col-lg-6">
+				<p class="lead">
+					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none"></textarea> 
+					<div id="Comments_error" style="color:red"></div>
+				</p>
+				</div>
+				<div id="buttons-control" class="col-lg-14">
+				<ul id="submit-buuton-input-list">
+					<li><INPUT TYPE="SUBMIT" VALUE="Submit" class="btn btn-lg btn-success"></li>
+					<li><INPUT TYPE="RESET" VALUE="Reset" class="btn btn-lg btn-success"></li>
+				</ul>
+				</div>
+			</form>
+			</div>
+          </div>
 
+          <div class="mastfoot">
+            <div class="inner">
+              <p></p>
+            </div>
+          </div>
 
+        </div>
 
-<form name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
+      </div>
 
-<table class=".bordered">
-
-<tr>
-    	<td></td>
-    	<td><div id="error" style="color:red"></div></td>
-</tr>
-
-<tr>
-	<td>Date Of Journey :</td>
-	<td><INPUT TYPE="TEXT" id='datepicker' NAME="DOJ" SIZE="20"></td>
-	<td><div id="Date_error" style="color:red"></div></td>
-	
-</tr>
-
-<tr>
-	<td>Train  :</td>
-	<%-- <td>
-	<select name="Train" id="Train" style="width:200px !important;" tabindex="1">
-	
-	<option value=""></option>
-		<c:forEach items="${trainlist}" var="d1" >
-       			<option value="<c:out value="${d1}"></c:out>"><c:out value="${d1}"></c:out></option>
-		</c:forEach>
-    </select>
-    </td> --%>
-	<td><div><INPUT TYPE="TEXT" id="autocomplete1" NAME="Train" SIZE="20"></div></td>
-	<td><div id="Train_error" style="color:red"></div></td>
-	
-</tr>
-
-<tr>
-	<td>From  :</td>
-	<td><INPUT TYPE="TEXT" id="autocomplete2" NAME="From" SIZE="20"></td>
-	<td><div id="From_error" style="color:red"></div></td>
-	
-</tr>
-
-<tr>
-	<td>To  :</td>
-	<td><INPUT TYPE="TEXT" id="autocomplete3" NAME="To" SIZE="20"></td>
-	<td><div id="To_error" style="color:red"></div></td>
-	
-</tr>
-
-
-<tr> 
-<td>Class :</td> 
-<tr>
-
-	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="1-AC">1-AC </td>
-	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC </td>
-	<td><div id="Class_error" style="color:red"></div></td>
-</tr>
-
-<tr>
-	
-	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC </td>
-	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="SL">SL </td>
-	<td><INPUT TYPE="RADIO" NAME="classes" VALUE="Gen">Gen </td>
-
-
-<tr>
-
-<td>Comments :</td>
-<td><textarea NAME="comments" style="resize:none"></textarea> </td>
-<td><div id="Comments_error" style="color:red"></div></td>
-</tr>
-<tr>
-
-<td><INPUT TYPE="SUBMIT" VALUE="Submit"></td>
-<td><INPUT TYPE="RESET" VALUE="Reset"></td>
-
-</tr>
-
-</table> 
-</form>
-
-
-<table>
-<tr>
-<td>
-<form action='DisplayAllController' method='post'>
-
-<input type="submit" value="Show My data">
-
-</form>
-</td>
-<td>
-<form action='DisplayLocationController' method='post'>
-
-<input type="submit" value="Show Location">
-
-</form>
-</td>
-<td>
-<form action='DisplayStatisticsController' method='post'>
-
-<input type="submit" value="Show Stats">
-
-</form>
-</td>
-</tr>
-</table>
+    </div>
 </body>
 
 
