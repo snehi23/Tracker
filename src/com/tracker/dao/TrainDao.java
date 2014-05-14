@@ -18,7 +18,7 @@ public class TrainDao {
         PreparedStatement prep = null;
         ResultSet rs = null;
         
-        
+        System.out.println(train);
         String connectionURL= "jdbc:mysql://localhost:3306/train_journey";
         String uname= "root";
         String pwd= "root";
@@ -27,12 +27,13 @@ public class TrainDao {
 			DBConnectionManager dbconnmng = new DBConnectionManager(connectionURL, uname, pwd);
 			
 			Connection conn	= dbconnmng.getConnection();
-			String query = "select distinct Train from tracker where Train LIKE '%"
+			String query = "select Train_Name from train_number_name where Train_Name LIKE '%"
                     + train + "%'";
 			prep = conn.prepareStatement(query);
 			rs = prep.executeQuery();
 			while (rs.next()) {
-				trains.add(rs.getString("Train"));
+				trains.add(rs.getString("Train_Name"));
+				
 			}
 			
 			rs.close();
