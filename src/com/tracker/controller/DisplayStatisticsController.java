@@ -7,8 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -25,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
+import com.tracker.model.StationLocation;
+import com.tracker.model.StationLocationPlot;
 import com.tracker.util.DBConnectionManager;
 
 
@@ -39,6 +43,9 @@ public class DisplayStatisticsController extends HttpServlet {
 		Map<String,Integer> group_by_year = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_month = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_day = new LinkedHashMap<String,Integer>();
+		
+		List<StationLocation> station_loc_list = new ArrayList<StationLocation>();
+		List<StationLocationPlot> station_loc_plot = new ArrayList<StationLocationPlot>();
 		
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
@@ -179,6 +186,46 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs7.close();
         	conn.commit();
         	
+        	
+        	String sql8 = "select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'"+"union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'";
+        	
+        	ResultSet rs8 = stmt.executeQuery(sql8);
+        	     	
+        	while(rs8.next()) {
+
+        		StationLocation d = new StationLocation();
+        		d.setStation_lat_long_id(rs8.getInt("station_lat_long_id"));
+        		d.setStation_code(rs8.getString("From_Station"));
+        		d.setStation_name(rs8.getString("station_name"));
+        		d.setLatitude(rs8.getDouble("latitude"));
+        		d.setLongitude(rs8.getDouble("longitude"));
+        		station_loc_list.add(d);        		
+        	}
+        	
+        	   
+            request.setAttribute("station_loc_list", station_loc_list);
+            
+        	rs8.close();
+        	conn.commit();
+        	
+        	String sql9 = "select distinct s1.latitude,s1.longitude,s2.latitude,s2.longitude from tracker t inner join station_lat_long s1 on t.From_Station=s1.station_code and t.user_id= "+"'"+userid+"'"+" inner join station_lat_long s2 on t.To_Station=s2.station_code and t.user_id= "+"'"+userid+"'";
+        	
+        	ResultSet rs9 = stmt.executeQuery(sql9);
+        	
+        	while(rs9.next()) {
+        		
+        		StationLocationPlot d = new StationLocationPlot();
+        		d.setFrom_latitude(rs9.getDouble(1));
+        		d.setFrom_longitude(rs9.getDouble(2));
+        		d.setTo_latitude(rs9.getDouble(3));
+        		d.setTo_longitude(rs9.getDouble(4));
+        		station_loc_plot.add(d);		
+        	}
+        	
+        	request.setAttribute("station_loc_plot",station_loc_plot);
+        	
+        	      	
+        	rs9.close();
         	conn.close();
         	
         	rd = request.getRequestDispatcher("/displaystatistics.jsp");
@@ -194,9 +241,7 @@ public class DisplayStatisticsController extends HttpServlet {
         {
         	System.out.println(E1.getMessage());
         } 
-                
-           
-            
+        
         rd.forward(request, response);
     }
 

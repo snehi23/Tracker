@@ -203,7 +203,7 @@ function validateForm() {
                 <li class="active"><a href="#">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
                 <li><a href="DisplayStatisticsController">Statistics</a></li>
-                <li><a href="DisplayLocationController">Locations</a></li>
+                <!-- <li><a href="DisplayLocationController">Locations</a></li> -->
                 <li><a href="LogoutController">LogOut</a></li>
                 <li><a href="#"><form action='RefreshLocationController' method='post'>
 					<input  style="background-image: url(img/refresh.png); background-color: transparent;
