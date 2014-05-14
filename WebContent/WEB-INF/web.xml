@@ -99,4 +99,14 @@
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/LogoutController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FilterController</display-name>
+    <servlet-name>FilterController</servlet-name>
+    <servlet-class>com.tracker.controller.FilterController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilterController</servlet-name>
+    <url-pattern>/FilterController</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -45,13 +45,13 @@ function validateLogin()
 </head>
 <body>
 
- <form class="form-signin" role="form" name="loginform" action="LoginController" method="post" onsubmit="return validateLogin()">
+ <form class="form-signin" role="form" name="loginform" action="LoginController" method="post" >
 	<h2 class="form-signin-heading"><a id="sign-up" href="register.jsp">Sign up,it's free</a></h2>
 	<div id="error" style="color:red"></div></td>
-	<input type="text" name="user" maxlength="30" class="form-control" placeholder="Username" required autofocus>
-	<input type="password" name="pass" maxlength="30" class="form-control" placeholder="Password" required>
+	<input type="text" name="user" maxlength="30" class="form-control" placeholder="Username"  autofocus>
+	<input type="password" name="pass" maxlength="30" class="form-control" placeholder="Password" >
 	<label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" name="remember" value="true"> Remember me
     </label>
 	<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Login">Sign in</button>
 </form>
