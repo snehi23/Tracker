@@ -1,5 +1,6 @@
 package com.tracker.dao;
 
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
+import com.tracker.model.TrainDetails;
 import com.tracker.util.DBConnectionManager;
 
 public class TrainDao {
 	
-	public List<String> getTrain(String train){
+	public List<TrainDetails> getTrain(String train){
 
-        List<String> trains = new ArrayList<String>();
+        List<TrainDetails>  trainDetails = new ArrayList<TrainDetails>();
         PreparedStatement prep = null;
         ResultSet rs = null;
         
@@ -27,14 +31,21 @@ public class TrainDao {
 			DBConnectionManager dbconnmng = new DBConnectionManager(connectionURL, uname, pwd);
 			
 			Connection conn	= dbconnmng.getConnection();
-			String query = "select distinct Train_Name from train_number_name where Train_Name LIKE '%"
+			String query = "select Train_Name,Train_Number from train_number_name where Train_Name LIKE '%"
                     + train + "%'";
 			prep = conn.prepareStatement(query);
 			rs = prep.executeQuery();
 			while (rs.next()) {
-				trains.add(rs.getString("Train_Name"));
 				
+				TrainDetails d = new TrainDetails();
+				d.setTrain_Name(rs.getString("Train_Name"));
+				d.setTrain_Number(rs.getInt("Train_Number"));
+
+				trainDetails.add(d);
+
 			}
+			
+			
 			
 			rs.close();
 			conn.close();
@@ -45,7 +56,7 @@ public class TrainDao {
 			
 		}
         
-        return trains;
+        return trainDetails;
 }
 
 }
