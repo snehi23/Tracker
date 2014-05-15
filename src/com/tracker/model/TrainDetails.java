@@ -3,8 +3,8 @@ package com.tracker.model;
 
 public class TrainDetails {
 	
-	Integer Train_Number;
-	String Train_Name;
+	private Integer Train_Number;
+	private String Train_Name;
 	
 	public Integer getTrain_Number() {
 		return Train_Number;
@@ -19,6 +19,5 @@ public class TrainDetails {
 		Train_Name = train_Name;
 	}
 	
-
-
+	
 }

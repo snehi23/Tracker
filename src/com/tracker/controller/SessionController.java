@@ -53,7 +53,9 @@ public class SessionController extends HttpServlet {
 			
 		}
 
-        /*String user = (String)session.getAttribute("userid");*/
+        String user = (String)session.getAttribute("userid");
+        
+        if(user!=null) {
 
         String uuid = getCookieValue(request, "remember");
 		
@@ -61,10 +63,10 @@ public class SessionController extends HttpServlet {
 		
         		if(uuid!=null) {
 			
-        					String user = rememberDao.find(uuid);
+        					user = rememberDao.find(uuid);
         					System.out.println("user fetch from Dao"+user);
 			
-        		if(user!=null) {	
+        					if(user!=null) {	
 				
         					session.setAttribute("userid", user);
         					rd = request.getRequestDispatcher("/success.jsp");
@@ -79,6 +81,11 @@ public class SessionController extends HttpServlet {
         			
         					rd = request.getRequestDispatcher("/login.jsp");
         		}
+        		
+        } else {
+        	
+        	rd = request.getRequestDispatcher("/login.jsp");
+        }
 
         	rd.forward(request, response);
         	

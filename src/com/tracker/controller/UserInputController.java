@@ -31,12 +31,11 @@ public class UserInputController extends HttpServlet {
 		
         String username = request.getParameter("username");
         String doj = request.getParameter("DOJ");
-        String Train = request.getParameter("Train");
+        String Train = (String)request.getParameter("Train");
         String From = request.getParameter("From");
         String To = request.getParameter("To");
         String Classes = request.getParameter("classes");
         String Comments = request.getParameter("comments");
-        
         
         System.out.println(" "+username+" "+doj+" "+Train+" "+From+" "+To+" "+Classes+" "+Comments);
         
@@ -69,7 +68,7 @@ public class UserInputController extends HttpServlet {
         	PreparedStatement prep = conn.prepareStatement(sql);
         	prep.setInt(1, 0);
         	prep.setString(2, doj); 	
-        	prep.setString(3, Train);
+        	prep.setString(3, Train.replaceAll("\\P{L}", " ").trim());
         	prep.setString(4, From);
         	prep.setString(5, To);
         	prep.setString(6, Classes);

@@ -7,32 +7,19 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
 <%
-
-session = request.getSession(true);
 String trainName = request.getParameter("q");
 List<TrainDetails> trainDetails = new TrainDao().getTrain(trainName);
-/* Iterator<String> iterator = trains.iterator();
+
+			Iterator<TrainDetails> iterator = trainDetails.iterator();
 			
             while(iterator.hasNext()) {
-                        String train= (String)iterator.next();
-                                               
-                        System.out.println(train);
-                        System.out.println("<BR>");
+            	TrainDetails t = iterator.next();
+            	String train_Name = t.getTrain_Name();
+            	Integer train_Number = t.getTrain_Number();
+                        out.println(train_Name+"("+train_Number+")");
+                        out.println("<BR>");
                         
-            } */
-          
-            for(TrainDetails d : trainDetails) {
-				System.out.println(d.getTrain_Name()+" "+d.getTrain_Number());
-			}
-            
-           /*  pageContext.setAttribute("trainDetails", trainDetails); */       
-            
-            session.setAttribute("trainDetails", trainDetails);
+            }
+       
+       
 %>
-
-
-<c:forEach items="${trainDetails}" var="d1" > 
-
-    <c:out value="${d1.Train_Name}"></c:out>
-  
-</c:forEach>

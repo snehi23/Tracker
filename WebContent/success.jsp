@@ -238,7 +238,7 @@ function nobacktrack() {
 			<form class="form-signin" name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
 				<div id="inner-left" class="col-lg-6">
 				<p class="lead">
-					<input type="text" name="Train" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus>
+					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus>
 					<div id="pnr_error" style="color:red"></div>
 					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required>
 					<div id="Date_error" style="color:red"></div>
