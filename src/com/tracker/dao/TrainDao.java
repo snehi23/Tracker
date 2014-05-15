@@ -27,7 +27,7 @@ public class TrainDao {
 			DBConnectionManager dbconnmng = new DBConnectionManager(connectionURL, uname, pwd);
 			
 			Connection conn	= dbconnmng.getConnection();
-			String query = "select Train_Name from train_number_name where Train_Name LIKE '%"
+			String query = "select distinct Train_Name from train_number_name where Train_Name LIKE '%"
                     + train + "%'";
 			prep = conn.prepareStatement(query);
 			rs = prep.executeQuery();

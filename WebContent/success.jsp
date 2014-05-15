@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="pragma"        content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-store" />
+
+
 <title>Success</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/traveldataentry.css" rel="stylesheet">
@@ -184,11 +189,16 @@ function validateForm() {
 	
 }
 
+function nobacktrack() {
+	
+	history.forward();
+}
+
   
 </script>
 
 </head>
-<body>
+<body onload="nobacktrack();">
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">

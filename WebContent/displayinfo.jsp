@@ -8,6 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="pragma"        content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-store" />
+
 <link rel="stylesheet" type="text/css" href="css/simplePagination.css">
 <link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>

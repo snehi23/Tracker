@@ -14,7 +14,7 @@ public class rememberDao {
 	
 	public static void save(String uuid, String user){
 
-        List<SessionUser> sessionUser = new ArrayList<SessionUser>();
+        /*List<SessionUser> sessionUser = new ArrayList<SessionUser>();*/
         
         String connectionURL= "jdbc:mysql://localhost:3306/train_journey";
         String uname= "root";
