@@ -118,7 +118,7 @@
             title: 'My Yearly Stats'
           };
 
-          var chart = new google.visualization.BarChart(document.getElementById('bargraph1'));
+          var chart = new google.visualization.LineChart(document.getElementById('bargraph1'));
           chart.draw(data, options);
         }
       
@@ -137,7 +137,7 @@
             title: 'My Monthly Stats'
           };
 
-          var chart = new google.visualization.BarChart(document.getElementById('bargraph2'));
+          var chart = new google.visualization.ColumnChart(document.getElementById('bargraph2'));
           chart.draw(data, options);
         }
       
@@ -156,7 +156,7 @@
             title: 'My Daily Stats'
           };
 
-          var chart = new google.visualization.BarChart(document.getElementById('bargraph3'));
+          var chart = new google.visualization.ColumnChart(document.getElementById('bargraph3'));
           chart.draw(data, options);
         }
       

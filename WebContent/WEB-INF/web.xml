@@ -119,4 +119,14 @@
     <servlet-name>SessionController</servlet-name>
     <url-pattern>/SessionController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteRecordController</display-name>
+    <servlet-name>DeleteRecordController</servlet-name>
+    <servlet-class>com.tracker.controller.DeleteRecordController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteRecordController</servlet-name>
+    <url-pattern>/DeleteRecordController</url-pattern>
+  </servlet-mapping>
 </web-app>

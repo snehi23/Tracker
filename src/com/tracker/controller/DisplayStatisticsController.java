@@ -136,7 +136,7 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs4.close();
         	conn.commit();
         	
-        	String sql5 = "select (select year(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select year(DOJ)) order by all_from desc";
+        	String sql5 = "select (select year(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select year(DOJ)) order by (select year(DOJ))";
        	 	ResultSet rs5 = stmt.executeQuery(sql5);
         	
        	 	while(rs5.next()) {
@@ -151,7 +151,7 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs5.close();
         	conn.commit();
         	
-        	String sql6 = "select (select monthname(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select monthname(DOJ)) order by all_from desc";
+        	String sql6 = "select (select monthname(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select monthname(DOJ)) order by (select month(DOJ))";
        	 	ResultSet rs6 = stmt.executeQuery(sql6);
         	
        	 	while(rs6.next()) {
@@ -166,7 +166,7 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs6.close();
         	conn.commit();
         	
-        	String sql7 = "select (select dayname(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select dayname(DOJ)) order by all_from desc";
+        	String sql7 = "select (select dayname(DOJ)), count(*) as all_from from tracker where user_id ="+"'"+userid+"'"+"group by (select dayname(DOJ)) order by (select dayofweek(DOJ))";
        	 	ResultSet rs7= stmt.executeQuery(sql7);
         	
        	 	while(rs7.next()) {

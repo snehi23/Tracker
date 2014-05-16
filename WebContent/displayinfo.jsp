@@ -167,15 +167,23 @@
 
           <div class="inner cover" id="records">
             <h1 class="cover-heading">Displaying <c:out value="${fn:length(details_list)}"/> results</h1>
+			
 			<div id="accordion" > <!-- TODO: 1. Retaining formatting of text in comments 2. Adding link to delete the record -->
 				<c:forEach items="${details_list}" var="d1" varStatus="status">
 				<ul class="record_heading">
 					<li><h3>Journey on <c:out value="${d1.DOJ}"/></h3></li>
-					<li><h3><c:out value="${d1.train}"/></h3>
+					<li><h3><c:out value="${d1.train}"/></h3></li>
+					
+					
 				</ul>
-				<div class="comments"><p> <c:out value="${d1.comments}"></c:out> </p></div>					 
+				<div class="comments"><p> <c:out value="${d1.comments}"></c:out> </p>
+				
+				<a href="DeleteRecordController?doj=<c:out value="${d1.DOJ}"/>">Delete Journey</a>
+				</div>					 
 				</c:forEach>
 			</div>
+			
+			
           </div>
 
           <div class="mastfoot">
