@@ -25,6 +25,7 @@
       google.setOnLoadCallback(drawChart5);
       google.setOnLoadCallback(drawChart6);
       google.setOnLoadCallback(drawChart7);
+      google.setOnLoadCallback(drawChart8);
       
       function drawChart1() {
         
@@ -126,18 +127,23 @@
           var data = new google.visualization.DataTable();
           data.addColumn('string','Month');
           data.addColumn('number','Count');
+          
           <c:forEach items="${group_by_month_list}" var="d1" > 
           
             data.addRow(['<c:out value="${d1.key}"></c:out>',<c:out value="${d1.value}"></c:out>]);
             
         	</c:forEach>
-          
-          
-          var options = {
-            title: 'My Monthly Stats'
+ 	
+        	var options = {
+            title: 'My Monthly Stats',
+            width:600,
+            height:400,
+            bar: {groupWidth: "50%"},
+            legend: { position: "none" },
           };
 
           var chart = new google.visualization.ColumnChart(document.getElementById('bargraph2'));
+          
           chart.draw(data, options);
         }
       
@@ -153,25 +159,37 @@
           
           
           var options = {
-            title: 'My Daily Stats'
+            title: 'My Daily Stats',
+            width:600,
+            height:400,
+            bar: {groupWidth: "50%"},
+            legend: { position: "none" },
           };
 
           var chart = new google.visualization.ColumnChart(document.getElementById('bargraph3'));
           chart.draw(data, options);
         }
       
-      $(document).ready(function() 
-    		    { 
-    		        $("#myTable1").tablesorter();
-    		        $("#myTable2").tablesorter();
-    		        $("#myTable3").tablesorter();
-    		        $("#myTable4").tablesorter();
-    		        $("#myTable5").tablesorter();
-    		        $("#myTable6").tablesorter();
-    		        $("#myTable7").tablesorter();
-    		        
-    		    } 
-    		);
+      function drawChart8() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string','Type');
+          data.addColumn('number','Count');
+          <c:forEach items="${group_by_type}" var="d1" > 
+          
+            data.addRow(['<c:out value="${d1.key}"></c:out>',<c:out value="${d1.value}"></c:out>]);
+            
+        	</c:forEach>
+          
+          
+          var options = {
+            title: 'My Type Preferences'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+          chart.draw(data, options);
+        }
+      
+      
     </script>   
 </head>
 <body>
@@ -207,9 +225,11 @@
             </div>
           </div>
 
+ 		  
           <div class="inner cover">
+          <h5 class="masthead-brand">You travelled total <b style="color: #336699;"><c:out value="${total_distance}"/></b> kms !!!</h5>
 			<div class="row">
-				<div  id="map-canvas" style="width: 100%; height: 500px;"> </div>
+				<div  id="map-canvas" style="width: 80%; height: 500px;"> </div>
 			</div>
             <div class="row">
 				<div id="inner-left" class="col-lg-6">
@@ -228,14 +248,23 @@
 				</div>
 			</div>
 			<div class="row">
+				<div id="inner-left" class="col-lg-6">
+					<div id="piechart5" style="width: 100%; height: 500px;"></div>
+				</div>
+				<div id="inner-right" class="col-lg-6">
+					<div id="piechart6" style="width: 100%; height: 500px;"></div>
+				</div>
+			</div>
+			<div class="row">
 				<div id="bargraph1" style="width: 100%; height: 500px"></div>	
 			</div>
 			<div class="row">
-				<div id="bargraph2" style="width: 100%; height: 500px"></div>
-			</div>
-			<div class="row">
-				<div id="bargraph3" style="width: 100%; height: 500px"></div> 
-			</div>
+				<div id="inner-left" class="col-lg-6">
+					<div id="bargraph2" style="width: 100%; height: 500px"></div>
+				</div>
+				<div id="inner-right" class="col-lg-6">
+					<div id="bargraph3" style="width: 100%; height: 500px"></div> 
+				</div>
           </div>
 
           <div class="mastfoot">

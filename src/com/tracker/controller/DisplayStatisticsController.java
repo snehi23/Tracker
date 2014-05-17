@@ -40,6 +40,7 @@ public class DisplayStatisticsController extends HttpServlet {
 		Map<String,Integer> group_by_from_station = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_to_station = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_class = new HashMap<String,Integer>();
+		Map<String,Integer> group_by_type = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_year = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_month = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_day = new LinkedHashMap<String,Integer>();
@@ -49,6 +50,7 @@ public class DisplayStatisticsController extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
+		Double dist = 0.0;
         
         ServletContext ctx=getServletContext();
         
@@ -226,6 +228,52 @@ public class DisplayStatisticsController extends HttpServlet {
         	
         	      	
         	rs9.close();
+        	conn.commit();
+        	
+        	String sql10 = "select s1.latitude,s1.longitude,s2.latitude,s2.longitude from tracker t inner join station_lat_long s1 on t.From_Station=s1.station_code and t.user_id= "+"'"+userid+"'"+" inner join station_lat_long s2 on t.To_Station=s2.station_code and t.user_id= "+"'"+userid+"'";
+        	
+        	ResultSet rs10 = stmt.executeQuery(sql10);
+        	
+        	while(rs10.next()) {
+        		
+        		dist = dist + distance(rs10.getDouble(1), rs10.getDouble(2), rs10.getDouble(3), rs10.getDouble(4));
+        		
+        	}
+        	
+        	System.out.println(Math.floor(dist));
+        	
+        	request.setAttribute("total_distance",Math.floor(dist));
+        	
+        	      	
+        	rs10.close();
+        	conn.commit();
+        	
+        	String sql11 = "select  T_type.Train_Type,count(*) from tracker inner join (select distinct Train_Name,Train_Type from train_number_name_type) as T_type where tracker.Train = T_type.Train_Name and tracker.user_id=  "+"'"+userid+"'"+" group by T_type.Train_Type;";
+        	
+        	ResultSet rs11 = stmt.executeQuery(sql11);
+        	
+        	while(rs11.next()) {
+        		
+        		group_by_type.put(rs11.getString(1), rs11.getInt(2));
+        		
+        	}
+        	
+        	for(Map.Entry<String,Integer> a : group_by_type.entrySet()) {
+         		System.out.println(a.getKey());
+         		System.out.println(a.getValue());
+         		
+        	}	
+     
+        	
+        	request.setAttribute("group_by_type",group_by_type);
+        	
+        	      	
+        	rs11.close();
+        	conn.commit();
+        	
+        	
+        	
+        	
         	conn.close();
         	
         	rd = request.getRequestDispatcher("/displaystatistics.jsp");
@@ -244,6 +292,35 @@ public class DisplayStatisticsController extends HttpServlet {
         
         rd.forward(request, response);
     }
+	
+	public double distance(double lat1, double lon1, double lat2, double lon2) {
+		  double theta = lon1 - lon2;
+	
+		  double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+	
+		  dist = Math.acos(dist);
+	
+		  dist = rad2deg(dist);
+	
+		  dist = dist * 60 * 1.1515;
+	
+		  dist = dist * 1.609344;
+	
+		  return (dist);
+		
+		}
+	
+	public double rad2deg(double rad) {
+	
+		  return (rad * 180 / Math.PI);
+	
+		}
+
+	public double deg2rad(double deg) {
+			
+			  return (deg * Math.PI / 180.0);
+		
+		}
 
 
 }

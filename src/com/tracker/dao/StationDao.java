@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tracker.model.StationDetails;
 import com.tracker.util.DBConnectionManager;
 
 public class StationDao {
 	
-	public List<String> getStation(String station){
+	public List<StationDetails> getStation(String station){
 
-        List<String> stations = new ArrayList<String>();
+        List<StationDetails> stationDetails = new ArrayList<StationDetails>();
         PreparedStatement prep = null;
         ResultSet rs = null;
-        
-        
+       
         String connectionURL= "jdbc:mysql://localhost:3306/train_journey";
         String uname= "root";
         String pwd= "root";
@@ -26,12 +26,17 @@ public class StationDao {
 			DBConnectionManager dbconnmng = new DBConnectionManager(connectionURL, uname, pwd);
 			
 			Connection conn	= dbconnmng.getConnection();
-			String query = "select distinct Station_Code from station_code where Station_Code LIKE '%"
-                    + station + "%'";
+			String query = "select Station_Name,Station_Code from station_code where Station_Name like '%"+station+"%' union select Station_Name,Station_Code from station_code where Station_Code like '%"+station+"%'";
+			System.out.println(query);
 			prep = conn.prepareStatement(query);
 			rs = prep.executeQuery();
 			while (rs.next()) {
-				stations.add(rs.getString("Station_Code"));
+				
+				StationDetails d = new StationDetails();
+				d.setStation_Name(rs.getString("Station_Name"));
+				d.setStation_Code(rs.getString("Station_Code"));
+				stationDetails.add(d);
+				
 			}
 			
 			rs.close();
@@ -43,7 +48,7 @@ public class StationDao {
 			
 		}
         
-        return stations;
+        return stationDetails;
 }
 
 }

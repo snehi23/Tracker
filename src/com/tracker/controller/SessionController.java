@@ -72,14 +72,14 @@ public class SessionController extends HttpServlet {
         					rd = request.getRequestDispatcher("/success.jsp");
         					addCookie(response, "remember", uuid, 2592000);
 
-        		} else {
+        					} else {
 							removeCookie(response, "remember");
 							rd = request.getRequestDispatcher("/login.jsp");
-        		}
+        					}
         		
         		} else {
         			
-        					rd = request.getRequestDispatcher("/login.jsp");
+        			rd = request.getRequestDispatcher("/login.jsp");
         		}
         		
         } else {

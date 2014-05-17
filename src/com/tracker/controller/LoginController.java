@@ -104,9 +104,6 @@ import com.tracker.util.DBConnectionManager;
             	conn.commit();
         		
         	}
-        	
-        	//conn.close();
-   
         	conn.commit();
         	conn.close();
 	
@@ -139,35 +136,15 @@ import com.tracker.util.DBConnectionManager;
         				rd = request.getRequestDispatcher("/success.jsp");
         				
         		
-        			} else {
-        		
-        				rd = request.getRequestDispatcher("/error.jsp");
-        				
-        			} } else {
-        				
-        				String uuid = getCookieValue(request, "remember");
-        				
-        				System.out.println("uuid in else"+uuid);
-        				
-        				if(uuid!=null) {
-        					
-        					String user = rememberDao.find(uuid);
-        					System.out.println("user fetch from Dao"+user);
-        					
-        					if(user!=null) {	
-        						
-        						session.setAttribute("userid", user);
-        						rd = request.getRequestDispatcher("/success.jsp");
-        						addCookie(response, "remember", uuid, 2592000);
-	
-        					} else {
-        						removeCookie(response, "remember");
-        						rd = request.getRequestDispatcher("/error.jsp");
-        					}
         				} else {
         		
         				rd = request.getRequestDispatcher("/error.jsp");
-        				}
+        				
+        				} 
+        			
+        	} else {
+        				
+        		rd = request.getRequestDispatcher("/error.jsp");
         		
         	}
         	

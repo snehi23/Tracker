@@ -69,8 +69,8 @@ public class UserInputController extends HttpServlet {
         	prep.setInt(1, 0);
         	prep.setString(2, doj); 	
         	prep.setString(3, Train.replaceAll("\\P{L}", " ").trim());
-        	prep.setString(4, From);
-        	prep.setString(5, To);
+        	prep.setString(4, From.replaceAll(".*\\(", "").replaceAll("\\)", "").trim());
+        	prep.setString(5, To.replaceAll(".*\\(", "").replaceAll("\\)", "").trim());
         	prep.setString(6, Classes);
         	prep.setString(7, Comments);
         	prep.setString(8, userid);

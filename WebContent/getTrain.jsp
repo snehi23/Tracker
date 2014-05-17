@@ -17,7 +17,7 @@ List<TrainDetails> trainDetails = new TrainDao().getTrain(trainName);
             	String train_Name = t.getTrain_Name();
             	Integer train_Number = t.getTrain_Number();
                         out.println(train_Name+"("+train_Number+")");
-                        out.println("<BR>");
+                        
                         
             }
        

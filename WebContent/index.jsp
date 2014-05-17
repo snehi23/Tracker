@@ -7,6 +7,7 @@
 <meta http-equiv="pragma"        content="no-cache" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Cache-Control" content="no-store" />
+<meta http-equiv="refresh" content="0; URL=SessionController" />
 
 <title>Index Page</title>
 </head>

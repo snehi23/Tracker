@@ -1,12 +1,9 @@
 package com.tracker.controller;
 
-import com.tracker.model.FetchLatLong;
+
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,7 +61,7 @@ public class DisplayAllController extends HttpServlet {
         	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
-        	String sql = "select * from tracker where user_id ="+"'"+userid+"'";
+        	String sql = "select * from tracker where user_id ="+"'"+userid+"'"+"order by DOJ desc";
         	ps = conn.prepareStatement(sql);
         	rs = ps.executeQuery();       	
         	while(rs.next()) {
