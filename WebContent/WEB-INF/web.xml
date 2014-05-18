@@ -129,4 +129,24 @@
     <servlet-name>DeleteRecordController</servlet-name>
     <url-pattern>/DeleteRecordController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserInputEditController</display-name>
+    <servlet-name>UserInputEditController</servlet-name>
+    <servlet-class>com.tracker.controller.UserInputEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInputEditController</servlet-name>
+    <url-pattern>/UserInputEditController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserInputUpdateController</display-name>
+    <servlet-name>UserInputUpdateController</servlet-name>
+    <servlet-class>com.tracker.controller.UserInputUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInputUpdateController</servlet-name>
+    <url-pattern>/UserInputUpdateController</url-pattern>
+  </servlet-mapping>
 </web-app>

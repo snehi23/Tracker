@@ -41,6 +41,7 @@ public class DisplayStatisticsController extends HttpServlet {
 		Map<String,Integer> group_by_to_station = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_class = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_type = new HashMap<String,Integer>();
+		Map<String,Integer> group_by_berth = new HashMap<String,Integer>();
 		Map<String,Integer> group_by_year = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_month = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_day = new LinkedHashMap<String,Integer>();
@@ -257,23 +258,28 @@ public class DisplayStatisticsController extends HttpServlet {
         		group_by_type.put(rs11.getString(1), rs11.getInt(2));
         		
         	}
-        	
-        	for(Map.Entry<String,Integer> a : group_by_type.entrySet()) {
-         		System.out.println(a.getKey());
-         		System.out.println(a.getValue());
-         		
-        	}	
-     
-        	
-        	request.setAttribute("group_by_type",group_by_type);
+        	   	
+        	request.setAttribute("group_by_type_list",group_by_type);
         	
         	      	
         	rs11.close();
         	conn.commit();
         	
+        	String sql12 = "select berth, count(*) as all_berth from tracker where user_id ="+"'"+userid+"'"+"group by berth order by all_berth desc";
+       	 	ResultSet rs12 = stmt.executeQuery(sql12);
+        	
+       	 	while(rs12.next()) {
+
+         		group_by_berth.put(rs12.getString(1),rs12.getInt(2));
+        		       		
+        	}
+        	
+        	request.setAttribute("group_by_berth_list", group_by_berth);
         	
         	
-        	
+        	rs12.close();
+        	conn.commit();
+ 	
         	conn.close();
         	
         	rd = request.getRequestDispatcher("/displaystatistics.jsp");

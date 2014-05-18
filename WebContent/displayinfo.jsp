@@ -167,7 +167,7 @@
 
           <div class="inner cover" id="records">
             <h1 class="cover-heading">Displaying <c:out value="${fn:length(details_list)}"/> results</h1>
-			
+				<div id="add-another-entry"><h5>${requestScope['Record_Confirmation']}</h5></div>
 			<div id="accordion" > <!-- TODO: 1. Retaining formatting of text in comments 2. Adding link to delete the record -->
 				<c:forEach items="${details_list}" var="d1" varStatus="status">
 				<ul class="record_heading">
@@ -178,7 +178,10 @@
 				</ul>
 				<div class="comments"><p> <c:out value="${d1.comments}"></c:out> </p>
 				
-				<a href="DeleteRecordController?doj=<c:out value="${d1.DOJ}"/>">Delete Journey</a>
+				<a href="DeleteRecordController?doj=<c:out value="${d1.DOJ}"/>" onclick="return confirm('Are you sure you want to delete this journey?');">Delete Journey</a>
+				
+				<a href="UserInputEditController?doj=<c:out value="${d1.DOJ}"/>&train=<c:out value="${d1.train}"/>">Edit Journey</a>
+				
 				</div>					 
 				</c:forEach>
 			</div>

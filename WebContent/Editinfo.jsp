@@ -169,8 +169,8 @@ function nobacktrack() {
             <div class="inner">
               <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
               <ul class="nav masthead-nav">
-                <!-- <li><a href="#">Home</a></li> -->
-                <li class="active"><a href="#">Add a Journey</a></li>
+                <li><a href="#">Home</a></li>
+                <li class="active"><a href="success.jsp">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
                 <li><a href="DisplayStatisticsController">Statistics</a></li>
                 <!-- <li><a href="DisplayLocationController">Locations</a></li> -->
@@ -192,39 +192,39 @@ function nobacktrack() {
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Enter Your Journey Details</h1>
+            <h1 class="cover-heading">Update Your Journey Details</h1>
             <div id="add-another-entry"><h5>${requestScope['Record_Confirmation']}</h5></div>
 			<div class="row">
-			<form class="form-signin" name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
+			<form class="form-signin" name="form" action="UserInputUpdateController" METHOD="post" onsubmit="return validateForm()">
 				<div id="inner-left" class="col-lg-6">
 				<p class="lead">
 					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
 					<div id="pnr_error" style="color:red"></div>
-					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required >
+					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}">
 					<div id="Date_error" style="color:red"></div>
-					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
+					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
 					<div id="Date_error" style="color:red"></div>
-					<input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required>
+					<input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required value="${details.from_Station}">
 					<div id="From_error" style="color:red"></div>
-					<input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required>
+					<input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required value="${details.to_Station}">
 					<div id="To_error" style="color:red"></div>
 					<ul id="class-input-list">
 						<li>Class :</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" checked>1-AC</li> 
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL">SL</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen">Gen</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" ${details.classes == '1-AC' ? 'checked' : ''}>1-AC</li> 
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC" ${details.classes == '2-AC' ? 'checked' : ''}>2-AC</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC" ${details.classes == '3-AC' ? 'checked' : ''}>3-AC</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL" ${details.classes == 'SL' ? 'checked' : ''}>SL</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen" ${details.classes == 'Gen' ? 'checked' : ''}>Gen</li>
 					</ul>
 					<div id="Class_error" style="color:red"></div>
 					<div>
 					<ul id="berth-input-list">
 						<li>Berth :</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" checked>LB</li> 
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB">MB</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB">UB</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL">SL</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU">SU</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" ${details.berth == 'LB' ? 'checked' : ''}>LB</li> 
+						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB" ${details.berth == 'MB' ? 'checked' : ''}>MB</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB" ${details.berth == 'UB' ? 'checked' : ''}>UB</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL" ${details.berth == 'SL' ? 'checked' : ''}>SL</li>
+						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU" ${details.berth == 'SU' ? 'checked' : ''}>SU</li>
 					</ul>
 					<div id="Berth_error" style="color:red"></div>
 					</div>
@@ -232,14 +232,14 @@ function nobacktrack() {
 				</div>
 				<div id="inner-right" class="col-lg-6">
 				<p class="lead">
-					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" required></textarea> 
+					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" required value="">${details.comments}</textarea> 
 					<div id="Comments_error" style="color:red"></div>
 				</p>
 				</div>
 				<div id="buttons-control" class="col-lg-14">
 				<ul id="submit-buuton-input-list">
 					<li><INPUT TYPE="SUBMIT" VALUE="Submit" class="btn btn-lg btn-success"></li>
-					<li><INPUT TYPE="RESET" VALUE="Reset" class="btn btn-lg btn-success"></li>
+					
 				</ul>
 				</div>
 			</form>

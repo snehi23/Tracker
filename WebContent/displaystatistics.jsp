@@ -26,6 +26,7 @@
       google.setOnLoadCallback(drawChart6);
       google.setOnLoadCallback(drawChart7);
       google.setOnLoadCallback(drawChart8);
+      google.setOnLoadCallback(drawChart9);
       
       function drawChart1() {
         
@@ -174,7 +175,7 @@
           var data = new google.visualization.DataTable();
           data.addColumn('string','Type');
           data.addColumn('number','Count');
-          <c:forEach items="${group_by_type}" var="d1" > 
+          <c:forEach items="${group_by_type_list}" var="d1" > 
           
             data.addRow(['<c:out value="${d1.key}"></c:out>',<c:out value="${d1.value}"></c:out>]);
             
@@ -186,6 +187,25 @@
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+          chart.draw(data, options);
+        }
+      
+      function drawChart9() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string','Berth');
+          data.addColumn('number','Count');
+          <c:forEach items="${group_by_berth_list}" var="d1" > 
+          
+            data.addRow(['<c:out value="${d1.key}"></c:out>',<c:out value="${d1.value}"></c:out>]);
+            
+        	</c:forEach>
+          
+          
+          var options = {
+            title: 'My Berth Preferences'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
           chart.draw(data, options);
         }
       
@@ -226,8 +246,9 @@
           </div>
 
  		  
+ 		  <h5 class="masthead-brand">You travelled total <b style="color: #336699;"><c:out value="${total_distance}"/></b> kms !!!</h5>
           <div class="inner cover">
-          <h5 class="masthead-brand">You travelled total <b style="color: #336699;"><c:out value="${total_distance}"/></b> kms !!!</h5>
+          
 			<div class="row">
 				<div  id="map-canvas" style="width: 80%; height: 500px;"> </div>
 			</div>

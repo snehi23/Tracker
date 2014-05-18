@@ -75,6 +75,8 @@ public class DeleteRecordController extends HttpServlet {
   
         RequestDispatcher rd = null;
         rd = request.getRequestDispatcher("/DisplayAllController");
+        
+        request.setAttribute("Record_Confirmation", "Journey Deleted Successfully !!!");
             
             
         rd.forward(request, response);

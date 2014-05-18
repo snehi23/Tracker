@@ -8,8 +8,15 @@ public class Details {
 	String from_Station;
 	String to_Station;
 	String classes;
+	String berth;
 	String comments;
-	
+
+	public String getBerth() {
+		return berth;
+	}
+	public void setBerth(String berth) {
+		this.berth = berth;
+	}
 	public int getTrain_journey_id() {
 		return train_journey_id;
 	}
@@ -53,8 +60,5 @@ public class Details {
 		this.comments = comments;
 	}
 	
-	
-	
-		
 
 }
