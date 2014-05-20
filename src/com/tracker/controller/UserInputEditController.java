@@ -28,8 +28,8 @@ public class UserInputEditController extends HttpServlet {
         HttpSession session = request.getSession(true);
         RequestDispatcher rd = null;
       
-        String doj = request.getParameter("doj");
-        String train = request.getParameter("train");
+    	String temp = request.getParameter("recordid");
+       	Integer train_journey_id = Integer.parseInt(temp);
    
         ServletContext ctx=getServletContext();
         PreparedStatement ps = null;
@@ -55,12 +55,10 @@ public class UserInputEditController extends HttpServlet {
         	
         	if(session.getAttribute("userid")!=null) {
         		
-            	String userid = (String) session.getAttribute("userid");	
-            	
         	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
-        	String sql = "select * from tracker where user_id ="+"'"+userid+"'"+" and DOJ ="+"'"+doj+"'"+"and Train="+"'"+train+"'";
+        	String sql = "select * from tracker where train_journey_id ="+"'"+train_journey_id+"'";
         	ps = conn.prepareStatement(sql);
         	rs = ps.executeQuery();
         	

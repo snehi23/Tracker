@@ -30,9 +30,11 @@ public class DeleteRecordController extends HttpServlet {
    
     	Connection conn = null;
     	HttpSession session = request.getSession(true);
-       	String doj = request.getParameter("doj");
+    	
+       	String temp = request.getParameter("recordid");
+       	Integer train_journey_id = Integer.parseInt(temp);
    
-        System.out.println(doj);
+        System.out.println(train_journey_id);
        
         ServletContext ctx=getServletContext();
         
@@ -59,10 +61,9 @@ public class DeleteRecordController extends HttpServlet {
         	
         	conn = (Connection) ctx.getAttribute("DBConnection");
         	conn.setAutoCommit(false);
-        	String sql= "delete from tracker where user_id=? and DOJ=?";
+        	String sql= "delete from tracker where train_journey_id=?";
         	PreparedStatement prep = conn.prepareStatement(sql);
-        	prep.setString(1, userid);
-        	prep.setString(2, doj);
+        	prep.setInt(1, train_journey_id);
         	prep.executeUpdate(); 	
         	prep.close();
         	conn.commit();
