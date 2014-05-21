@@ -249,7 +249,7 @@ public class DisplayStatisticsController extends HttpServlet {
         	rs10.close();
         	conn.commit();
         	
-        	String sql11 = "select  T_type.Train_Type,count(*) from tracker inner join (select distinct Train_Name,Train_Type from train_number_name_type) as T_type where tracker.Train = T_type.Train_Name and tracker.user_id=  "+"'"+userid+"'"+" group by T_type.Train_Type;";
+        	String sql11 = "select  T_type.Train_Type,count(*) from tracker inner join (select distinct Train_Name,Train_Type from train_number_name_type_route) as T_type where tracker.Train = T_type.Train_Name and tracker.user_id=  "+"'"+userid+"'"+" group by T_type.Train_Type;";
         	
         	ResultSet rs11 = stmt.executeQuery(sql11);
         	
