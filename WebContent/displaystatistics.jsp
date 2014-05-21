@@ -316,6 +316,7 @@
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), {
   	zoom: 4,
+  	scrollwheel:false,
   	center: new google.maps.LatLng(24.730852, 79.278573),
   	mapTypeId: google.maps.MapTypeId.ROADMAP
 	});

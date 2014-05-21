@@ -32,7 +32,7 @@
 			</p>
             <p class="lead">
               <a href="#" class="btn btn-lg btn-default">About Us</a>
-              <a href="login.jsp" class="btn btn-lg btn-default">Sign In</a>
+              <a href="SessionController" class="btn btn-lg btn-default">Sign In</a>
             </p>
           </div>
         </div>
