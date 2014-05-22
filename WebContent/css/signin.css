@@ -5,7 +5,7 @@ body {
   background-color: #eee;
   background-image:url("../img/train.jpg");
   background-size:100%;
-  background-position:right;
+  background-position:left top;
   background-repeat:no-repeat;
 }
 
