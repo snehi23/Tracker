@@ -5,18 +5,21 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <error-page>
- 	<error-code>500</error-code>
- 	<location>/internal-server-error.html</location>
+    <error-code>500</error-code>
+    <location>/internal-server-error.html</location>
   </error-page>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/page-not-found-error.html</location>
+    <error-code>404</error-code>
+    <location>/page-not-found-error.html</location>
   </error-page>
   <error-page>
-	<exception-type>java.lang.Throwable</exception-type>
-	<location>/internal-server-error.html</location>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/internal-server-error.html</location>
   </error-page>
-  
+  <error-page>
+    <error-code>405</error-code>
+    <location>/internal-server-error.html</location>
+  </error-page>
   <servlet>
     <description></description>
     <display-name>LoginController</display-name>
@@ -161,5 +164,15 @@
   <servlet-mapping>
     <servlet-name>UserInputUpdateController</servlet-name>
     <url-pattern>/UserInputUpdateController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowMapController</display-name>
+    <servlet-name>ShowMapController</servlet-name>
+    <servlet-class>com.tracker.controller.ShowMapController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowMapController</servlet-name>
+    <url-pattern>/ShowMapController</url-pattern>
   </servlet-mapping>
 </web-app>
