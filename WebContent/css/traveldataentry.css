@@ -36,6 +36,24 @@ body {
   box-shadow: inset 0 0 100px rgba(0,0,0,.5); Uncomment these to line if you want background shadow */
 }
 
+#page-not-out{
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  background-color: #eee;
+  background-image:url("../img/Arya-Stark.png");
+  background-size:100%;
+  background-position:left top;
+  background-repeat:no-repeat;
+}
+
+#page-not-out-contents{
+	position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+	
+}
 .cover-heading{
 	padding-bottom:30px;
 }
