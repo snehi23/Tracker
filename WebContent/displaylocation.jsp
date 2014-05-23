@@ -9,80 +9,68 @@
 <meta http-equiv="pragma"        content="no-cache" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Cache-Control" content="no-store" />
-
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/traveldataentry.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Tg3D8gm1S4YoqAH65i_HENA75UePGUk&sensor=false"> </script>
 
 
 <title>Map View</title>
-<style>
-
-#Thead {
-color: #0E58A0;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 12px;
-
-}
-
-#Tbody
-{
-
-border-width: 0px 0px 1px 0px;
-font-family: Arial, Helvetica, sans-serif;
-color: #2B4EB7;
-font-size: 11px;
-border-color: #2B4EB7;
-
-}
-
-.bordered {
-    border: solid #ccc 1px;
-    background-color:#FFF; 
-    box-shadow: 0 1px 1px #ccc;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    padding: 5px;
-    text-align: left;          
-}
-
-</style>
 </head>
 <body>
-<a href="success.jsp" title="Home"><img src="img/home.png" width="20" height="20" border="0"/></a><BR>
-<table>
-<tr>
-<td rowspan="2" style="text-align:left;vertical-align:top;padding:0">
-<font color="Green"> Displaying <c:out value="${fn:length(station_loc_list)}"/> results </font>
-<table id="myTable" class="bordered">
-<thead id="Thead">
-	<tr>               
-        <th>Station Code</th>
-        <th>Station Name</th>
-		<th>Latitude</th>
-		<th>Longitude</th>
-				
-    </tr>
-</thead>
-<tbody id="Tbody">
-<c:forEach items="${station_loc_list}" var="d1" > 
-  <tr> 
-    <td><c:out value="${d1.station_code}"></c:out></td>
-     <td><c:out value="${d1.station_name}"></c:out></td> 
-    <td><c:out value="${d1.latitude}"></c:out></td>
-    <td><c:out value="${d1.longitude}"></c:out></td>
-  </tr>
-</c:forEach>
-</tbody>
-</table>
-</td>
-<td rowspan="2" style="text-align:left;vertical-align:top;padding:0">
-<div  id="map-canvas" style="width: 900px; height: 900px;float: right"> </div>
-</td>
-</tr>
-</table>
+<body>
+	<div class="site-wrapper">
 
+      <div class="site-wrapper-inner">
 
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
+              <ul class="nav masthead-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="success.jsp">Add a Journey</a></li>
+                <li><a href="DisplayAllController">Records</a></li>
+                <li class="active"><a href="DisplayStatisticsController">Statistics</a></li>
+                <!-- <li><a href="DisplayLocationController">Locations</a></li> -->
+                <li><a href="LogoutController">LogOut</a></li>
+                <li><a href="#"><form action='RefreshLocationController' method='post'>
+					<input  style="background-image: url(img/refresh.png); background-color: transparent;
+						background-repeat: no-repeat;
+						background-position: 0px 0px;
+						border: none;
+						cursor: pointer;
+						height: 35px;
+						width: 30px;
+						padding-left: 16px;
+						vertical-align: middle;" title="Force Refresh" type="submit" value="">
+					</form></a>
+				</li>
+              </ul>
+            </div>
+          </div>
+	</div>
+ 		  
+ 		  
+          <div class="inner cover">
+          	<h5 class="masthead-brand">Total distance for this journey is <b style="color: #336699;"><c:out value="${total_distance}"/></b> KM  Keep Traveling!!!</h5>
+			<div class="row">
+				<div  id="map-canvas" style="width: 80%; height: 500px;"> </div>
+			</div>
+            
+          <div class="mastfoot">
+            <div class="inner">
+              <p></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 <script>
 
 	var locations_plot=[
@@ -94,9 +82,10 @@ border-color: #2B4EB7;
 	];
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), {
-  	zoom: 5,
-  	center: new google.maps.LatLng(12.971730,77.590427),
-  	mapTypeId: google.maps.MapTypeId.ROADMAP
+		zoom: 4,
+	  	scrollwheel:false,
+	  	center: new google.maps.LatLng(24.730852, 79.278573),
+  		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
 	
 	

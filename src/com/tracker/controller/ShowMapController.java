@@ -37,11 +37,11 @@ public class ShowMapController extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
 		
-		String Train = request.getParameter("Train");
+		String Train_Number = request.getParameter("Train_Number");
 		String To_Station = request.getParameter("To_Station");
 		String From_Station = request.getParameter("From_Station");
 		
-		System.out.println(Train+To_Station+From_Station);
+		System.out.println(Train_Number+To_Station+From_Station);
         
         ServletContext ctx=getServletContext();
         
@@ -70,7 +70,7 @@ public class ShowMapController extends HttpServlet {
         	
         	Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         	
-        	String sql1 = "select Train_Route from train_number_name_type_route where Train_Name="+"'"+Train+"'";
+        	String sql1 = "select Train_Route from train_number_name_type_route where Train_Number="+"'"+Train_Number+"'";
         	
         	ResultSet rs1 = stmt.executeQuery(sql1);
         	     	
@@ -92,17 +92,32 @@ public class ShowMapController extends HttpServlet {
         	
         	Map<String, String> temp2 = new LinkedHashMap<String, String>();
         	
+        	String from_distance=null;
+        	String to_distance=null;
+        	
         	
         	for(Map.Entry<String,String> a : temp1.entrySet()) {
          		//System.out.println("STATION : "+a.getKey()+" DISTANCE : "+a.getValue());
          		if(From_Station.equals(a.getKey()) || (flag==true) ) {
+         			
+         			if(From_Station.equals(a.getKey()))
+         			from_distance = a.getValue();
+         			
          			temp2.put(a.getKey(), a.getValue());
          			flag=true;
-         			if(To_Station.equals(a.getKey())) flag=false;
+         			if(To_Station.equals(a.getKey())) {
+         				to_distance = a.getValue();
+         				flag=false;
+         			}
          			
          		} 
          		   	      		
          	}
+        	
+        	Integer Total_Distance = (Integer.parseInt(to_distance) - Integer.parseInt(from_distance));
+        	System.out.println(Total_Distance);
+        	
+        	request.setAttribute("total_distance", Total_Distance);
         	
         	ResultSet rs2=null;
         	for(Map.Entry<String,String> a : temp2.entrySet()) {

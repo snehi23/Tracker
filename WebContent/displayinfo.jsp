@@ -123,7 +123,7 @@
 				
 				<a href="UserInputEditController?recordid=<c:out value="${d1.train_journey_id}"/>">Edit Journey</a>
 				
-				<a href="ShowMapController?Train=<c:out value="${d1.train}"/>&From_Station=<c:out value="${d1.from_Station}"/>&To_Station=<c:out value="${d1.to_Station}"/>">Show on Map</a>
+				<a href="ShowMapController?Train_Number=<c:out value="${d1.train_Number}"/>&From_Station=<c:out value="${d1.from_Station}"/>&To_Station=<c:out value="${d1.to_Station}"/>">Show on Map</a>
 				
 				</div>					 
 				</c:forEach>

@@ -40,6 +40,9 @@ public class UserInputController extends HttpServlet {
         
         System.out.println(" "+username+" "+doj+" "+Train+" "+From+" "+To+" "+Classes+" "+Berth+" "+Comments);
         
+        String Train_Number = Train.replaceAll("[^0-9]","");
+        System.out.println(Train_Number);
+        
         ServletContext ctx=getServletContext() ;
         
         String connectionURL= ctx.getInitParameter("dbURL");
@@ -65,17 +68,18 @@ public class UserInputController extends HttpServlet {
         		
         	String userid = (String) session.getAttribute("userid");	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
-        	String sql= "insert into tracker(train_journey_id,DOJ,Train,From_Station,To_Station,Classes,berth,Comments,user_id) values(?,?,?,?,?,?,?,?,?)";
+        	String sql= "insert into tracker(train_journey_id,DOJ,Train,Train_Number,From_Station,To_Station,Classes,berth,Comments,user_id) values(?,?,?,?,?,?,?,?,?,?)";
         	PreparedStatement prep = conn.prepareStatement(sql);
         	prep.setInt(1, 0);
         	prep.setString(2, doj); 	
         	prep.setString(3, Train.replaceAll("\\P{L}", " ").trim());
-        	prep.setString(4, From.replaceAll(".*\\(", "").replaceAll("\\)", "").trim());
-        	prep.setString(5, To.replaceAll(".*\\(", "").replaceAll("\\)", "").trim());
-        	prep.setString(6, Classes);
-        	prep.setString(7, Berth);
-        	prep.setString(8, Comments);
-        	prep.setString(9, userid);
+        	prep.setString(4, Train_Number);
+        	prep.setString(5, From.replaceAll(".*\\(", "").replaceAll("\\)", "").trim());
+        	prep.setString(6, To.replaceAll(".*\\(", "").replaceAll("\\)", "").trim());
+        	prep.setString(7, Classes);
+        	prep.setString(8, Berth);
+        	prep.setString(9, Comments);
+        	prep.setString(10, userid);
         	prep.executeUpdate();
         	prep.close();
         	conn.close();

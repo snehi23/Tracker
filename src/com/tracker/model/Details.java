@@ -5,12 +5,21 @@ public class Details {
 	int train_journey_id;
 	String DOJ;
 	String train;
+	String train_Number;
 	String from_Station;
 	String to_Station;
 	String classes;
 	String berth;
 	String comments;
+	
+	
 
+	public String getTrain_Number() {
+		return train_Number;
+	}
+	public void setTrain_Number(String train_Number) {
+		this.train_Number = train_Number;
+	}
 	public String getBerth() {
 		return berth;
 	}

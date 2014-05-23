@@ -70,6 +70,7 @@ public class DisplayAllController extends HttpServlet {
         		d.setTrain_journey_id(rs.getInt("train_journey_id"));
         		d.setDOJ(rs.getString("DOJ"));
         		d.setTrain(rs.getString("Train"));
+        		d.setTrain_Number(rs.getString("Train_Number"));
         		d.setFrom_Station(rs.getString("From_Station"));
         		d.setTo_Station(rs.getString("To_Station"));
         		d.setClasses(rs.getString("Classes"));
