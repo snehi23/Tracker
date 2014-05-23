@@ -85,7 +85,7 @@ public class RegistrationController extends HttpServlet {
         	
         	flag=false;
         	
-        	session.setAttribute("userid uniqueness", "User Name Already Exist!!! Please choose wisely.");
+        	session.setAttribute("userid uniqueness", "Username already exist!");
         	rs1.close();
         	conn.commit();
         	

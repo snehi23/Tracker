@@ -12,7 +12,6 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/traveldataentry.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
-<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Tg3D8gm1S4YoqAH65i_HENA75UePGUk&sensor=false"> </script>
 <title>USER LOCATION STATISTICS</title>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -223,7 +222,7 @@
             <div class="inner">
               <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
               <ul class="nav masthead-nav">
-                <li><a href="#">Home</a></li>
+                <!-- <li><a href="#">Home</a></li> -->
                 <li><a href="success.jsp">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
                 <li class="active"><a href="DisplayStatisticsController">Statistics</a></li>
@@ -244,8 +243,7 @@
               </ul>
             </div>
           </div>
-
- 		  
+  
  		  <h5 class="masthead-brand">You travelled total <b style="color: #336699;"><c:out value="${total_distance}"/></b> kms !!!</h5>
           <div class="inner cover">
           
@@ -299,6 +297,7 @@
       </div>
 
     </div>
+    </div>
 <script>
 
 	var locations=[
@@ -350,12 +349,7 @@
                              
 	}
 	
-	$(document).ready(function() 
-		    { 
-		        $("#myTable").tablesorter();
-		        
-		    } 
-		);
+	
 </script>
 </body>
 </html>

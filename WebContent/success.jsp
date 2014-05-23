@@ -232,7 +232,7 @@ function nobacktrack() {
 				</div>
 				<div id="inner-right" class="col-lg-6">
 				<p class="lead">
-					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" required></textarea> 
+					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none"></textarea> 
 					<div id="Comments_error" style="color:red"></div>
 				</p>
 				</div>

@@ -9,7 +9,7 @@
 <meta http-equiv="Cache-Control" content="no-store" />
 
 
-<title>Success</title>
+<title>HOME</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/homepage.css" rel="stylesheet">
 <link href="css/footer.css" rel="stylesheet">
@@ -64,7 +64,7 @@
 			</p>
             <p class="lead">
               <a href="#about-us" class="btn btn-lg btn-default">About Us</a>
-              <a href="login.jsp" class="btn btn-lg btn-default">Sign In</a>
+              <a href="SessionController" class="btn btn-lg btn-default">Sign In</a>
             </p>
           </div>
         </div>

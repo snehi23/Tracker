@@ -12,11 +12,10 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/traveldataentry.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
-<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Tg3D8gm1S4YoqAH65i_HENA75UePGUk&sensor=false"> </script>
 
 
-<title>Map View</title>
+<title>Journey Map View</title>
 </head>
 <body>
 <body>
@@ -30,7 +29,7 @@
             <div class="inner">
               <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
               <ul class="nav masthead-nav">
-                <li><a href="#">Home</a></li>
+                <!-- <li><a href="#">Home</a></li> -->
                 <li><a href="success.jsp">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
                 <li class="active"><a href="DisplayStatisticsController">Statistics</a></li>
@@ -83,7 +82,7 @@
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), {
 		zoom: 4,
-	  	scrollwheel:false,
+	  	scrollwheel:true,
 	  	center: new google.maps.LatLng(24.730852, 79.278573),
   		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});

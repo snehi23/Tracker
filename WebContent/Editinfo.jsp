@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-store" />
 
 
-<title>Success</title>
+<title>Edit Journey Details</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/traveldataentry.css" rel="stylesheet">
 <link href="css/dataentry_form.css" rel="stylesheet">
@@ -51,17 +51,8 @@ function validateForm() {
 	var q=document.getElementsByName("comments")[0].value;
 	
 	var n = y.localeCompare(z);
-	
-	/* var radios_c = document.getElementsByName("classes");
-	
-	var radios_b = document.getElementsByName("berth"); */
-	
-    var formValid = true;
-    /* var classValid = false;
-    var berthValid = false; */
+	var formValid = true;
     
-	var pattern = new RegExp(/[~!#$%\^&*+=\-\[\]\\;,/{}|\\:<>\?]/);
-	
 	if(n==0) {
 		
 		document.getElementById("To_error").innerHTML="Dude same source and destination";
@@ -72,78 +63,7 @@ function validateForm() {
 		
 	}
 	
-	/*
-    var i = 0;
-    while (!classValid && i < radios_c.length) {
-        if (radios_c[i].checked) classValid = true;
-        i++;        
-    }
-
-    if (!classValid) {
-     document.getElementById("Class_error").innerHTML="Must check some option!";
-     formValid = false;
-    } else {
-		
-		document.getElementById("Class_error").innerHTML="";
-		
-	}
-    
-    var j = 0;
-    while (!berthValid && i < radios_b.length) {
-        if (radios_b[j].checked) berthValid = true;
-        j++;        
-    }
-
-    if (!berthValid) {
-     document.getElementById("Class_error").innerHTML="Must check some option!";
-     formValid = false;
-    } else {
-		
-		document.getElementById("Class_error").innerHTML="";
-		
-	}
-	
-	
-	 if (!only_letters.test(x)) {
-		document.getElementById("Train_error").innerHTML="Train Name requires only letters";
-		formValid = false;		
-	} else {
-		
-		document.getElementById("Train_error").innerHTML="";
-		
-	}	
-	
-	if (!only_caps.test(y)) {
-		document.getElementById("From_error").innerHTML="From Station code should in capital and of length 3-4 characters only";
-		formValid = false;		
-	} else {
-		
-		document.getElementById("From_error").innerHTML="";
-		
-	}
-	
-	if (!only_caps.test(z)) {
-		document.getElementById("To_error").innerHTML="To Station code should in capital and of length 3-4 characters only";
-		formValid = false;		
-	} else {
-		
-		document.getElementById("To_error").innerHTML="";
-		
-	}
-	
-	if(pattern.test(q)) {
-		
-		document.getElementById("Comments_error").innerHTML="Please only use standard alphanumerics";
-		formValid = false;
-	} else {
-		
-		document.getElementById("Comments_error").innerHTML="";
-		
-	} */
-	
-	
-	
-	if(formValid) {	
+		if(formValid) {	
 		return true;
 	} else {return false;}
 	
@@ -169,7 +89,7 @@ function nobacktrack() {
             <div class="inner">
               <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
               <ul class="nav masthead-nav">
-                <li><a href="#">Home</a></li>
+                <!-- <li><a href="#">Home</a></li> -->
                 <li class="active"><a href="success.jsp">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
                 <li><a href="DisplayStatisticsController">Statistics</a></li>

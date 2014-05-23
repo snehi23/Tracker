@@ -8,7 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>User Details</title>
+<meta http-equiv="pragma"        content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>Journey Details</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/traveldataentry.css" rel="stylesheet">
 
@@ -16,64 +19,20 @@
 <link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script> 
-<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
-<script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script>
+
 <script>
 
-	$(document).ready(function() 
-	    { 
-	        $("#myTable").tablesorter();  
-	    } 
-	);
-	
 	$(document).ready(function() 
 		    { 
 				$( "#accordion" ).accordion({collapsible:true, heightStyle:"content"}); 
 		    } 
 	);
 	
-	
-	
 
 </script>
 </head>
 <body>
-<%-- <table id="myTable" class="bordered">
-<thead>
-<tr>
-        <th>Train Journey ID</th>        
-        <th>Date Of Journey</th>
-        <th>Train</th>
-		<th>From Station</th>
-		<th>To Station</th>
-		<th>Class</th>
-		<th>Comment</th>		
-    </tr>
-</thead>
-<tbody>
-<c:forEach items="${details_list}" var="d1" > 
-  <tr>
-    <td><c:out value="${d1.train_journey_id}"></c:out></td>
-    <td><c:out value="${d1.DOJ}"></c:out></td>
-     <td><c:out value="${d1.train}"></c:out></td> 
-    <td><c:out value="${d1.from_Station}"></c:out></td>
-    <td><c:out value="${d1.to_Station}"></c:out></td>
-    <td><c:out value="${d1.classes}"></c:out></td>
-    <td><c:out value="${d1.comments}"></c:out></td>
-     </tr>
-</c:forEach>
-</tbody>
-</table> --%>
 
-<!-- <form class="form-signin" role="form" name="filterform" action="FilterController" method="post" >
-
-<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
-
-<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required>
-
-<INPUT TYPE="SUBMIT" VALUE="Submit" class="btn btn-lg btn-success">
-
-</form> -->
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -84,7 +43,7 @@
             <div class="inner">
               <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
               <ul class="nav masthead-nav">
-                <li><a href="#">Home</a></li>
+                <!-- <li><a href="#">Home</a></li> -->
                 <li><a href="success.jsp">Add a Journey</a></li>
                 <li class="active"><a href="DisplayAllController">Records</a></li>
                 <li><a href="DisplayStatisticsController">Statistics</a></li>

@@ -11,6 +11,18 @@
 	<link href="css/signin.css" rel="stylesheet">
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<style type="text/css">
+		#dis
+		{
+			text-align:center;
+			height: 20px;
+			background-color:#428BCA;
+			color:#FFF;
+			background-color : transparent;
+		}
+
+	</style>
+	
 	<script type="text/javascript">
 		function pop(div) {
 			document.getElementById(div).style.display = 'block';
@@ -26,6 +38,45 @@
 			}
 		};
 	</script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+			$("#submit").click(function(){
+					var name=$("#name").val();
+					var username=$("#username").val();
+					var email=$("#email").val();
+					var password=$("#password").val();
+					var password2=$("#password2").val();
+					var rule=$("#rule").val();
+
+					if(password!=password2) {
+							$("#dis").slideDown().html('<span id="error">Password mismatch</span>');
+								return false;
+					}
+
+				var filter = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+			
+				if(!filter.test(email)) {
+						$("#dis").slideDown().html('<span id="error">Please type correct email</span>');
+						return false;
+				}
+				
+				if (jQuery("#rule").is(":checked")) {
+					
+					
+				} else {
+					
+					$("#dis").slideDown().html('<span id="error">Please accept terms & conditions</span>');
+					return false;
+					
+				}
+				
+				
+
+			});
+		});
+	
+</script>
 <title>Registration Form</title>
 
 </head>
@@ -34,17 +85,17 @@
 <%-- <marquee><font color="Red">${sessionScope['userid uniqeness']}</font></marquee> --%>
 
 	 <form class="form-signin" role="form" name="loginform" action="RegistrationController" method="post" >
-		<h2>Create account</h2>
-		<div id="error" style="color:red"></div>
+		<h2 id="page-heading">Create account</h2>
+		<div id="dis"><p id="errors-text">${sessionScope['userid uniqueness']}</p></div><br>
 		<input id="name" type="text" name="name" maxlength="30" class="form-control" placeholder="Name" required autofocus>
-		<input id="username" type="text" name="username" maxlength="30" class="form-control" placeholder="Username" required> <font color="Red">${sessionScope['userid uniqueness']}</font>
+		<input id="username" type="text" name="username" maxlength="30" class="form-control" placeholder="Username" required> <%-- <font color="Red">${sessionScope['userid uniqueness']}</font> --%>
 		<input id="email" type="text" name="email" maxlength="30" class="form-control" placeholder="Email" required>
 		<input id="password" type="password" name="password" maxlength="30" class="form-control" placeholder="Password" required>
 		<input id="password2" type="password" name="password2" maxlength="30" class="form-control" placeholder="Repeat password" required>
 		<label class="checkbox">
-			<input type="checkbox" value="remember-me"> By clicking "Create account" below, you agree to the <a href="#" onClick="pop('popDiv')">Terms and Conditions</a>
+			<input type="checkbox" id="rule" value="remember-me"> By clicking "Create account" below, you agree to the <a href="#" onClick="pop('popDiv')">Terms and Conditions</a>
 		</label>
-		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Create account">Create Account</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit" value="Create account">Create Account</button>
 	</form>
 	<div id="popDiv" class="ontop">
 			<div id="popup">
