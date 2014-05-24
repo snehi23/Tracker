@@ -12,7 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="css/page-not-found.css" rel="stylesheet">
+    <link href="css/popup-feedback.css" rel="stylesheet">
     <link href="css/dataentry_form.css" rel="stylesheet">
 	<script type="text/javascript">
 		function pop(div) {
@@ -33,15 +33,16 @@
 
   <body>
 
-    <div class="site-wrapper" id="page-not-out">
+    <div class="site-wrapper" id="page-not-found">
 
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
 
 
-          <div class="inner cover" id="page-not-out-contents">
-            <h1 class="cover-heading">You seem to have lost the path.</h1>
+          <div class="inner cover" id="page-not-found-contents">
+			<p class="error-type">404:Page Not Found</p>
+            <h3 class="cover-heading">You seem to have lost the path.</h3>
             <p class="lead">
               <a onclick="window.history.go(-1)" class="btn btn-lg btn-success">Go Back</a>
               <a href="#" onClick="pop('popDiv')" class="btn btn-lg btn-success">Report</a>

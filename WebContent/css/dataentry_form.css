@@ -32,6 +32,9 @@
 	padding:30px 30px 30px 30px;
 }
 
+.error-type{
+	font-size:60px;
+}
 textarea#memorable-moments{
 	width:100%;
 	height: 350px;
