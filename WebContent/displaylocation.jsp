@@ -79,6 +79,12 @@
 	</c:forEach>
 	
 	];
+	
+	var locations=[
+	           	<c:forEach items="${station_loc_plot}" var="d1" varStatus="theCount">
+	           		['<c:out value="${d1.station_name}"></c:out>',<c:out value="${d1.latitude}"></c:out>,<c:out value="${d1.longitude}"></c:out>,<c:out value="${d1.station_lat_long_id}"></c:out>],
+	           	</c:forEach>	
+	           	];
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), {
 		zoom: 4,
@@ -96,8 +102,23 @@
         strokeWeight: 2
       });
     	  flightPath.setMap(map);
+    	  
+    	  var infowindow = new google.maps.InfoWindow();
+    		var marker;
+    		for (var i = 0; i < locations.length; i++) {  
+    	        marker = new google.maps.Marker({
+    	          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+    	          map: map
+    	        });
 
-	google.maps.event.addDomListener(window, 'load', initialize);
+    	        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    	          return function() {
+    	            infowindow.setContent(locations[i][0]);
+    	            infowindow.open(map, marker);
+    	          }
+    	        })(marker, i));
+
+    		}
 
 	
 </script>

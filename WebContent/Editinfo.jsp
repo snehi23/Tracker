@@ -120,7 +120,7 @@ function nobacktrack() {
 				<p class="lead">
 					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
 					<div id="pnr_error" style="color:red"></div>
-					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}">
+					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
 					<div id="Date_error" style="color:red"></div>
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
 					<div id="Date_error" style="color:red"></div>

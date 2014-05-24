@@ -33,6 +33,7 @@ public class ShowMapController extends HttpServlet {
 		
 		Map<String, Integer> temp = new HashMap<String, Integer>();
 		List<StationLocation> station_loc_list = new ArrayList<StationLocation>();
+		List<StationLocation> station_loc_plot = new ArrayList<StationLocation>();
 		
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
@@ -139,10 +140,38 @@ public class ShowMapController extends HttpServlet {
         		
         	}
         	
+        	request.setAttribute("station_loc_list", station_loc_list);
+        	
         	rs2.close();
+        	
+        	
+        	
+        	String sql3 = "select * from station_lat_long where station_code="+"'"+From_Station+"' OR station_code="+"'"+To_Station+"'";
+        	
+        	ResultSet rs3 = stmt.executeQuery(sql3);
+        	     	
+        	while(rs3.next()) {
+
+        		StationLocation d = new StationLocation();
+        		d.setStation_lat_long_id(rs3.getInt("station_lat_long_id"));
+        		d.setStation_code(rs3.getString("station_code"));
+        		d.setStation_name(rs3.getString("station_name"));
+        		d.setLatitude(rs3.getDouble("latitude"));
+        		d.setLongitude(rs3.getDouble("longitude"));
+        		station_loc_plot.add(d);        		
+        	}
+        	
+        	   
+            request.setAttribute("station_loc_plot", station_loc_plot);
+            
+        	rs3.close();
+        	conn.commit();
+        	
+        	
+        	
         	conn.close();
         	
-        	request.setAttribute("station_loc_list", station_loc_list);
+        	
 
         	
         	rd = request.getRequestDispatcher("/displaylocation.jsp");
