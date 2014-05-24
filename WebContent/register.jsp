@@ -101,13 +101,13 @@
 			<div id="popup">
 			<div id="terms-and-conditions">
 				<h3>DESCRIPTION</h3>
-				<p>journeytracker.in is a service for traveling enthusiasts who want to keep a record of journey they have done.
-				Members of journeytracker.in have their own profile where statistics of the members journey are shown, to keep the tracking as simple as possible.
-				journeytracker.in is aimed to serve passengers who want to keep track of their journey.</p>
+				<p><i>journeytracker.in</i> is a service for traveling enthusiasts who want to keep a record of journey they have done.
+				Members of <i>journeytracker.in</i> have their own profile where statistics of the members journey are shown, to keep the tracking as simple as possible.
+				<i>journeytracker.in</i> is aimed to serve passengers who want to keep track of their journey.</p>
 
 				<h3>PRIVACY POLICY</h3>
-				<p>journeytracker.in will keep your information accurate, secure and private and we will never transfer any information or data to any third party.
-				journeytracker.in collects and saves this data at the time of registration for the use of our services:
+				<p><i>journeytracker.in</i> will keep your information accurate, secure and private and we will never transfer any information or data to any third party.
+				<i>journeytracker.in</i> collects and saves this data at the time of registration for the use of our services:
 				<ol>
 					<li>Your name</li>
 					<li>Your e-mail address</li>
@@ -115,8 +115,8 @@
 				</p>
 				
 				<h3>RULES AND REGULATIONS</h3>
-				<p>Once registered to journeytracker.in you will get access to your own personal journeys page. You can manage all of your journeys, delete and add a new journey. What information you add is up to yourself to decide.
-				You may add as many journeys you want but you may not abuse the system such as adding unrealistic journeys and you must not add any hypothetical journey, the purpose of journeytracker.in is to track real journeys.
+				<p>Once registered to <i>journeytracker.in</i> you will get access to your own personal journeys page. You can manage all of your journeys, delete and add a new journey. What information you add is up to yourself to decide.
+				You may add as many journeys you want but you may not abuse the system such as adding unrealistic journeys and you must not add any hypothetical journey, the purpose of <i>journeytracker.in</i> is to track real journeys.
 				</p>
 				
 				<h3>NOT FOLLOWING THE RULES</h3>
@@ -132,13 +132,13 @@
 				In the case of termination of an account, all information will be deleted, including all of your journeys.</p>
 					
 				<h3>COPYRIGHT</h3>
-				<p>When register to journeytracker.in you agree not to copy, distribute, transfer or modify our work.</p>
+				<p>When register to <i>journeytracker.in</i> you agree not to copy, distribute, transfer or modify our work.</p>
 					
 				<h3>COSTS AND CONTRIBUTION</h3>
-				<p>journeytracker.in is completely free of charge.</p>
+				<p><i>journeytracker.in</i> is completely free of charge.</p>
 					
 				<h3>DISCLAIMER</h3>
-				<p>journeytracker.in reserves itself for any changes or updates of these terms and conditions. In an event of a major update users will be contacted.</p>
+				<p><i>journeytracker.in</i> reserves itself for any changes or updates of these terms and conditions. In an event of a major update users will be contacted.</p>
 				</br>
 				<a href="#" onClick="hide('popDiv')">Close</a>
 			</div>
