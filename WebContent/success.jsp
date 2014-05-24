@@ -208,25 +208,27 @@ function nobacktrack() {
 					<div id="From_error" style="color:red"></div>
 					<input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required>
 					<div id="To_error" style="color:red"></div>
-					<ul id="class-input-list">
-						<li>Class :</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" checked>1-AC</li> 
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL">SL</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen">Gen</li>
-					</ul>
-					<div id="Class_error" style="color:red"></div>
-					<div>
-					<ul id="berth-input-list">
-						<li>Berth :</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" checked>LB</li> 
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB">MB</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB">UB</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL">SL</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU">SU</li>
-					</ul>
-					<div id="Berth_error" style="color:red"></div>
+					<div id="class-input">
+						<ul id="class-input-list">
+							<li>Class :</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" checked>1-AC</li> 
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL">SL</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen">Gen</li>
+						</ul>
+						<div id="Class_error" style="color:red"></div>
+					</div>
+					<div id="berth-input">
+						<ul id="berth-input-list">
+							<li>Berth :</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" checked>LB</li> 
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB">MB</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB">UB</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL">SL</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU">SU</li>
+						</ul>
+						<div id="Berth_error" style="color:red"></div>
 					</div>
 				</p>
 				</div>
@@ -234,13 +236,13 @@ function nobacktrack() {
 				<p class="lead">
 					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none"></textarea> 
 					<div id="Comments_error" style="color:red"></div>
+					<div id="buttons-control">
+						<ul id="submit-buuton-input-list">
+							<li><INPUT TYPE="SUBMIT" VALUE="Submit" class="btn btn-lg btn-success"></li>
+							<li><INPUT TYPE="RESET" VALUE="Reset" class="btn btn-lg btn-success"></li>
+						</ul>
+					</div>
 				</p>
-				</div>
-				<div id="buttons-control" class="col-lg-14">
-				<ul id="submit-buuton-input-list">
-					<li><INPUT TYPE="SUBMIT" VALUE="Submit" class="btn btn-lg btn-success"></li>
-					<li><INPUT TYPE="RESET" VALUE="Reset" class="btn btn-lg btn-success"></li>
-				</ul>
 				</div>
 			</form>
 			</div>
