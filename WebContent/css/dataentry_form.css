@@ -26,9 +26,37 @@
   margin-bottom: 10px;
 }
 
+#terms-and-conditions,#report-error{
+	max-width: 650px;
+	max-height: 500px;
+	padding:30px 30px 30px 30px;
+}
+
 textarea#memorable-moments{
 	width:100%;
 	height: 350px;
+}
+
+.ss-q-short{
+	margin-top:20px;
+	margin-bottom:8px;
+	width:100%;
+}
+
+.ss-q-long{
+	margin-top:15px;
+	margin-bottom:15px;
+	width:100%;
+}
+
+#error-message{
+	height:10px;
+	text-align:left;
+	color:red;
+}
+
+#entry_131807497{
+	height: 250px;
 }
 
 #class-input-list li{

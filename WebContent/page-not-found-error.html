@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +12,23 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="css/traveldataentry.css" rel="stylesheet">
+    <link href="css/page-not-found.css" rel="stylesheet">
+    <link href="css/dataentry_form.css" rel="stylesheet">
+	<script type="text/javascript">
+		function pop(div) {
+			document.getElementById(div).style.display = 'block';
+		}
+		function hide(div) {
+			document.getElementById(div).style.display = 'none';
+		}
+		//To detect escape button
+		document.onkeydown = function(evt) {
+			evt = evt || window.event;
+			if (evt.keyCode == 27) {
+				hide('popDiv');
+			}
+		};
+	</script>
   </head>
 
   <body>
@@ -29,7 +44,7 @@
             <h1 class="cover-heading">You seem to have lost the path.</h1>
             <p class="lead">
               <a href="success.jsp" class="btn btn-lg btn-success">Go Back</a>
-              <a href="#" class="btn btn-lg btn-success">Report</a>
+              <a href="#" onClick="pop('popDiv')" class="btn btn-lg btn-success">Report</a>
             </p>
           </div>
 
@@ -38,6 +53,42 @@
       </div>
 
     </div>
+	<div id="popDiv" class="ontop">
+		<div id="popup">
+			<div id="report-error">
+				<h4 id="reply-title" class="comment-reply-title">Sorry for your inconvenience.</h4>
+				<h4 id="reply-title" class="comment-reply-title">Please report the error you faced. We'll try our best to solve it asap.</h4>
+				<script type="text/javascript">var submitted=false;</script>
+				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='success.jsp';}"></iframe>
+				<form action="https://docs.google.com/forms/d/1PP11Uud69RCOU0o36O04IGdEhvPyjLBRhZ4Vr4M3lfs/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;"><ol role="list" class="ss-question-list" style="padding-left: 0">
+					<input type="text" name="entry.2114810909" SIZE="20" class="ss-q-short form-control" id="entry_2114810909" dir="auto" aria-label="Email ID" placeholder="Email ID" onblur="validateEmail(this);" required>
+					<div id="error-message"></div> 
+					<textarea id="entry_131807497" type="text" name="entry.131807497" class="ss-q-long form-control" placeholder="Error Occured" style="resize:none" dir="auto" aria-label="Error Occured" required></textarea> 
+					<input class="btn btn-lg btn-success" type="submit" name="submit" value="Submit" id="ss-submit">
+					<a class="btn btn-lg btn-success" onClick="hide('popDiv')">Close</a>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+	function validateEmail(emailField){
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false) 
+        {
+			errorMessage = document.getElementById("error-message");
+			errorMessage.innerHTML = "Invalid Email-ID";
+            return false;
+        }
+		else
+		{
+			errorMessage = document.getElementById("error-message");
+			errorMessage.innerHTML = "";
+		}
+        return true;
+
+	}
+	</script>
   </body>
 </html>
 
