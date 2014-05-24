@@ -153,7 +153,7 @@ public class ShowMapController extends HttpServlet {
         	while(rs3.next()) {
 
         		StationLocation d = new StationLocation();
-        		d.setStation_lat_long_id(rs3.getInt("station_lat_long_id"));
+        		d.setStation_lat_long_id(rs3.getInt("station_lat_long_id2"));
         		d.setStation_code(rs3.getString("station_code"));
         		d.setStation_name(rs3.getString("station_name"));
         		d.setLatitude(rs3.getDouble("latitude"));

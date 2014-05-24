@@ -186,7 +186,7 @@ public class RefreshLocationController extends HttpServlet {
     	if(flag1 || flag2 ) {
     	
     	for(StationLocation s1 : stationLocation) {
-    	String sql= "insert into station_lat_long(station_lat_long_id,station_code,station_name,latitude,longitude) values (?,?,?,?,?)";
+    	String sql= "insert into station_lat_long(station_lat_long_id2,station_code,station_name,latitude,longitude) values (?,?,?,?,?)";
     	prep = conn.prepareStatement(sql);
     	prep.setInt(1, 0);
     	prep.setString(2, s1.getStation_code()); 	

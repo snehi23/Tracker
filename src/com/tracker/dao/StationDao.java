@@ -26,15 +26,15 @@ public class StationDao {
 			DBConnectionManager dbconnmng = new DBConnectionManager(connectionURL, uname, pwd);
 			
 			Connection conn	= dbconnmng.getConnection();
-			String query = "select Station_Name,Station_Code from station_code where Station_Name like '%"+station+"%' union select Station_Name,Station_Code from station_code where Station_Code like '%"+station+"%'";
+			String query = "select station_name,station_code from station_lat_long where station_name like '%"+station+"%' union select station_name,station_code from station_lat_long  where station_code like '%"+station+"%'";
 			System.out.println(query);
 			prep = conn.prepareStatement(query);
 			rs = prep.executeQuery();
 			while (rs.next()) {
 				
 				StationDetails d = new StationDetails();
-				d.setStation_Name(rs.getString("Station_Name"));
-				d.setStation_Code(rs.getString("Station_Code"));
+				d.setStation_Name(rs.getString("station_name"));
+				d.setStation_Code(rs.getString("station_code"));
 				stationDetails.add(d);
 				
 			}

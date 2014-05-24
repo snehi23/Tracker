@@ -64,14 +64,14 @@ public class DisplayLocationController extends HttpServlet {
         	
         	Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         	
-        	String sql1 = "select station_lat_long.station_lat_long_id,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'"+"union select station_lat_long.station_lat_long_id,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'";
+        	String sql1 = "select station_lat_long.station_lat_long_id2,tracker.From_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.From_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'"+"union select station_lat_long.station_lat_long_id2,tracker.To_Station,station_lat_long.station_name,station_lat_long.latitude,station_lat_long.longitude from tracker inner join station_lat_long where tracker.To_Station=station_lat_long.station_code and tracker.user_id ="+"'"+userid+"'";
         	
         	ResultSet rs1 = stmt.executeQuery(sql1);
         	     	
         	while(rs1.next()) {
 
         		StationLocation d = new StationLocation();
-        		d.setStation_lat_long_id(rs1.getInt("station_lat_long_id"));
+        		d.setStation_lat_long_id(rs1.getInt("station_lat_long_id2"));
         		d.setStation_code(rs1.getString("From_Station"));
         		d.setStation_name(rs1.getString("station_name"));
         		d.setLatitude(rs1.getDouble("latitude"));
