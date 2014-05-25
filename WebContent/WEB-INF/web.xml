@@ -175,4 +175,14 @@
     <servlet-name>ShowMapController</servlet-name>
     <url-pattern>/ShowMapController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FetchStationCodeController</display-name>
+    <servlet-name>FetchStationCodeController</servlet-name>
+    <servlet-class>com.tracker.controller.FetchStationCodeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FetchStationCodeController</servlet-name>
+    <url-pattern>/FetchStationCodeController</url-pattern>
+  </servlet-mapping>
 </web-app>
