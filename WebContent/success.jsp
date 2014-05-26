@@ -17,12 +17,14 @@
 <link href="css/dataentry_form.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.autocomplete.css" />
+<link rel="stylesheet" type="text/css" href="css/chosen.css" />
 	<script src="http://www.google.com/jsapi"></script>  
 	<script>  
 		google.load("jquery", "1");
 	</script>
 	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="js/jquery.autocomplete.js"></script>
+	<script src="js/chosen.jquery.js"></script>
 
 
 <script>
@@ -32,10 +34,19 @@ $(function() {
     
   });
   
+$(document).ready(function(){
+	
+	$("#From").chosen();
+	$("#To").chosen();
+
+});
+
+
+  
   $(document).ready(function() {
     $("#autocomplete1").autocomplete("getTrain.jsp");
-    $("#autocomplete2").autocomplete("getStation.jsp");
-    $("#autocomplete3").autocomplete("getStation.jsp");
+    //$("#autocomplete2").autocomplete("getStation.jsp");
+    //$("#autocomplete3").autocomplete("getStation.jsp");
 });
     
 function validateForm() {

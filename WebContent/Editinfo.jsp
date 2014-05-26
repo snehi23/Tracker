@@ -17,13 +17,14 @@
 <link href="css/dataentry_form.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.autocomplete.css" />
+<link rel="stylesheet" type="text/css" href="css/chosen.css" />
 	<script src="http://www.google.com/jsapi"></script>  
 	<script>  
 		google.load("jquery", "1");
 	</script>
 	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="js/jquery.autocomplete.js"></script>
-
+	<script src="js/chosen.jquery.js"></script>
 
 <script>
 $(function() {
@@ -32,42 +33,76 @@ $(function() {
     
   });
   
+$(document).ready(function(){
+	
+	$("#From").chosen();
+	$("#To").chosen();
+
+});
+  
   $(document).ready(function() {
     $("#autocomplete1").autocomplete("getTrain.jsp");
-    $("#autocomplete2").autocomplete("getStation.jsp");
-    $("#autocomplete3").autocomplete("getStation.jsp");
+    //$("#autocomplete2").autocomplete("getStation.jsp");
+    //$("#autocomplete3").autocomplete("getStation.jsp");
 });
     
-function validateForm() {
-	
-	
-	var only_letters = /^[A-Za-z]{3,20}$/;
-	var letters_num = /^[A-Za-z0-9]{3,20}$/;
-	var only_caps = /^[A-Z]{1,4}$/;
-	
-	var x=document.getElementsByName("Train")[0].value;
-	var y=document.getElementsByName("From")[0].value;
-	var z=document.getElementsByName("To")[0].value;	
-	var q=document.getElementsByName("comments")[0].value;
-	
-	var n = y.localeCompare(z);
-	var formValid = true;
-    
-	if(n==0) {
+  function validateForm() {
+
+		var formValid = true;
+	    
+	    	
+		var a= document.getElementById("From");	
+		var b= document.getElementById("To");
 		
-		document.getElementById("To_error").innerHTML="Dude same source and destination";
-		formValid = false;
-	} else {
+		var aa = a.options[a.selectedIndex].text;
+		var bb = b.options[b.selectedIndex].text;
 		
-		document.getElementById("To_error").innerHTML="";
+		
+		var xx="";
+		var yy="";
+
+		// alert(aa); alert(bb);
+		<c:forEach var="d" items="${station_code}" varStatus="status" > 
+
+			var station = "<c:out value="${d.key}"/>";
+				
+			 	if(aa==station) {
+				 		
+				 	xx = "<c:out value="${d.value}"/>";
+				 	//alert(xx);
+				 
+			 	}	
+			 
+			 	if(bb==station) {
+			 		
+				 	yy = "<c:out value="${d.value}"/>";
+				 	//alert(yy);
+				 
+			 	}
+			
+			 
+		</c:forEach>
+
+		var cc = parseInt(xx);
+		var dd = parseInt(yy);
+
+		if(cc>=dd) {
+			
+			document.getElementById("To_error").innerHTML="Please choose wisely SRC -> DEST";
+			formValid = false;
+			
+			
+		} else {
+			
+			document.getElementById("To_error").innerHTML="";
+			
+		}
+		
+			if(formValid) {	
+			return true;
+		} else {return false;}
 		
 	}
-	
-		if(formValid) {	
-		return true;
-	} else {return false;}
-	
-}
 
 function nobacktrack() {
 	
@@ -121,32 +156,54 @@ function nobacktrack() {
 					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
 					<div id="pnr_error" style="color:red"></div>
 					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
+					<a href="FetchStationCodeEditController?recordid=<c:out value="${details.train_journey_id}"/>&Train_Name="onclick="getInputValue(this);">Fetch Stations</a>
 					<div id="Date_error" style="color:red"></div>
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
 					<div id="Date_error" style="color:red"></div>
-					<input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required value="${details.from_Station}">
+					<%-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required value="${details.from_Station}"> --%>
 					<div id="From_error" style="color:red"></div>
-					<input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required value="${details.to_Station}">
+					<%-- <input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required value="${details.to_Station}"> --%>
+					<select name="From" id="From" onchange=""> 
+					<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
+					<option value="" selected="selected" value="${details.from_Station}">${details.from_Station}</option>
+					<c:forEach var="d" items="${station_code}">  
+  						<option value="${d.key}">${d.key}</option>  	
+      					 
+   					</c:forEach>  
+					
+					</select>
+					<select name="To" id="To" onchange=""> 
+					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
+					<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
+					<c:forEach var="d" items="${station_code}">  
+  						<option value="${d.key}">${d.key}</option>  	
+      					 
+   					</c:forEach>  
+					
+					</select>
 					<div id="To_error" style="color:red"></div>
-					<ul id="class-input-list">
-						<li>Class :</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" ${details.classes == '1-AC' ? 'checked' : ''}>1-AC</li> 
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC" ${details.classes == '2-AC' ? 'checked' : ''}>2-AC</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC" ${details.classes == '3-AC' ? 'checked' : ''}>3-AC</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL" ${details.classes == 'SL' ? 'checked' : ''}>SL</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen" ${details.classes == 'Gen' ? 'checked' : ''}>Gen</li>
-					</ul>
-					<div id="Class_error" style="color:red"></div>
-					<div>
-					<ul id="berth-input-list">
-						<li>Berth :</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" ${details.berth == 'LB' ? 'checked' : ''}>LB</li> 
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB" ${details.berth == 'MB' ? 'checked' : ''}>MB</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB" ${details.berth == 'UB' ? 'checked' : ''}>UB</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL" ${details.berth == 'SL' ? 'checked' : ''}>SL</li>
-						<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU" ${details.berth == 'SU' ? 'checked' : ''}>SU</li>
-					</ul>
-					<div id="Berth_error" style="color:red"></div>
+					<div id="class-input">
+						<ul id="class-input-list">
+							<li>Class :</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" ${details.classes == '1-AC' ? 'checked' : ''}>1-AC</li> 
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC" ${details.classes == '2-AC' ? 'checked' : ''}>2-AC</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC" ${details.classes == '3-AC' ? 'checked' : ''}>3-AC</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL" ${details.classes == 'SL' ? 'checked' : ''}>SL</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen" ${details.classes == 'Gen' ? 'checked' : ''}>Gen</li>
+						</ul>
+						<div id="Class_error" style="color:red"></div>
+					</div>
+					
+					<div id="berth-input">
+						<ul id="berth-input-list">
+							<li>Berth :</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" ${details.berth == 'LB' ? 'checked' : ''}>LB</li> 
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB" ${details.berth == 'MB' ? 'checked' : ''}>MB</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB" ${details.berth == 'UB' ? 'checked' : ''}>UB</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL" ${details.berth == 'SL' ? 'checked' : ''}>SL</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU" ${details.berth == 'SU' ? 'checked' : ''}>SU</li>
+						</ul>
+						<div id="Berth_error" style="color:red"></div>
 					</div>
 				</p>
 				</div>
@@ -178,6 +235,24 @@ function nobacktrack() {
 
     </div>
 </body>
+<script> 
+
+function getInputValue(obj){
+    var inputValue = document.getElementById('autocomplete1').value;
+    
+    if(obj.href.indexOf(inputValue) == -1){
+        obj.href += inputValue;
+    }
+}
+
+function gotoItem(obj){
+    var url = window.location.href;
+    var separator = (url.indexOf('?') > -1) ? "&" : "?";
+    var qs = "Train_Name=" + getInputValue(obj);
+    window.location.href = url + separator + qs;
+}
+
+</script>
 
 
 </html>

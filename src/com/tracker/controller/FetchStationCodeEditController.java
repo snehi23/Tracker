@@ -2,13 +2,11 @@ package com.tracker.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -20,21 +18,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.common.base.Splitter;
-import com.tracker.model.StationLocation;
-import com.tracker.model.StationLocationPlot;
+import com.tracker.model.Details;
 import com.tracker.util.DBConnectionManager;
 
-public class FetchStationCodeController extends HttpServlet {
+public class FetchStationCodeEditController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
  
 		String Train_Route=null;
 		
+		String temp = request.getParameter("recordid");
+       	Integer train_journey_id = Integer.parseInt(temp);
+		
 		Map<String, String> temp2 = new HashMap<String, String>();
 		
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
+		PreparedStatement ps = null;
+        ResultSet rs= null;
 		
 		String Train = request.getParameter("Train_Name");
 		
@@ -103,9 +105,36 @@ public class FetchStationCodeController extends HttpServlet {
         	request.setAttribute("Train_Name", Train);
         	
         	rs2.close();
+        	
+        	String sql = "select * from tracker where train_journey_id ="+"'"+train_journey_id+"'";
+        	ps = conn.prepareStatement(sql);
+        	ResultSet rs3 = ps.executeQuery();
+        	
+        	Details d = new Details();
+        	while(rs3.next()) {
+
+        		d.setTrain_journey_id(rs3.getInt("train_journey_id"));
+        		d.setDOJ(rs3.getString("DOJ"));
+        		d.setTrain(rs3.getString("Train"));
+        		d.setTrain_Number("("+rs3.getString("Train_Number")+")");
+        		d.setClasses(rs3.getString("Classes"));
+        		d.setBerth(rs3.getString("berth"));
+        		d.setComments(rs3.getString("Comments"));
+        		       		
+        	}
+        	
+        	System.out.println(d.getTrain_Number());
+        	   
+            request.setAttribute("details", d);
+            
+            request.setAttribute("journey_id", d.getTrain_journey_id());
+            
+        	rs3.close();
+        	ps.close();
         	conn.close();
+        	
   	
-        	rd = request.getRequestDispatcher("/success.jsp");
+        	rd = request.getRequestDispatcher("/Editinfo.jsp");
         } 
         catch(Exception E1)
         {
