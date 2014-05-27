@@ -29,6 +29,7 @@ public class DeleteRecordController extends HttpServlet {
  
    
     	Connection conn = null;
+    	RequestDispatcher rd = null;
     	HttpSession session = request.getSession(true);
     	
        	String temp = request.getParameter("recordid");
@@ -38,7 +39,7 @@ public class DeleteRecordController extends HttpServlet {
        
         ServletContext ctx=getServletContext();
         
-        String userid = (String) session.getAttribute("userid");
+        
         
         String connectionURL= ctx.getInitParameter("dbURL");
         String uname= ctx.getInitParameter("dbUser");
@@ -59,6 +60,8 @@ public class DeleteRecordController extends HttpServlet {
         
         try {
         	
+        	if(session.getAttribute("userid")!=null) {
+        	
         	conn = (Connection) ctx.getAttribute("DBConnection");
         	conn.setAutoCommit(false);
         	String sql= "delete from tracker where train_journey_id=?";
@@ -69,16 +72,23 @@ public class DeleteRecordController extends HttpServlet {
         	conn.commit();
         	conn.close();
         	
+        	
+            rd = request.getRequestDispatcher("/DisplayAllController");
+            
+            request.setAttribute("Record_Confirmation", "Journey Deleted Successfully !!!");
+        	
+        	
+        	} else {
+        		
+        		rd = request.getRequestDispatcher("/invalid-session.html");	
+        		
+        	}
+        	
         	} catch(Exception E)  {
         	System.out.println(E.getMessage());
         } 
         
-  
-        RequestDispatcher rd = null;
-        rd = request.getRequestDispatcher("/DisplayAllController");
-        
-        request.setAttribute("Record_Confirmation", "Journey Deleted Successfully !!!");
-            
+    
             
         rd.forward(request, response);
 

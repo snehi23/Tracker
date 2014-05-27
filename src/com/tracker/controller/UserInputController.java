@@ -90,7 +90,7 @@ public class UserInputController extends HttpServlet {
         	
         	} else {
 	 
-             rd = request.getRequestDispatcher("/error.jsp");
+             rd = request.getRequestDispatcher("/invalid-session.html");
                     
 
         	}

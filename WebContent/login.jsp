@@ -29,18 +29,6 @@ function validateLogin()
 		return false;
   	}
 	
-	/* if (!/[a-zA-Z]/.test(x) || !/[0-9]/.test(x))
-	{
-		document.getElementById("error").innerHTML="Username requires one of the letters or digits";
-  		return false;		
-	}	
-	
-	if (!/[a-zA-Z]/.test(y) || !/[0-9]/.test(y))
-	{
-		document.getElementById("error").innerHTML="Password requires one of the letters or digits";
-  		return false;		
-	} */
-	
 	return true;
  
 }

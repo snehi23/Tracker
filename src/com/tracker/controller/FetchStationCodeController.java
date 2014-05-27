@@ -30,9 +30,7 @@ public class FetchStationCodeController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
  
 		String Train_Route=null;
-		
 		Map<String, String> temp2 = new HashMap<String, String>();
-		
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
 		
@@ -60,6 +58,8 @@ public class FetchStationCodeController extends HttpServlet {
 		}
         
         try {
+        	
+        	if(session.getAttribute("userid")!=null) {
   
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
@@ -106,6 +106,12 @@ public class FetchStationCodeController extends HttpServlet {
         	conn.close();
   	
         	rd = request.getRequestDispatcher("/success.jsp");
+        	
+        	} else {
+        		
+        		rd = request.getRequestDispatcher("/invalid-session.html");
+        		
+        	}
         } 
         catch(Exception E1)
         {

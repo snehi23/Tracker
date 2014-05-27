@@ -59,7 +59,7 @@
           <div class="inner cover">
             <h1 class="cover-heading">Journey Tracker</h1>
             <p class="lead">
-				Travelling is like an hobby for people and so is record keeping. 
+				Traveling is like an hobby for people and so is record keeping. 
 				Join us if you want to record all your travels, track it, share it and relive those moments again.
 			</p>
             <p class="lead">

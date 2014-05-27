@@ -51,11 +51,9 @@ public class UserInputEditController extends HttpServlet {
 		}
         
         try {
-        	
-        	
+   	
         	if(session.getAttribute("userid")!=null) {
-        		
-        	
+      	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
         	String sql = "select * from tracker where train_journey_id ="+"'"+train_journey_id+"'";
@@ -92,7 +90,7 @@ public class UserInputEditController extends HttpServlet {
         	
         	} else {
         		
-        		rd = request.getRequestDispatcher("/error.jsp");
+        		rd = request.getRequestDispatcher("/invalid-session.html");
         		
         	}
         	

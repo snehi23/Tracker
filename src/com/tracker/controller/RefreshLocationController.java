@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
@@ -31,11 +32,12 @@ public class RefreshLocationController extends HttpServlet {
 	
 	Connection conn=null;
 	PreparedStatement prep= null;
+	RequestDispatcher rd = null;
 	Boolean flag1=true,flag2=true;
 	
 	List<StationLocation> stationLocation = new ArrayList<StationLocation>();
     
-    
+	HttpSession session = request.getSession(true);
     ServletContext ctx=getServletContext();
    
     String connectionURL= ctx.getInitParameter("dbURL");
@@ -53,10 +55,10 @@ public class RefreshLocationController extends HttpServlet {
 		
 	}
 	
+    if(session.getAttribute("userid")!=null) {
 
 	try {
-    	
-		
+	
 		conn = (Connection) ctx.getAttribute("DBConnection");
     	
     	conn.setAutoCommit(false);
@@ -170,8 +172,7 @@ public class RefreshLocationController extends HttpServlet {
         	conn.commit();
     		
     	}
-    	
-    	
+  	
 
 		}catch(Exception E2) {
     	
@@ -180,8 +181,6 @@ public class RefreshLocationController extends HttpServlet {
 		}
 	
     	try {
-    		
-    		
 
     	if(flag1 || flag2 ) {
     	
@@ -208,11 +207,16 @@ public class RefreshLocationController extends HttpServlet {
         	E3.printStackTrace();
             		
         }
+    	
+    	rd = request.getRequestDispatcher("/success.jsp");
 
-	RequestDispatcher rd = null;
-	 
-    rd = request.getRequestDispatcher("/success.jsp");
-    
+    } else { 
+    	
+    	
+    	rd = request.getRequestDispatcher("/invalid-session.html");
+    	
+    }
+  
     rd.forward(request, response);
 	
     

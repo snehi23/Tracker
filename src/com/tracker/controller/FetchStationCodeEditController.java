@@ -62,6 +62,9 @@ public class FetchStationCodeEditController extends HttpServlet {
 		}
         
         try {
+        	
+        	
+        	if(session.getAttribute("userid")!=null) {
   
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
@@ -132,9 +135,15 @@ public class FetchStationCodeEditController extends HttpServlet {
         	rs3.close();
         	ps.close();
         	conn.close();
-        	
-  	
+ 	
         	rd = request.getRequestDispatcher("/Editinfo.jsp");
+        	
+        	} else {
+  	
+        	rd = request.getRequestDispatcher("/invalid-session.html");
+        	
+        	}
+        	
         } 
         catch(Exception E1)
         {

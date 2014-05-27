@@ -42,12 +42,12 @@
 
 	$(document).ready(function(){
 			$("#submit").click(function(){
-					var name=$("#name").val();
-					var username=$("#username").val();
+					//var name=$("#name").val();
+					//var username=$("#username").val();
 					var email=$("#email").val();
 					var password=$("#password").val();
 					var password2=$("#password2").val();
-					var rule=$("#rule").val();
+					//var rule=$("#rule").val();
 
 					if(password!=password2) {
 							$("#dis").slideDown().html('<span id="error">Password mismatch</span>');
@@ -70,8 +70,6 @@
 					return false;
 					
 				}
-				
-				
 
 			});
 		});
@@ -82,20 +80,20 @@
 </head>
 <body>
 
-<%-- <marquee><font color="Red">${sessionScope['userid uniqeness']}</font></marquee> --%>
+
 
 	 <form class="form-signin" role="form" name="loginform" action="RegistrationController" method="post" >
-		<h2 id="page-heading">Create account</h2>
-		<div id="dis"><p id="errors-text">${sessionScope['userid uniqueness']}</p></div><br>
-		<input id="name" type="text" name="name" maxlength="30" class="form-control" placeholder="Name" required autofocus>
+		<h2 id="page-heading">Sign up</h2>
+		<div id="dis"><p id="errors-text">${requestScope['userid uniqueness']}</p></div><br>
+		<input id="name" type="text" name="name" maxlength="30" class="form-control" placeholder="Name" required autofocus value="${User_Details.user}">
 		<input id="username" type="text" name="username" maxlength="30" class="form-control" placeholder="Username" required> <%-- <font color="Red">${sessionScope['userid uniqueness']}</font> --%>
-		<input id="email" type="text" name="email" maxlength="30" class="form-control" placeholder="Email" required>
+		<input id="email" type="text" name="email" maxlength="30" class="form-control" placeholder="Email" required value="${User_Details.email}">
 		<input id="password" type="password" name="password" maxlength="30" class="form-control" placeholder="Password" required>
 		<input id="password2" type="password" name="password2" maxlength="30" class="form-control" placeholder="Repeat password" required>
 		<label class="checkbox">
-			<input type="checkbox" id="rule" value="remember-me"> By clicking "Create account" below, you agree to the <a href="#" onClick="pop('popDiv')">Terms and Conditions</a>
+			<input type="checkbox" id="rule" value="remember-me"> By clicking "Sign up" below, you agree to the <a href="#" onClick="pop('popDiv')">Terms and Conditions</a>
 		</label>
-		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit" value="Create account">Create Account</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit" value="Sign Up">Sign up</button>
 	</form>
 	<div id="popDiv" class="ontop">
 			<div id="popup">

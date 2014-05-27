@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
+import com.tracker.model.User;
 import com.tracker.util.DBConnectionManager;
 
 public class RegistrationController extends HttpServlet {
@@ -40,7 +41,7 @@ public class RegistrationController extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String pass = request.getParameter("password");
-        List<String> userids = new ArrayList<String>();
+        
         
         
         System.out.println(" "+name+" "+username+" "+email+" "+pass);
@@ -85,7 +86,7 @@ public class RegistrationController extends HttpServlet {
         	
         	flag=false;
         	
-        	session.setAttribute("userid uniqueness", "Username already exist!");
+        	request.setAttribute("userid uniqueness", "Username already exist!");
         	rs1.close();
         	conn.commit();
         	
@@ -121,11 +122,16 @@ public class RegistrationController extends HttpServlet {
         if(flag) {
  
             rd = request.getRequestDispatcher("/login.jsp");
-            session.removeAttribute("userid uniqueness");
+            
                
         } else {
 	
         	rd = request.getRequestDispatcher("/register.jsp");
+        	User user = new User();
+        	user.setUser(name);
+        	user.setEmail(email);
+        	request.setAttribute("User_Details", user);
+        	
         }
             
         rd.forward(request, response);

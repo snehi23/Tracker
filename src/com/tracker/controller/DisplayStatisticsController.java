@@ -286,7 +286,7 @@ public class DisplayStatisticsController extends HttpServlet {
         	
         		} else {
         			
-        			rd = request.getRequestDispatcher("/error.jsp");
+        			rd = request.getRequestDispatcher("/invalid-session.html");
         			
         		}
         	

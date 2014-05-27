@@ -30,6 +30,7 @@ public class ShowMapController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
  
 		String Train_Route=null;
+		boolean flag=false;
 		
 		Map<String, Integer> temp = new HashMap<String, Integer>();
 		List<StationLocation> station_loc_list = new ArrayList<StationLocation>();
@@ -63,7 +64,7 @@ public class ShowMapController extends HttpServlet {
         
         try {
         	
-        		
+        	if(session.getAttribute("userid")!=null) {	
             
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
@@ -85,10 +86,7 @@ public class ShowMapController extends HttpServlet {
         	rs1.close();
         	conn.commit();
         	
-        	
-        	boolean flag=false;
-        	
-        	
+  	
         	Map<String, String> temp1 = Splitter.on('$').withKeyValueSeparator(":").split(Train_Route);
         	
         	Map<String, String> temp2 = new LinkedHashMap<String, String>();
@@ -132,20 +130,17 @@ public class ShowMapController extends HttpServlet {
             			l.setLatitude(rs2.getDouble("latitude"));
             			l.setLongitude(rs2.getDouble("longitude"));
             			station_loc_list.add(l);
-            		        		
+ 		        		
             	}
             	
             	conn.commit();	
-
-        		
+  		
         	}
         	
         	request.setAttribute("station_loc_list", station_loc_list);
         	
         	rs2.close();
-        	
-        	
-        	
+   	
         	String sql3 = "select * from station_lat_long where station_code="+"'"+From_Station+"' OR station_code="+"'"+To_Station+"'";
         	
         	ResultSet rs3 = stmt.executeQuery(sql3);
@@ -165,16 +160,17 @@ public class ShowMapController extends HttpServlet {
             request.setAttribute("station_loc_plot", station_loc_plot);
             
         	rs3.close();
-        	conn.commit();
-        	
-        	
-        	
+        	conn.commit();	
         	conn.close();
         	
-        	
-
-        	
-        	rd = request.getRequestDispatcher("/displaylocation.jsp");
+        		rd = request.getRequestDispatcher("/displaylocation.jsp");
+    	
+        	} else {
+    	
+        		rd = request.getRequestDispatcher("/invalid-session.html");
+    	
+        	}
+    	
         } 
         catch(Exception E1)
         {
