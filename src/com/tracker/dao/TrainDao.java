@@ -23,6 +23,10 @@ public class TrainDao {
         String uname= "root";
         String pwd= "root";
         
+        /*String connectionURL= "jdbc:mysql://localhost/jouneyt_tracker";
+        String uname= "jouneyt_tracker";
+        String pwd= "tracker";*/
+        
         try {
 			DBConnectionManager dbconnmng = new DBConnectionManager(connectionURL, uname, pwd);
 			

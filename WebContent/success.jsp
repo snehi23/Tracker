@@ -157,21 +157,18 @@ function nobacktrack() {
 				<div id="inner-left" class="col-lg-6">
 				<p class="lead">
 					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
-					<div id="pnr_error" style="color:red"></div>
-					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${requestScope['Train_Name']}">
-					<a href="FetchStationCodeController?Train_Name="onclick="getInputValue(this);">Fetch Stations</a>
-					<!-- <button onclick="location.href='FetchStationCodeController?Train_Name='+getInputValue(this);" value="Fetch Stations">Fetch Stations</button> -->
-					<div id="Date_error" style="color:red"></div>
+					<div style="color:red"></div>
+					<input id="autocomplete1" onblur="javascript: return getInputValue();" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${requestScope['Train_Name']}">
+					<div id="train_error" style="color:red"></div>
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
-					<div id="Date_error" style="color:red"></div>
 					<!-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required> -->
 					<select name="From" id="From" onchange=""> 
-					<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
-					<c:forEach var="d" items="${station_code}">  
-  						<option value="${d.key}">${d.key}</option>  	
-      					 
-   					</c:forEach>  
-					
+						<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
+						<c:forEach var="d" items="${station_code}">  
+							<option value="${d.key}">${d.key}</option>  	
+							 
+						</c:forEach>  
+						
 					</select>
 					<select name="To" id="To" onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
@@ -237,22 +234,18 @@ function nobacktrack() {
     </div>
 </body>
 <script> 
-
-function getInputValue(obj){
+function getInputValue(){
     var inputValue = document.getElementById('autocomplete1').value;
-    
-    if(obj.href.indexOf(inputValue) == -1){
-        obj.href += inputValue;
-    }
+	url = 'FetchStationCodeController?Train_Name=';  		
+    if(inputValue != ""){
+		  url += inputValue;			
+		  window.location.href = url;
+		  return url;
+    } else {
+		document.getElementById("train_error").innerHTML="Please select train";
+		return false;
+	}
 }
-
-function gotoItem(obj){
-    var url = window.location.href;
-    var separator = (url.indexOf('?') > -1) ? "&" : "?";
-    var qs = "Train_Name=" + getInputValue(obj);
-    window.location.href = url + separator + qs;
-}
-
 </script>
 
 </html>

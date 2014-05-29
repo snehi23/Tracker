@@ -80,6 +80,18 @@
     <servlet-name>DisplayStatisticsController</servlet-name>
     <url-pattern>/DisplayStatisticsController</url-pattern>
   </servlet-mapping>
+  <!-- <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>jouneyt_tracker</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>tracker</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbURL</param-name>
+    <param-value>jdbc:mysql://localhost/jouneyt_tracker</param-value>
+  </context-param> -->
   <context-param>
     <param-name>dbUser</param-name>
     <param-value>root</param-value>
