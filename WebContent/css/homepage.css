@@ -29,6 +29,7 @@ body {
   height: 100%;
   background-color: #E4E4E4;
   max-width:1280px;
+  margin: 0 auto;
 }
 body {
   color: #000000;
@@ -62,9 +63,12 @@ body {
   margin-left: auto;
 }
 #site-intro-cover{
-	background-image:url("../img/train.jpg");
-	background-repeat:no-repeat;
-	background-position:bottom;
+  width: 100%;
+  background-color: #eee;
+  background-image:url("../img/train.jpg");
+  background-size:100%;
+  background-position:left top;
+  background-repeat:no-repeat;
 }
 /* Padding for spacing */
 .inner {
