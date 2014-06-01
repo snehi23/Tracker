@@ -79,7 +79,7 @@ public class UserInputEditController extends HttpServlet {
         	   
             request.setAttribute("details", d);
             
-            request.setAttribute("journey_id", d.getTrain_journey_id());
+            session.setAttribute("journey_id", d.getTrain_journey_id());
             
         	rs.close();
         	ps.close();

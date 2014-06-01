@@ -46,6 +46,9 @@ public class DisplayStatisticsController extends HttpServlet {
 		Map<String,Integer> group_by_month = new LinkedHashMap<String,Integer>();
 		Map<String,Integer> group_by_day = new LinkedHashMap<String,Integer>();
 		
+		int number_of_train=0;
+		int number_of_places=0;
+		
 		List<StationLocation> station_loc_list = new ArrayList<StationLocation>();
 		List<StationLocationPlot> station_loc_plot = new ArrayList<StationLocationPlot>();
 		
@@ -279,6 +282,39 @@ public class DisplayStatisticsController extends HttpServlet {
         	
         	rs12.close();
         	conn.commit();
+        	
+        	String sql13 = "select  count(distinct Train) from tracker where user_id ="+"'"+userid+"'";
+       	 	ResultSet rs13 = stmt.executeQuery(sql13);
+        	
+       	 	while(rs13.next()) {
+
+       	 	number_of_train=rs13.getInt(1);
+        		       		
+        	}
+        	
+        	request.setAttribute("number_of_train", number_of_train);
+        	
+        	
+        	rs13.close();
+        	conn.commit();
+        	
+        	String sql14 = "select count(*) from (select distinct From_Station from tracker where user_id="+"'"+userid+"'"+"union select distinct To_Station from tracker where user_id="+"'"+userid+"'"+") as t";
+       	 	ResultSet rs14 = stmt.executeQuery(sql14);
+        	
+       	 	while(rs14.next()) {
+
+       	 	number_of_places=rs14.getInt(1);
+        		       		
+        	}
+        	
+        	request.setAttribute("number_of_places", number_of_places);
+        	
+        	
+        	rs14.close();
+        	conn.commit();
+        	
+        	
+        	
  	
         	conn.close();
         	

@@ -30,6 +30,14 @@ public class FetchStationCodeEditController extends HttpServlet {
 		
 		String temp = request.getParameter("recordid");
        	Integer train_journey_id = Integer.parseInt(temp);
+       	
+       	String Train = request.getParameter("Train_Name");
+		
+		String Train_Number = Train.replaceAll("[^0-9]","");
+		
+		String  Train_Name = Train.replaceAll("[^A-Z a-z]", "");
+		
+		System.out.println(Train_Number);
 		
 		Map<String, String> temp2 = new HashMap<String, String>();
 		
@@ -38,10 +46,7 @@ public class FetchStationCodeEditController extends HttpServlet {
 		PreparedStatement ps = null;
         ResultSet rs= null;
 		
-		String Train = request.getParameter("Train_Name");
 		
-		String Train_Number = Train.replaceAll("[^0-9]","");
-        System.out.println(Train_Number);
 		
         
         ServletContext ctx=getServletContext();
@@ -118,8 +123,13 @@ public class FetchStationCodeEditController extends HttpServlet {
 
         		d.setTrain_journey_id(rs3.getInt("train_journey_id"));
         		d.setDOJ(rs3.getString("DOJ"));
-        		d.setTrain(rs3.getString("Train"));
-        		d.setTrain_Number("("+rs3.getString("Train_Number")+")");
+        		d.setTrain(Train_Name);
+        		d.setTrain_Number("("+Train_Number+")");
+        		if(Train_Number.equals(rs3.getString("Train_Number"))) { 
+        			d.setFrom_Station(rs3.getString("From_Station"));
+            		d.setTo_Station(rs3.getString("To_Station"));
+        			
+        		}
         		d.setClasses(rs3.getString("Classes"));
         		d.setBerth(rs3.getString("berth"));
         		d.setComments(rs3.getString("Comments"));
@@ -130,8 +140,9 @@ public class FetchStationCodeEditController extends HttpServlet {
         	   
             request.setAttribute("details", d);
             
-            request.setAttribute("journey_id", d.getTrain_journey_id());
+            session.setAttribute("journey_id", d.getTrain_journey_id());
             
+            conn.commit();
         	rs3.close();
         	ps.close();
         	conn.close();

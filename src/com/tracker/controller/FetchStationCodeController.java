@@ -2,6 +2,7 @@ package com.tracker.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.common.base.Splitter;
+import com.tracker.model.Details;
 import com.tracker.model.StationLocation;
 import com.tracker.model.StationLocationPlot;
 import com.tracker.util.DBConnectionManager;
@@ -37,8 +39,13 @@ public class FetchStationCodeController extends HttpServlet {
 		String Train = request.getParameter("Train_Name");
 		
 		String Train_Number = Train.replaceAll("[^0-9]","");
-        System.out.println(Train_Number);
 		
+		String  Train_Name = Train.replaceAll("[^A-Z a-z]", "");
+		
+		
+        System.out.println(Train_Number);
+        
+        System.out.println(Train_Name);
         
         ServletContext ctx=getServletContext();
         
@@ -103,7 +110,8 @@ public class FetchStationCodeController extends HttpServlet {
         	request.setAttribute("Train_Name", Train);
         	
         	rs2.close();
-        	conn.close();
+         	conn.close();
+	
   	
         	rd = request.getRequestDispatcher("/success.jsp");
         	

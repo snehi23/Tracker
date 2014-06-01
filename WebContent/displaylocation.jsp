@@ -32,7 +32,7 @@
                 <!-- <li><a href="#">Home</a></li> -->
                 <li><a href="success.jsp">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
-                <li class="active"><a href="DisplayStatisticsController">Statistics</a></li>
+                <li><a href="DisplayStatisticsController">Statistics</a></li>
                 <!-- <li><a href="DisplayLocationController">Locations</a></li> -->
                 <li><a href="LogoutController">LogOut</a></li>
                 <li><a href="#"><form action='RefreshLocationController' method='post'>
@@ -50,23 +50,21 @@
               </ul>
             </div>
           </div>
-	</div>
+		</div>
  		  
  		  
-          <div class="inner cover">
-          	<h5 class="masthead-brand">Total distance for this journey is <b style="color: #336699;"><c:out value="${total_distance}"/></b> KM  Keep Traveling!!!</h5>
-			<div class="row">
-				<div  id="map-canvas" style="width: 80%; height: 500px;"> </div>
+        <div class="inner cover">
+          	<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3>Total distance for this journey is <b style="color: #336699;"><c:out value="${total_distance}"/></b> KM. Keep Traveling!!</h3>
 			</div>
-            
-          <div class="mastfoot">
-            <div class="inner">
-              <p></p>
-            </div>
-          </div>
-
+			<div class="panel-body">
+				<div class="row">
+					<div  id="map-canvas" style="width: 100%; height: 500px;"> </div>
+				</div>
+			</div>
+			</div>
         </div>
-
       </div>
 
     </div>

@@ -13,7 +13,7 @@
 <link href="css/traveldataentry.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script> 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Tg3D8gm1S4YoqAH65i_HENA75UePGUk&sensor=false"> </script>
-<title>USER LOCATION STATISTICS</title>
+<title>MyTravelogue: statistics for train, source station, destination, berths, yearly count, monthly count etc. </title>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script>
       google.load("visualization", "1", {packages:["corechart"]});
@@ -40,7 +40,8 @@
         
         
         var options = {
-          title: 'My Train Preferences'
+          //title: 'My Train Preferences',
+		  legend: 'none'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
@@ -59,7 +60,8 @@
           
           
           var options = {
-            title: 'My From Station Preferences'
+            //title: 'My From Station Preferences',
+			legend: 'none'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
@@ -78,7 +80,8 @@
           
           
           var options = {
-            title: 'My To Station Preferences'
+            //title: 'My To Station Preferences',
+			legend: 'none'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
@@ -97,7 +100,8 @@
           
           
           var options = {
-            title: 'My Class Preferences'
+            //title: 'My Class Preferences',
+			legend: 'none'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
@@ -116,7 +120,8 @@
           
           
           var options = {
-            title: 'My Yearly Stats'
+            //title: 'My Yearly Stats',
+        	legend: 'none'
           };
 
           var chart = new google.visualization.LineChart(document.getElementById('bargraph1'));
@@ -135,11 +140,12 @@
         	</c:forEach>
  	
         	var options = {
-            title: 'My Monthly Stats',
-            width:600,
+            //title: 'My Monthly Stats',
+            width:500,
             height:400,
             bar: {groupWidth: "50%"},
-            legend: { position: "none" },
+			legend: 'none'
+			//chartArea:{left:0,width:"100%",height:"100%"}
           };
 
           var chart = new google.visualization.ColumnChart(document.getElementById('bargraph2'));
@@ -159,11 +165,12 @@
           
           
           var options = {
-            title: 'My Daily Stats',
-            width:600,
+            //title: 'My Daily Stats',
+            width:500,
             height:400,
             bar: {groupWidth: "50%"},
-            legend: { position: "none" },
+            legend: 'none',
+			//chartArea:{width:"100%",height:"100%"}
           };
 
           var chart = new google.visualization.ColumnChart(document.getElementById('bargraph3'));
@@ -182,7 +189,8 @@
           
           
           var options = {
-            title: 'My Type Preferences'
+            //title: 'My Type Preferences',
+			legend: 'none'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
@@ -201,7 +209,8 @@
           
           
           var options = {
-            title: 'My Berth Preferences'
+            //title: 'My Berth Preferences',
+			legend: 'none',
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
@@ -222,69 +231,153 @@
             <div class="inner">
               <h3 class="masthead-brand">Hello ${sessionScope['userid']} !</h3>
               <ul class="nav masthead-nav">
-                <!-- <li><a href="#">Home</a></li> -->
+                <li><a href="index.jsp">Home</a></li>
                 <li><a href="success.jsp">Add a Journey</a></li>
                 <li><a href="DisplayAllController">Records</a></li>
                 <li class="active"><a href="DisplayStatisticsController">Statistics</a></li>
                 <!-- <li><a href="DisplayLocationController">Locations</a></li> -->
                 <li><a href="LogoutController">LogOut</a></li>
-                <li><a href="#"><form action='RefreshLocationController' method='post'>
-					<input  style="background-image: url(img/refresh.png); background-color: transparent;
-						background-repeat: no-repeat;
-						background-position: 0px 0px;
-						border: none;
-						cursor: pointer;
-						height: 35px;
-						width: 30px;
-						padding-left: 16px;
-						vertical-align: middle;" title="Force Refresh" type="submit" value="">
-					</form></a>
-				</li>
               </ul>
             </div>
           </div>
   
- 		  <h5 class="masthead-brand">You travelled total <b style="color: #336699;"><c:out value="${total_distance}"/></b> kms !!!</h5>
-          <div class="inner cover">
-          
-			<div class="row">
-				<div  id="map-canvas" style="width: 80%; height: 500px;"> </div>
+        <div class="inner cover">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3>Your Travelogue</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div id="inner-left" class="col-lg-4">
+							<h1><b style="color: #336699; font-size:80px;"><c:out value="${total_distance}"/></b></h1>
+							<h2>Approximate Total distance travelled in km</h2>
+						</div>
+						<div id="inner-centre" class="col-lg-4">
+							<h1><b style="color: #336699; font-size:80px;"><c:out value="${number_of_train}"/></b></h1>
+							<h2>Number of Trains you've travelled in</h2>
+						</div>
+						<div id="inner-right" class="col-lg-4">
+							<h1><b style="color: #336699; font-size:80px;"><c:out value="${number_of_places}"/></b></h1>
+							<h2>Number of places you've been to</h2>
+						</div>
+					</div>
+				</div>
 			</div>
-            <div class="row">
-				<div id="inner-left" class="col-lg-6">
-					<div id="piechart1" style="width: 100%; height: 500px;"></div>
+			
+		  
+		   <div class="panel panel-info">
+				<div class="panel-heading">
+					<h3>Bird's eye view of your travel</h3>
 				</div>
-				<div id="inner-right" class="col-lg-6">
-					<div id="piechart2" style="width: 100%; height: 500px;"></div>
+				<div class="panel-body">
+					<div class="row">
+						<div  id="map-canvas" style="width: 100%; height: 500px;"> </div>
+					</div>
 				</div>
 			</div>
+		  
 			<div class="row">
-				<div id="inner-left" class="col-lg-6">
-					<div id="piechart3" style="width: 100%; height: 500px;"></div>
+				<div id="inner-left" class="col-lg-4">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3>Train Selections</h3>
+						</div>
+					<div class="panel-body">
+						<div id="piechart1" style="width: 100%; height: 500px;"></div>
+					</div>
+					</div>
 				</div>
-				<div id="inner-right" class="col-lg-6">
+				<div id="inner-centre" class="col-lg-4">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3>Top Source Stations</h3>
+						</div>
+						<div class="panel-body">
+							<div id="piechart2" style="width: 100%; height: 500px;"></div>
+						</div>
+					</div>
+				</div>
+				<div id="inner-right" class="col-lg-4">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3>Top Destinations</h3>
+						</div>
+						<div class="panel-body">
+							<div id="piechart3" style="width: 100%; height: 500px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  	
+			<div class="row">
+				<div id="inner-left" class="col-lg-4">
+					<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3>Class Preferences</h3>
+					</div>
+					<div class="panel-body">
 					<div id="piechart4" style="width: 100%; height: 500px;"></div>
+					</div>
+					</div>
+				</div>
+				<div id="inner-centre" class="col-lg-4">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3>Train Type Selections</h3>
+						</div>
+						<div class="panel-body">
+							<div id="piechart5" style="width: 100%; height: 500px;"></div>
+						</div>
+					</div>
+				</div>
+				<div id="inner-right" class="col-lg-4">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3>Berth Fortunes</h3>
+						</div>
+						<div class="panel-body">
+							<div id="piechart6" style="width: 100%; height: 500px;"></div>
+						</div>
+					</div>
 				</div>
 			</div>
+			
+			
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3>Time-line of your travels by year</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div id="bargraph1" style="width: 100%; height: 500px"></div>	
+					</div>
+				</div>
+			</div>
+			
+			
+			
 			<div class="row">
 				<div id="inner-left" class="col-lg-6">
-					<div id="piechart5" style="width: 100%; height: 500px;"></div>
+					<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3>Journey Stats by Month</h3>
+					</div>
+					<div class="panel-body">
+						<div id="bargraph2" style="width: 100%; height: 500px"></div>
+					</div>
+					</div>
 				</div>
 				<div id="inner-right" class="col-lg-6">
-					<div id="piechart6" style="width: 100%; height: 500px;"></div>
+					<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3>Journey Stats by Weekdays</h3>
+					</div>
+					<div class="panel-body">
+						<div id="bargraph3" style="width: 100%; height: 500px"></div> 
+					</div>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div id="bargraph1" style="width: 100%; height: 500px"></div>	
-			</div>
-			<div class="row">
-				<div id="inner-left" class="col-lg-6">
-					<div id="bargraph2" style="width: 100%; height: 500px"></div>
-				</div>
-				<div id="inner-right" class="col-lg-6">
-					<div id="bargraph3" style="width: 100%; height: 500px"></div> 
-				</div>
-          </div>
+            </div>
 
           <div class="mastfoot">
             <div class="inner">
@@ -298,6 +391,7 @@
 
     </div>
     </div>
+
 <script>
 
 	var locations=[
