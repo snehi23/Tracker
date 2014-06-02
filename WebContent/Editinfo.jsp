@@ -157,8 +157,11 @@ function nobacktrack() {
 					<div id="pnr_error" style="color:red"></div>
 					<%-- <input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}"> --%>
 					<%-- <a href="FetchStationCodeEditController?recordid=<c:out value="${details.train_journey_id}"/>&Train_Name="onclick="getInputValue(this);">Fetch Stations</a> --%>
-					<input id="autocomplete1" onblur="javascript: return getInputValue();" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
-					<div id="train_error" style="color:red"></div>
+					<div id="trains">
+					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
+					<button id="fetch" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg btn-success">fetch codes</button>
+					</div>
+					<div id="train_error" style="color:red"></div>					
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
 					<div id="Date_error" style="color:red"></div>
 					<%-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required value="${details.from_Station}"> --%>

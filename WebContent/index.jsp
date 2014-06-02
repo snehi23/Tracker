@@ -10,10 +10,24 @@
 
 
 <title>HOME</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/homepage.css" rel="stylesheet">
 <link href="css/footer.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/jcarousel.basic.css">
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="http://www.google.com/jsapi"></script>  
+	<script>  
+		google.load("jquery", "1");
+	</script>
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="js/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="js/jcarousel.basic.js"></script>
+
+
+
     <script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
@@ -47,6 +61,12 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+      
+      $(function() {
+    	    $('.jcarousel').jcarousel({
+    	        // Configuration goes here
+    	    });
+    	});
  </script>
 </head>
 
@@ -65,6 +85,7 @@
             <p class="lead">
               <a href="#about-us" class="btn btn-lg btn-default">About Us</a>
               <a href="SessionController" class="btn btn-lg btn-default">Sign In</a>
+              <a href="register.jsp" class="btn btn-lg btn-default">Sign Up</a>
             </p>
           </div>
         </div>
@@ -114,6 +135,30 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="wrapper">
+            <h1>Basic carousel</h1>
+
+            <p>This example shows how to setup a basic carousel with prev/next controls and pagination.</p>
+
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel">
+                    <ul>
+                        <li><img src="img/Arya.png" width="600" height="400" alt=""></li>
+                        <li><img src="img/Arya-Stark.png" width="600" height="400" alt=""></li>
+                        
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+                
+                <p class="jcarousel-pagination">
+                    
+                </p>
+            </div>
+        </div>
+	
 	<div id="footer" class="col-lg-12">
 		<ul id="footer-list">
 			<li><a href="#">Contact Us</a></li>

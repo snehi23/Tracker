@@ -102,3 +102,19 @@ vertical-align: middle;
 background-color: #fff;
 background-image: none;
 }
+
+#fetch{
+	float:right;
+	 margin-bottom:15px;
+	} 
+	
+/* #autocomplete1{
+		width:70%;
+	}
+#fetch{
+		width:20%;
+	} 
+#trains{
+	display:inline;
+	float:left;
+} */

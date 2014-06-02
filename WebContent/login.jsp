@@ -39,8 +39,8 @@ function validateLogin()
  <form class="form-signin" role="form" name="loginform" action="LoginController" method="post" >
 	<h2 class="form-signin-heading"><a id="sign-up" href="register.jsp">Sign up,it's free</a></h2>
 	<div id="error" style="color:red"></div></td>
-	<input type="text" name="user" maxlength="30" class="form-control" placeholder="Username"  autofocus>
-	<input type="password" name="pass" maxlength="30" class="form-control" placeholder="Password" >
+	<input type="text" name="user" maxlength="30" class="form-control" placeholder="Username"  required autofocus>
+	<input type="password" name="pass" maxlength="30" class="form-control" placeholder="Password" required>
 	<label class="checkbox">
           <input type="checkbox" name="remember" value="true"> Remember me
     </label>

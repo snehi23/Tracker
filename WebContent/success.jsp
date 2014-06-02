@@ -158,7 +158,12 @@ function nobacktrack() {
 				<p class="lead">
 					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
 					<div style="color:red"></div>
-					<input id="autocomplete1" onblur="javascript: return getInputValue();" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${requestScope['Train_Name']}">
+					<!--  <ul id="berth-input-list"> -->
+					<div id="trains">
+					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${requestScope['Train_Name']}">
+					<button id="fetch" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg btn-success">fetch codes</button>
+					</div>
+					<!--  </ul> -->
 					<div id="train_error" style="color:red"></div>
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
 					<!-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required> -->
