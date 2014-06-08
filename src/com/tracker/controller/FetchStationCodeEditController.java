@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -39,16 +40,13 @@ public class FetchStationCodeEditController extends HttpServlet {
 		
 		System.out.println(Train_Number);
 		
-		Map<String, String> temp2 = new HashMap<String, String>();
+		Map<String, String> temp2 = new LinkedHashMap<String, String>();
 		
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
 		PreparedStatement ps = null;
         ResultSet rs= null;
-		
-		
-		
-        
+     
         ServletContext ctx=getServletContext();
         
         String connectionURL= ctx.getInitParameter("dbURL");

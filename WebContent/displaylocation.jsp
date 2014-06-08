@@ -35,7 +35,7 @@
                 <li><a href="DisplayStatisticsController">Statistics</a></li>
                 <!-- <li><a href="DisplayLocationController">Locations</a></li> -->
                 <li><a href="LogoutController">LogOut</a></li>
-                <li><a href="#"><form action='RefreshLocationController' method='post'>
+                <!-- <li><a href="#"><form action='RefreshLocationController' method='post'>
 					<input  style="background-image: url(img/refresh.png); background-color: transparent;
 						background-repeat: no-repeat;
 						background-position: 0px 0px;
@@ -46,7 +46,7 @@
 						padding-left: 16px;
 						vertical-align: middle;" title="Force Refresh" type="submit" value="">
 					</form></a>
-				</li>
+				</li> -->
               </ul>
             </div>
           </div>

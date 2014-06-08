@@ -32,7 +32,7 @@ public class FetchStationCodeController extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
  
 		String Train_Route=null;
-		Map<String, String> temp2 = new HashMap<String, String>();
+		Map<String, String> temp2 = new LinkedHashMap<String, String>();
 		HttpSession session = request.getSession(true);
 		RequestDispatcher rd = null;
 		
@@ -90,20 +90,28 @@ public class FetchStationCodeController extends HttpServlet {
         	
         	Map<String, String> temp1 = Splitter.on('$').withKeyValueSeparator(":").split(Train_Route);
         	
+        	
+        	
         	ResultSet rs2=null;
         	for(String t : temp1.keySet()) {
-        		
-        		System.out.println(t+" : "+temp1.get(t));
-        		
+ 	
         		rs2 = stmt.executeQuery("select station_name from station_lat_long where station_code="+"'"+t+"'");
     	     	
             	while(rs2.next()) {
 
             		temp2.put(rs2.getString("station_name")+"("+t+")", temp1.get(t));
+            		//System.out.println(rs2.getString("station_name")+" : "+t+" : "+temp1.get(t));
             	}
+            	
+            	
             	
             	conn.commit();
     		
+        	}
+        	
+        	for(String t : temp2.keySet()) {
+        		System.out.println(t+" : "+temp2.get(t));
+        		
         	}
 	
         	request.setAttribute("station_code", temp2);

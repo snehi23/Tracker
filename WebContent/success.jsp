@@ -5,12 +5,6 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="pragma"        content="no-cache" />
-<meta http-equiv="Cache-Control" content="no-cache" />
-<meta http-equiv="Cache-Control" content="no-store" />
-
-
 <title>Success</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/traveldataentry.css" rel="stylesheet">
@@ -64,6 +58,24 @@ function validateForm() {
 	var xx="";
 	var yy="";
 
+	if(aa=="Please Select From Station") {
+		document.getElementById("From_error").innerHTML="Please choose From Station";
+		formValid = false;
+		
+	} else {
+		
+		document.getElementById("From_error").innerHTML="";
+	}
+	
+	if(bb=="Please Select To Station") {
+		
+		document.getElementById("To_error").innerHTML="Please choose To Station";
+		formValid = false;
+	} else {
+		
+		document.getElementById("To_error").innerHTML="";
+	}
+	
 	// alert(aa); alert(bb);
 	<c:forEach var="d" items="${station_code}" varStatus="status" > 
 
@@ -91,13 +103,13 @@ function validateForm() {
 
 	if(cc>=dd) {
 		
-		document.getElementById("To_error").innerHTML="Please choose wisely SRC -> DEST";
+		document.getElementById("Choice_error").innerHTML="Please choose wisely SRC -> DEST";
 		formValid = false;
 		
 		
 	} else {
 		
-		document.getElementById("To_error").innerHTML="";
+		document.getElementById("Choice_error").innerHTML="";
 		
 	}
 	
@@ -116,7 +128,7 @@ function nobacktrack() {
 </script>
 
 </head>
-<body onload="nobacktrack();">
+<body onload="">
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -167,6 +179,7 @@ function nobacktrack() {
 					<div id="train_error" style="color:red"></div>
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
 					<!-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required> -->
+					<div id="From_error" style="color:red"></div><div id="To_error" style="color:red"></div><div id="Choice_error" style="color:red"></div>
 					<select name="From" id="From" onchange=""> 
 						<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
 						<c:forEach var="d" items="${station_code}">  
@@ -183,9 +196,9 @@ function nobacktrack() {
    					</c:forEach>  
 					
 					</select>
-					<div id="From_error" style="color:red"></div>
+					
 					<!-- <input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required> -->
-					<div id="To_error" style="color:red"></div>
+					
 					<div id="class-input">
 						<ul id="class-input-list">
 							<li>Class :</li>
@@ -212,7 +225,7 @@ function nobacktrack() {
 				</div>
 				<div id="inner-right" class="col-lg-6">
 				<p class="lead">
-					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none"></textarea> 
+					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" value="NA"></textarea> 
 					<div id="Comments_error" style="color:red"></div>
 					<div id="buttons-control">
 						<ul id="submit-buuton-input-list">
