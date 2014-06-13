@@ -4,10 +4,10 @@
 <html>
 <head>
 <title>HOME</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/homepage.css" rel="stylesheet">
 <link href="css/footer.css" rel="stylesheet">
+<link rel="stylesheet" href="css/mainSlideShow.css">
 
 	<link rel="stylesheet" type="text/css" href="css/jcarousel.basic.css">
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -17,9 +17,7 @@
 	</script>
 	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
-<script src="js/jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="js/jcarousel.basic.js"></script>
-
+<script src="js/bootstrap-carousel.js"></script>
 
 
     <script type="text/javascript">
@@ -130,29 +128,101 @@
 		</div>
 	</div>
 	
-	<div class="wrapper">
-            <h1>Basic carousel</h1>
+	<div id="carousel-example-generic" class="carousel slide">
+		<ol class="carousel-indicators">
+		  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		  <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+		  <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+		  <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+		  <li data-target="#carousel-example-generic" data-slide-to="4" class=""></li>
+		</ol>
+		<div class="carousel-inner">
+		  <div class="item active">
+			<div class="slide1">
+				<div class="container">
+				  <h1 class="home-intro text-left">Professional Training For Students</h1>
+				  <p class="home-lead">
+					Giving Industry Insights in College
+					<i></i>
+				  </p>
+				  <a href="training/" class="learn-more">Learn more <span class="link-arrow">→</span></a>
+				</div>    
+			</div>
+		  </div>
+		  <div class="item">
+			<div class="slide2">
+				<div class="container">
+				  <h1 class="home-intro text-left">Bridging The Gap For Rural Students</h1>
+				  <p class="home-lead">
+					To Make Them Compete With Urban Students 
+					<i></i>
+				  </p>
+				  <a href="schools/" class="learn-more">Learn more <span class="link-arrow">→</span></a>
+				</div>    
+			</div>
+		  </div>
+		  <div class="item">
+			<div class="slide3">
+				<div class="container">
+				  <h1 class="home-intro text-left">Creating Jobs for Rural People</h1>
+				  <p class="home-lead">
+					By Outsourcing Jobs requiring Low Skills
+					<i></i>
+				  </p>
+				  <a href="jobs/" class="learn-more">Learn more <span class="link-arrow">→</span></a>
+				</div>    
+			</div>
+		  </div>
+		  <div class="item">
+			<div class="slide4">
+				<div class="container">
+				  <h1 class="home-intro text-left">Monitoring Health Of School Students</h1>
+				  <p class="home-lead">
+					By Quarterly Check-up And Diagnosis
+					<i></i>
+				  </p>
+				  <a href="health/" class="learn-more">Learn more <span class="link-arrow">→</span></a>
+				</div>    
+			</div>
+		  </div>
+		  <div class="item">
+			<div class="slide5">
+				<div class="container">
+				  <h1 class="home-intro text-left">Enterprises for Creating Rural Employment</h1>
+				  <p class="home-lead">
+					Expanding Food-Processing, Food Packaging Industries 
+					<i></i>
+				  </p>
+				  <a href="FarMark/" class="learn-more">Learn more <span class="link-arrow">→</span></a>
+				</div>    
+			</div>
+		  </div>
+		</div>
+		<a class="left carousel-control hidden-phone" href="" data-slide="prev">
+		  <span></span>
+		</a>
+		<a class="right carousel-control hidden-phone" href="" data-slide="next">
+		  <span></span>
+		</a>
+	</div>	
+	<div id="feedback">
+	<!-- <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='success.jsp';}"></iframe> -->		
+				 <h1>Feedback</h1>
 
-            <p>This example shows how to setup a basic carousel with prev/next controls and pagination.</p>
+				<p>Please help us improve with your valuable feedback.</p>
+				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { feedback = document.getElementById("feedback");feedback.innerHTML = "Invalid Email-ID";}"></iframe>
+				<form action="https://docs.google.com/forms/d/1X-KbSlFmjh_9xFUHdiGTmh5Y35m6AsjCyQORU8htgdU/formResponse" method="POST" id="ss-form" target="_self" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
+					<input type="text" name="entry.690358858" value="" class="ss-q-short form-control" id="entry_690358858" dir="auto" aria-label="Username  " title="" placeholder="Username" required>
 
-            <div class="jcarousel-wrapper">
-                <div class="jcarousel">
-                    <ul>
-                        <li><img src="img/Arya.png" width="600" height="400" alt=""></li>
-                        <li><img src="img/Arya-Stark.png" width="600" height="400" alt=""></li>
-                        
-                    </ul>
-                </div>
+					<input type="text" name="entry.2129960556" value="" class="ss-q-short form-control" id="entry_2129960556" dir="auto" aria-label="Email ID  " title="" placeholder="Email ID" required>
+					<div class="error-message"></div>
 
-                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
-                
-                <p class="jcarousel-pagination">
-                    
-                </p>
-            </div>
-        </div>
-	
+					<textarea name="entry.694356638" rows="8" cols="0" class="ss-q-long form-control" id="entry_694356638" dir="auto" aria-label="Feedback  " placeholder="Feedback" required></textarea>
+					<div class="error-message"></div>
+
+					<input class="btn btn-lg btn-success" type="submit" name="submit" value="Submit" id="ss-submit">
+				</form>				
+	</div>
 	<div id="footer" class="col-lg-12">
 		<ul id="footer-list">
 			<li><a href="#">Contact Us</a></li>
