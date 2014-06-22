@@ -168,28 +168,31 @@ function nobacktrack() {
 			<form class="form-signin" name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
 				<div id="inner-left" class="col-lg-6">
 				<p class="lead">
-					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
-					<div style="color:red"></div>
+					<input type="text" id="PNR" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus>
+					<button id="fetch1" type="button" onclick="javascript: return getPNRValue();" class="btn btn-lg btn-success">fetch details</button>
+					<div style="color:red"><h5>${requestScope['Invalid PNR']}</h5></div>
 					<!--  <ul id="berth-input-list"> -->
 					<div id="trains">
-					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${requestScope['Train_Name']}">
+					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
 					<button id="fetch" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg btn-success">fetch codes</button>
 					</div>
 					<!--  </ul> -->
 					<div id="train_error" style="color:red"></div>
-					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required>
+					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
 					<!-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required> -->
 					<div id="From_error" style="color:red"></div><div id="To_error" style="color:red"></div><div id="Choice_error" style="color:red"></div>
-					<select name="From" id="From" onchange=""> 
+					<select name="From" id="From" required onchange=""> 
 						<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
+						<option value="" selected="selected" value="${details.from_Station}">${details.from_Station}</option>
 						<c:forEach var="d" items="${station_code}">  
 							<option value="${d.key}">${d.key}</option>  	
 							 
 						</c:forEach>  
 						
 					</select>
-					<select name="To" id="To" onchange=""> 
+					<select name="To" id="To" required onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
+					<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
 					<c:forEach var="d" items="${station_code}">  
   						<option value="${d.key}">${d.key}</option>  	
       					 
@@ -202,22 +205,22 @@ function nobacktrack() {
 					<div id="class-input">
 						<ul id="class-input-list">
 							<li>Class :</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" checked>1-AC</li> 
-							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC">2-AC</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC">3-AC</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL">SL</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen">Gen</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="1-AC" ${details.classes == '1A' ? 'checked' : ''}>1-AC</li> 
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="2-AC" ${details.classes == '2A' ? 'checked' : ''}>2-AC</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="3-AC" ${details.classes == '3A' ? 'checked' : ''}>3-AC</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="SL" ${details.classes == 'SL' ? 'checked' : ''}>SL</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="classes" VALUE="Gen" ${details.classes == 'GN' ? 'checked' : ''}>Gen</li>
 						</ul>
 						<div id="Class_error" style="color:red"></div>
 					</div>
 					<div id="berth-input">
 						<ul id="berth-input-list">
 							<li>Berth :</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" checked>LB</li> 
-							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB">MB</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB">UB</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL">SL</li>
-							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU">SU</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="LB" ${details.berth == 'LB' ? 'checked' : ''}>LB</li> 
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="MB" ${details.berth == 'MB' ? 'checked' : ''}>MB</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="UB" ${details.berth == 'UB' ? 'checked' : ''}>UB</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL" ${details.berth == 'SL' ? 'checked' : ''}>SL</li>
+							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU" ${details.berth == 'SU' ? 'checked' : ''}>SU</li>
 						</ul>
 						<div id="Berth_error" style="color:red"></div>
 					</div>
@@ -261,6 +264,18 @@ function getInputValue(){
 		  return url;
     } else {
 		document.getElementById("train_error").innerHTML="Please select train";
+		return false;
+	}
+}
+function getPNRValue(){
+    var inputValue = document.getElementById('PNR').value;
+	url = 'FetchDetailsController?PNR=';  		
+    if(inputValue != ""){
+		  url += inputValue;			
+		  window.location.href = url;
+		  return url;
+    } else {
+		document.getElementById("train_error").innerHTML="Please Enter PNR";
 		return false;
 	}
 }

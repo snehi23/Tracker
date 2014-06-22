@@ -104,6 +104,18 @@
     <param-name>dbURL</param-name>
     <param-value>jdbc:mysql://localhost:3306/train_journey</param-value>
   </context-param>
+  <!-- <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>d7iBieSulj</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbURL</param-name>
+    <param-value>jdbc:mysql://mysql-travelogue.whelastic.net/train_journey</param-value>
+  </context-param> -->
   <session-config>
     <session-timeout>1440</session-timeout>
   </session-config>
@@ -206,5 +218,15 @@
   <servlet-mapping>
     <servlet-name>FetchStationCodeEditController</servlet-name>
     <url-pattern>/FetchStationCodeEditController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FetchDetailsController</display-name>
+    <servlet-name>FetchDetailsController</servlet-name>
+    <servlet-class>com.tracker.controller.FetchDetailsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FetchDetailsController</servlet-name>
+    <url-pattern>/FetchDetailsController</url-pattern>
   </servlet-mapping>
 </web-app>

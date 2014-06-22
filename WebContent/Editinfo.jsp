@@ -180,7 +180,7 @@ function nobacktrack() {
 					
 					<%-- <input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required value="${details.to_Station}"> --%>
 					<div id="From_error" style="color:red"></div><div id="To_error" style="color:red"></div><div id="Choice_error" style="color:red"></div>
-					<select name="From" id="From" onchange=""> 
+					<select name="From" id="From" required onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
 					<option value="" selected="selected" value="${details.from_Station}">${details.from_Station}</option>
 					<c:forEach var="d" items="${station_code}">  
@@ -189,7 +189,7 @@ function nobacktrack() {
    					</c:forEach>  
 					
 					</select>
-					<select name="To" id="To" onchange=""> 
+					<select name="To" id="To" required onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
 					<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
 					<c:forEach var="d" items="${station_code}">  
