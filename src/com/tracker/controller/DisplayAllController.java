@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -61,7 +63,7 @@ public class DisplayAllController extends HttpServlet {
         	
         	Connection conn = (Connection) ctx.getAttribute("DBConnection");
         	
-        	String sql = "select * from tracker where user_id ="+"'"+userid+"'"+"order by DOJ desc";
+        	String sql = "select * from tracker where user_id ="+"'"+userid+"'";
         	ps = conn.prepareStatement(sql);
         	rs = ps.executeQuery();       	
         	while(rs.next()) {
@@ -78,7 +80,8 @@ public class DisplayAllController extends HttpServlet {
         		details_list.add(d);        		
         	}
         	
-        	   
+        	Collections.sort(details_list, new CompareDetailsByDOJ());
+        	
             request.setAttribute("details_list", details_list);
             
         	rs.close();
@@ -104,4 +107,14 @@ public class DisplayAllController extends HttpServlet {
         rd.forward(request, response);
     }
 
+}
+
+class CompareDetailsByDOJ implements Comparator<Details> {
+
+	@Override
+	public int compare(Details d1, Details d2) {
+		return d2.getDOJ().compareToIgnoreCase(d1.getDOJ());
+	}
+	
+	
 }
