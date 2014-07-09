@@ -163,25 +163,31 @@ function nobacktrack() {
 
           <div class="inner cover">
             <h1 class="cover-heading">Enter Your Journey Details</h1>
-            <div id="add-another-entry"><h5>${requestScope['Record_Confirmation']}</h5></div>
+<!--            <div id="add-another-entry"><h5>${requestScope['Record_Confirmation']}</h5></div> -->
 			<div class="row">
 			<form class="form-signin" name="form" action="UserInputController" METHOD="post" onsubmit="return validateForm()">
+				<div class="col-lg-12" id="pnr-search-div">
+					<ul id="pnr-search">
+						<li><input type="text" id="PNR" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus></li>
+						<li><button id="fetch1" type="button" onclick="javascript: return getPNRValue();" class="btn btn-lg">fetch details</button></li>
+					</ul>
+				</div>
+				
+				<div style="color:red; text-align:left; padding-left:10%;"><h5>${requestScope['Invalid PNR']}</h5></div>
+
 				<div id="inner-left" class="col-lg-6">
 				<p class="lead">
-					<input type="text" id="PNR" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus>
-					<button id="fetch1" type="button" onclick="javascript: return getPNRValue();" class="btn btn-lg btn-success">fetch details</button>
-					<div style="color:red"><h5>${requestScope['Invalid PNR']}</h5></div>
+					<!-- <div style="color:red"><h5>${requestScope['Invalid PNR']}</h5></div> -->
 					<!--  <ul id="berth-input-list"> -->
 					<div id="trains">
-					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
-					<button id="fetch" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg btn-success">fetch codes</button>
+						<input style="width:80%;" id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="">
+						<button style="width:20%; margin-left:3%; height:45px;" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg">search</button>
 					</div>
-					<!--  </ul> -->
 					<div id="train_error" style="color:red"></div>
-					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
+					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="">
 					<!-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required> -->
 					<div id="From_error" style="color:red"></div><div id="To_error" style="color:red"></div><div id="Choice_error" style="color:red"></div>
-					<select name="From" id="From" required onchange=""> 
+					<select style="width:100%; height:45px; margin-bottom:20px; margin-top:10px;" name="From" id="From" required onchange=""> 
 						<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
 						<option value="" selected="selected" value="${details.from_Station}">${details.from_Station}</option>
 						<c:forEach var="d" items="${station_code}">  
@@ -190,7 +196,7 @@ function nobacktrack() {
 						</c:forEach>  
 						
 					</select>
-					<select name="To" id="To" required onchange=""> 
+					<select style="width:100%; height:45px; padding-bottom:10px;" name="To" id="To" required onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
 					<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
 					<c:forEach var="d" items="${station_code}">  
@@ -222,13 +228,13 @@ function nobacktrack() {
 							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SL" ${details.berth == 'SL' ? 'checked' : ''}>SL</li>
 							<li><input class="radio-control" TYPE="RADIO" NAME="berth" VALUE="SU" ${details.berth == 'SU' ? 'checked' : ''}>SU</li>
 						</ul>
-						<div id="Berth_error" style="color:red"></div>
+				<ul id="submit-buuton-input-list">		<div id="Berth_error" style="color:red"></div>
 					</div>
 				</p>
 				</div>
 				<div id="inner-right" class="col-lg-6">
 				<p class="lead">
-					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" value="NA"></textarea> 
+					<textarea style="margin-top:17px;" id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" value="NA"></textarea> 
 					<div id="Comments_error" style="color:red"></div>
 					<div id="buttons-control">
 						<ul id="submit-buuton-input-list">

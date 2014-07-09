@@ -93,6 +93,7 @@ textarea#memorable-moments{
 	font-size: 16px;
 	padding-right:5px;
 }
+
 .radio-control {
 width: 25px;
 height: 25px;
@@ -107,7 +108,29 @@ background-image: none;
 	float:right;
 	 margin-bottom:15px;
 	} 
+
+#PNR{
+	width:75%;
+	float:left;
+}
+
+#pnr-search li{
+	display:inline;
+	padding-bottom:20px;
+	/*
+	padding-left:20%; */
+}
 	
+#seperator{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#trains{
+	width:100%;
+	display: inline-flex;
+	padding-bottom:10px;
+}
 /* #autocomplete1{
 		width:70%;
 	}
