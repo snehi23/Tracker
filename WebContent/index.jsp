@@ -33,7 +33,7 @@
 				<li><a href="#about">AboutUs</a></li>
 				<li><a href="#contact">Feedback</a></li>
 			</ul>		
-			<a id="header-hello" href="">Sign In</a>			
+			<a id="header-hello" href="login.jsp">Sign In</a>			
 		</div>
 	</header>
 
@@ -41,7 +41,9 @@
 	<section id="welcome" class="container">
 		<div class="row">
 			<h2 style="font-size: 84.57142857142857px;">My Travelogue</h2>
-			<h3 style="bottom: 0px;text-align:left;">Keep logs of your train travel. Maintain records. Analyse statistics. Make your journeys Memorable. <input class="btn btn-success" type="submit" name="submit" value="Sign Up" id="ss-submit"></h3>
+			<h3 style="bottom: 0px;text-align:left;">Keep logs of your train travel. Maintain records. Analyse statistics. Make your journeys Memorable. 
+				<input class="btn btn-success" type="submit" name="submit" value="Sign Up" id="ss-submit" onclick="window.location.href='register.jsp'">
+			</h3>
 		</div>
 	</section>
 		
