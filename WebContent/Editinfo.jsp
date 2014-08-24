@@ -165,13 +165,11 @@ function nobacktrack() {
 			<form class="form-signin" name="form" action="UserInputUpdateController" METHOD="post" onsubmit="return validateForm()">
 				<div id="inner-left" class="col-lg-6">
 				<p class="lead">
-					<input type="text" name="PNR" SIZE="20" class="form-control" placeholder="Enter Your PNR or Fill out following fields" required autofocus disabled="disabled">
-					<div id="pnr_error" style="color:red"></div>
 					<%-- <input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}"> --%>
 					<%-- <a href="FetchStationCodeEditController?recordid=<c:out value="${details.train_journey_id}"/>&Train_Name="onclick="getInputValue(this);">Fetch Stations</a> --%>
 					<div id="trains">
-					<input id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
-					<button id="fetch" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg btn-success">fetch codes</button>
+					<input style="width:80%;" id="autocomplete1" type="text" name="Train" SIZE="20" class="form-control" placeholder="Train Name" required value="${details.train}${details.train_Number}">
+					<button style="width:20%; margin-left:3%; height:45px;" type="button" onclick="javascript: return getInputValue();" class="btn btn-lg">search</button>
 					</div>
 					<div id="train_error" style="color:red"></div>					
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="${details.DOJ}">
@@ -180,7 +178,7 @@ function nobacktrack() {
 					
 					<%-- <input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required value="${details.to_Station}"> --%>
 					<div id="From_error" style="color:red"></div><div id="To_error" style="color:red"></div><div id="Choice_error" style="color:red"></div>
-					<select name="From" id="From" required onchange=""> 
+					<select style="width:100%; height:45px; margin-bottom:20px; margin-top:10px;" name="From" id="From" required onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
 					<option value="" selected="selected" value="${details.from_Station}">${details.from_Station}</option>
 					<c:forEach var="d" items="${station_code}">  
@@ -189,7 +187,7 @@ function nobacktrack() {
    					</c:forEach>  
 					
 					</select>
-					<select name="To" id="To" required onchange=""> 
+					<select style="width:100%; height:45px; padding-bottom:10px;" name="To" id="To" required onchange=""> 
 					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
 					<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
 					<c:forEach var="d" items="${station_code}">  
@@ -226,7 +224,7 @@ function nobacktrack() {
 				</div>
 				<div id="inner-right" class="col-lg-6">
 				<p class="lead">
-					<textarea id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" value="NA">${details.comments}</textarea> 
+					<textarea style="margin-top:17px;" id="memorable-moments" type="text" name="comments" class="form-control" placeholder="Memorable Moments" style="resize:none" value="NA">${details.comments}</textarea> 
 					<div id="Comments_error" style="color:red"></div>
 					<div id="buttons-control">
 						<ul id="submit-buuton-input-list">

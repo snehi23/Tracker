@@ -187,23 +187,20 @@ function nobacktrack() {
 					<input id="datepicker" type="text" name="DOJ" SIZE="20" class="form-control" placeholder="Date Of Journey" required value="">
 					<!-- <input id="autocomplete2" type="text" name="From" SIZE="20" class="form-control" placeholder="Station From" required> -->
 					<div id="From_error" style="color:red"></div><div id="To_error" style="color:red"></div><div id="Choice_error" style="color:red"></div>
-					<select style="width:100%; height:45px; margin-bottom:20px; margin-top:10px;" name="From" id="From" required onchange=""> 
-						<option value="" selected="selected" disabled="disabled">Please Select From Station</option>
+					<select style="width:100%; height:45px; margin-bottom:20px; margin-top:10px;" name="From" id="From" placeholder="Date Of Journey" required onchange=""> 
+						<option value="" selected="selected" disabled="disabled">Source</option>
 						<option value="" selected="selected" value="${details.from_Station}">${details.from_Station}</option>
 						<c:forEach var="d" items="${station_code}">  
-							<option value="${d.key}">${d.key}</option>  	
-							 
+							<option value="${d.key}">${d.key}</option>  				 
 						</c:forEach>  
 						
 					</select>
-					<select style="width:100%; height:45px; padding-bottom:10px;" name="To" id="To" required onchange=""> 
-					<option value="" selected="selected" disabled="disabled">Please Select To Station</option>
-					<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
-					<c:forEach var="d" items="${station_code}">  
-  						<option value="${d.key}">${d.key}</option>  	
-      					 
-   					</c:forEach>  
-					
+					<select style="width:100%; height:45px; padding-bottom:10px;" name="To" id="To" placeholder="Date Of Journey" required onchange=""> 
+						<option value="" selected="selected" disabled="disabled">Destinations</option>
+						<option value="" selected="selected" value="${details.to_Station}">${details.to_Station}</option>
+						<c:forEach var="d" items="${station_code}">  
+	  						<option value="${d.key}">${d.key}</option>  	
+	   					</c:forEach>  
 					</select>
 					
 					<!-- <input id="autocomplete3" type="text" name="To" SIZE="20" class="form-control" placeholder="Station To" required> -->
