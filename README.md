@@ -1,7 +1,7 @@
 Tracker
 =======
 
-[Journey Tracker Application](http://mytravelogue.info)
+[Journey Tracker Application](http://www.mytravelogue.info)
 
 1. Mytravelogue.in is an web based travelogue for travel enthusiast who want to preserve their moment in web diary.
 
